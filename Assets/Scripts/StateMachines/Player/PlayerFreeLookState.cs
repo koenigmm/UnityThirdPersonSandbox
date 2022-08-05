@@ -1,14 +1,16 @@
 using UnityEngine;
 
-public class PlayerTestState : PlayerBaseState
+public class PlayerFreeLookState : PlayerBaseState
 {
-    public PlayerTestState(PlayerStateMachine stateMachine) : base(stateMachine)
+    private readonly int _freeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
+    private const float AnimatorDampTime = 0.1f;
+
+    public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
 
     public override void Enter()
     {
-       
     }
 
     public override void Tick(float deltaTime)
@@ -18,22 +20,20 @@ public class PlayerTestState : PlayerBaseState
 
         if (StateMachine.InputReader.MovementValue == Vector2.zero)
         {
-            StateMachine.Animator.SetFloat("FreeLookSpeed", 0, 0.1f, deltaTime);
+            StateMachine.Animator.SetFloat(_freeLookSpeedHash, 0, AnimatorDampTime, deltaTime);
             return;
         }
-        
-        StateMachine.Animator.SetFloat("FreeLookSpeed", 1, 0.1f, deltaTime);
-        StateMachine.transform.rotation = Quaternion.LookRotation(movement);
+
+        StateMachine.Animator.SetFloat(_freeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
+        FaceMovementDirection(movement, deltaTime);
     }
 
     public override void Exit()
     {
-        
     }
 
     private void OnJump()
     {
-       
     }
 
     private Vector3 CalculateMovement()
@@ -43,11 +43,18 @@ public class PlayerTestState : PlayerBaseState
 
         forward.y = 0f;
         right.y = 0f;
-        
+
         forward.Normalize();
         right.Normalize();
 
         return forward * StateMachine.InputReader.MovementValue.y + right * StateMachine.InputReader.MovementValue.x;
+    }
 
+    private void FaceMovementDirection(Vector3 movement, float deltaTime)
+    {
+        StateMachine.transform.rotation = Quaternion.Lerp(
+            StateMachine.transform.rotation,
+            Quaternion.LookRotation(movement),
+            deltaTime * StateMachine.RotationDamping);
     }
 }
