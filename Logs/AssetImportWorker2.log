@@ -1,0 +1,388 @@
+Using pre-set license
+Built from '2022.1/staging' branch; Version is '2022.1.12f1 (916d9c03b898) revision 9530780'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22000) 64bit Professional' Language: 'de' Physical Memory: 16305 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.1.12f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+D:/UnityProjects/ThirdPersonCombat
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+54167
+Successfully changed project path to: D:/UnityProjects/ThirdPersonCombat
+D:/UnityProjects/ThirdPersonCombat
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 105.02 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.1.12f1 (916d9c03b898)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.1.12f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/UnityProjects/ThirdPersonCombat/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2060 (ID=0x1f08)
+    Vendor:   NVIDIA
+    VRAM:     5980 MB
+    Driver:   31.0.15.1659
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.1.12f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.1.12f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56960
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.1.12f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004067 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 103.58 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.577 seconds
+Domain Reload Profiling:
+	ReloadAssembly (578ms)
+		BeginReloadAssembly (62ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (427ms)
+			LoadAssemblies (60ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (95ms)
+				TypeCache.Initialize (95ms)
+					TypeCache.ScanAssembly (93ms)
+				ResolveRequiredComponents (0ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (22ms)
+			SetupLoadedEditorAssemblies (267ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (6ms)
+				RefreshPlugins (104ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (111ms)
+				ProcessInitializeOnLoadMethodAttributes (39ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.004563 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 105.13 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.215 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1215ms)
+		BeginReloadAssembly (95ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (17ms)
+		EndReloadAssembly (1039ms)
+			LoadAssemblies (71ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (278ms)
+				TypeCache.Initialize (267ms)
+					TypeCache.ScanAssembly (263ms)
+				ResolveRequiredComponents (11ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (58ms)
+			SetupLoadedEditorAssemblies (588ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (6ms)
+				RefreshPlugins (105ms)
+				BeforeProcessingInitializeOnLoad (102ms)
+				ProcessInitializeOnLoadAttributes (287ms)
+				ProcessInitializeOnLoadMethodAttributes (74ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 1.63 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5806 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 53 unused Assets / (419.6 KB). Loaded Objects now: 6266.
+Memory consumption went from 0.90 GB to 0.90 GB.
+Total: 5.863200 ms (FindLiveObjects: 0.797400 ms CreateObjectMapping: 0.222500 ms MarkObjects: 4.561300 ms  DeleteObjects: 0.279900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 33350.330205 seconds.
+  path: Assets/Animations/Locomotion Pack/mixamo.com.anim
+  artifactKey: Guid(db4c9c46171a89d4281f6e21aac5838c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/mixamo.com.anim using Guid(db4c9c46171a89d4281f6e21aac5838c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71d016b505b70015abb35ddd4dcd34d1') in 0.039298 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.870769 seconds.
+  path: Assets/Animations/Locomotion Pack/mixamo.com 1.anim
+  artifactKey: Guid(7ab0e67d1263af5478d93f08a336f8a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/mixamo.com 1.anim using Guid(7ab0e67d1263af5478d93f08a336f8a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed3e4112e9df33b63261ba961d2123ca') in 0.012241 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 22.526415 seconds.
+  path: Assets/Animations/Locomotion Pack/Idle.anim
+  artifactKey: Guid(db4c9c46171a89d4281f6e21aac5838c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/Idle.anim using Guid(db4c9c46171a89d4281f6e21aac5838c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf92188359a0dbb3ff1e6543b6f923a7') in 0.006788 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.282379 seconds.
+  path: Assets/Animations/Locomotion Pack/mixamo.com.anim
+  artifactKey: Guid(298a31807d7c13f45b6d885f96091df4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/mixamo.com.anim using Guid(298a31807d7c13f45b6d885f96091df4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6581153a64af40582d4b0fbae246aed') in 0.010450 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.537620 seconds.
+  path: Assets/Animations/Locomotion Pack/Jump.anim
+  artifactKey: Guid(298a31807d7c13f45b6d885f96091df4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/Jump.anim using Guid(298a31807d7c13f45b6d885f96091df4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95d20025fedbc25a42be1c2c7d73f2ce') in 0.012261 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.670825 seconds.
+  path: Assets/Animations/Locomotion Pack/mixamo.com.anim
+  artifactKey: Guid(56836ab3956dad04f96c93041d7461df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/mixamo.com.anim using Guid(56836ab3956dad04f96c93041d7461df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fddeed70d86be183165d9f527cca99b8') in 0.006920 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.741376 seconds.
+  path: Assets/Animations/Locomotion Pack/LeftStrafe.anim
+  artifactKey: Guid(56836ab3956dad04f96c93041d7461df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/LeftStrafe.anim using Guid(56836ab3956dad04f96c93041d7461df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42a4697eb9826fe8e1c50c1af68560d2') in 0.010121 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 13.872903 seconds.
+  path: Assets/Animations/Locomotion Pack/mixamo.com.anim
+  artifactKey: Guid(04431a01f011f3041a3931e4288b60bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/mixamo.com.anim using Guid(04431a01f011f3041a3931e4288b60bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b3c67a21cd7162f4ef930108f56ff37') in 0.006423 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.708215 seconds.
+  path: Assets/Animations/Locomotion Pack/LeftStrafeWalking.anim
+  artifactKey: Guid(04431a01f011f3041a3931e4288b60bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/LeftStrafeWalking.anim using Guid(04431a01f011f3041a3931e4288b60bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd61d86fa4765f0a4bea09548802da04') in 0.008953 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.940689 seconds.
+  path: Assets/Animations/Locomotion Pack/mixamo.com.anim
+  artifactKey: Guid(44a4b799ff1519e4b9b55a81286f0112) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/mixamo.com.anim using Guid(44a4b799ff1519e4b9b55a81286f0112) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3043836d3f26f526f72da3b6732c225') in 0.004927 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.958402 seconds.
+  path: Assets/Animations/Locomotion Pack/LeftTurn.anim
+  artifactKey: Guid(44a4b799ff1519e4b9b55a81286f0112) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/LeftTurn.anim using Guid(44a4b799ff1519e4b9b55a81286f0112) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fafff9624ea0c5af3b186035fa1b1e75') in 0.008818 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.849969 seconds.
+  path: Assets/Animations/Locomotion Pack/mixamo.com.anim
+  artifactKey: Guid(09efea5d45c47ac45b7440964cd8a175) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/mixamo.com.anim using Guid(09efea5d45c47ac45b7440964cd8a175) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f990aed0106f0ce47356535a35fa46d') in 0.004621 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.660668 seconds.
+  path: Assets/Animations/Locomotion Pack/LeftTurn90.anim
+  artifactKey: Guid(09efea5d45c47ac45b7440964cd8a175) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/LeftTurn90.anim using Guid(09efea5d45c47ac45b7440964cd8a175) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd975c42dc5b32bb9adec878dddff2aaf') in 0.007989 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.578496 seconds.
+  path: Assets/Animations/Locomotion Pack/mixamo.com.anim
+  artifactKey: Guid(7887e82d5f2af3245ba6124527679380) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/mixamo.com.anim using Guid(7887e82d5f2af3245ba6124527679380) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c869ff3da83074c3861276233299fa3') in 0.005724 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.152666 seconds.
+  path: Assets/Animations/Locomotion Pack/RightStrafe.anim
+  artifactKey: Guid(7887e82d5f2af3245ba6124527679380) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/RightStrafe.anim using Guid(7887e82d5f2af3245ba6124527679380) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fddcbef47ea80292dfdebea6eec7fed7') in 0.008467 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.294650 seconds.
+  path: Assets/Animations/Locomotion Pack/mixamo.com.anim
+  artifactKey: Guid(eba03e353bb9dea468252100a2a5ef91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/mixamo.com.anim using Guid(eba03e353bb9dea468252100a2a5ef91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54e3310c13b9efcf8f4022c7e5445dd4') in 0.006260 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.273527 seconds.
+  path: Assets/Animations/Locomotion Pack/RightStrafeWalking.anim
+  artifactKey: Guid(eba03e353bb9dea468252100a2a5ef91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/RightStrafeWalking.anim using Guid(eba03e353bb9dea468252100a2a5ef91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5cffb24cacc01a0d2ecf12ce56615bd') in 0.008147 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.567364 seconds.
+  path: Assets/Animations/Locomotion Pack/mixamo.com.anim
+  artifactKey: Guid(760def6cf23a918479ee1f1a7f50ab10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/mixamo.com.anim using Guid(760def6cf23a918479ee1f1a7f50ab10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51c7e80ec005947e1482321576ace991') in 0.005497 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.258866 seconds.
+  path: Assets/Animations/Locomotion Pack/RightTurn.anim
+  artifactKey: Guid(760def6cf23a918479ee1f1a7f50ab10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/RightTurn.anim using Guid(760def6cf23a918479ee1f1a7f50ab10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d541b5b9c85905191dd152b9d735ffe') in 0.007815 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.703040 seconds.
+  path: Assets/Animations/Locomotion Pack/mixamo.com.anim
+  artifactKey: Guid(64728daf6cccf7344a0a7460463b7028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/mixamo.com.anim using Guid(64728daf6cccf7344a0a7460463b7028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6dd3473211e1a1ec0dcf43aed6f5e112') in 0.004816 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.996175 seconds.
+  path: Assets/Animations/Locomotion Pack/RightTurn90.anim
+  artifactKey: Guid(64728daf6cccf7344a0a7460463b7028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/RightTurn90.anim using Guid(64728daf6cccf7344a0a7460463b7028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd3bb250c292738b1f91f1e0f0bb0734') in 0.007682 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.562025 seconds.
+  path: Assets/Animations/Locomotion Pack/mixamo.com.anim
+  artifactKey: Guid(b005f76609c71384185b5fd2054df808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/mixamo.com.anim using Guid(b005f76609c71384185b5fd2054df808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b82c8197a745980de4106189ef39ee23') in 0.006842 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.342465 seconds.
+  path: Assets/Animations/Locomotion Pack/Running.anim
+  artifactKey: Guid(b005f76609c71384185b5fd2054df808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/Running.anim using Guid(b005f76609c71384185b5fd2054df808) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a3ccfe077d8af4a55989e863acc1035') in 0.009163 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.789988 seconds.
+  path: Assets/Animations/Locomotion Pack/mixamo.com.anim
+  artifactKey: Guid(4b2ef50e8e3c31d43bfa0894aae88631) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/mixamo.com.anim using Guid(4b2ef50e8e3c31d43bfa0894aae88631) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f35208e7fc2ea0e3258f58b0aa16428') in 0.005612 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.182162 seconds.
+  path: Assets/Animations/Locomotion Pack/Walking.anim
+  artifactKey: Guid(4b2ef50e8e3c31d43bfa0894aae88631) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Locomotion Pack/Walking.anim using Guid(4b2ef50e8e3c31d43bfa0894aae88631) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce0ef909530246e1168537356b8f7402') in 0.008659 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 115.873890 seconds.
+  path: Assets/Animations/Controller_Player.controller
+  artifactKey: Guid(1cc6d2489cd980d46b9c8fb7b253c1af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Controller_Player.controller using Guid(1cc6d2489cd980d46b9c8fb7b253c1af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c36f7b3243125ad0ea13cb50edf20956') in 0.007422 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004067 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.95 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.114 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1114ms)
+		BeginReloadAssembly (132ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (38ms)
+		EndReloadAssembly (892ms)
+			LoadAssemblies (77ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (297ms)
+				TypeCache.Initialize (286ms)
+					TypeCache.ScanAssembly (280ms)
+				ResolveRequiredComponents (10ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (43ms)
+			SetupLoadedEditorAssemblies (427ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (6ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (73ms)
+				ProcessInitializeOnLoadAttributes (262ms)
+				ProcessInitializeOnLoadMethodAttributes (71ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.41 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5671 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 28 unused Assets / (380.6 KB). Loaded Objects now: 6283.
+Memory consumption went from 0.87 GB to 0.87 GB.
+Total: 3.790600 ms (FindLiveObjects: 0.488400 ms CreateObjectMapping: 0.167500 ms MarkObjects: 3.023600 ms  DeleteObjects: 0.109900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 88.474461 seconds.
+  path: Assets/Animations/AnimationClips
+  artifactKey: Guid(24d1f6de5d33cb244b76bfff0e88a7a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/AnimationClips using Guid(24d1f6de5d33cb244b76bfff0e88a7a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebc98ba182ba3612ae1664461513f01f') in 0.012323 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.824315 seconds.
+  path: Assets/Animations/Controller_Player.controller
+  artifactKey: Guid(1cc6d2489cd980d46b9c8fb7b253c1af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animations/Controller_Player.controller using Guid(1cc6d2489cd980d46b9c8fb7b253c1af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a4f6073583ddfaa528e46151d1692e0') in 0.018576 seconds 
