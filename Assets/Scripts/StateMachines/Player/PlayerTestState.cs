@@ -13,12 +13,7 @@ public class PlayerTestState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        var movement = new Vector3
-        {
-            x = StateMachine.InputReader.MovementValue.x,
-            y = 0f,
-            z = StateMachine.InputReader.MovementValue.y
-        };
+        var movement = CalculateMovement();
         StateMachine.CharacterController.Move(movement * (deltaTime * StateMachine.FreeLookMovementSpeed));
 
         if (StateMachine.InputReader.MovementValue == Vector2.zero)
@@ -39,5 +34,20 @@ public class PlayerTestState : PlayerBaseState
     private void OnJump()
     {
        
+    }
+
+    private Vector3 CalculateMovement()
+    {
+        var forward = StateMachine.MainCameraTransform.forward;
+        var right = StateMachine.MainCameraTransform.right;
+
+        forward.y = 0f;
+        right.y = 0f;
+        
+        forward.Normalize();
+        right.Normalize();
+
+        return forward * StateMachine.InputReader.MovementValue.y + right * StateMachine.InputReader.MovementValue.x;
+
     }
 }
