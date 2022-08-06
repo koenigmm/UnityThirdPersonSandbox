@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerTargetingState : PlayerBaseState
 {
+    private readonly int _targetingBlendTreeHash = Animator.StringToHash("TargetingBlendTree");
     public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -9,11 +10,16 @@ public class PlayerTargetingState : PlayerBaseState
     public override void Enter()
     {
         StateMachine.InputReader.CancelEvent += OnCancel;
+        StateMachine.Animator.Play(_targetingBlendTreeHash);
     }
 
     public override void Tick(float deltaTime)
     {
-        Debug.Log(StateMachine.Targeter.CurrentTarget.name);
+        if (StateMachine.Targeter.CurrentTarget == null)
+        {
+            StateMachine.SwitchState(new PlayerFreeLookState(StateMachine));
+            return;
+        }
     }
 
     public override void Exit()
