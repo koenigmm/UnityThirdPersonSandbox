@@ -20,6 +20,11 @@ public class PlayerTargetingState : PlayerBaseState
             StateMachine.SwitchState(new PlayerFreeLookState(StateMachine));
             return;
         }
+
+        var movement = CalculateMovement();
+        Move(movement * StateMachine.TargetingMovementSpeed, deltaTime);
+        
+        FaceTarget();
     }
 
     public override void Exit()
@@ -31,5 +36,16 @@ public class PlayerTargetingState : PlayerBaseState
     {
         StateMachine.Targeter.Cancel();
         StateMachine.SwitchState(new PlayerFreeLookState(StateMachine));
+    }
+
+    private Vector3 CalculateMovement()
+    {
+        var movement = new Vector3();
+
+        var transform = StateMachine.transform;
+        movement += transform.right * StateMachine.InputReader.MovementValue.x;
+        movement += transform.forward * StateMachine.InputReader.MovementValue.y;
+
+        return movement;
     }
 }

@@ -15,4 +15,15 @@ public abstract class PlayerBaseState : State
     {
         StateMachine.CharacterController.Move((motion + StateMachine.ForceReceiver.Movement) * deltaTime);
     }
+
+    protected void FaceTarget()
+    {
+        if (StateMachine.Targeter.CurrentTarget == null) return;
+        var LookPos = StateMachine.Targeter.CurrentTarget.transform.position -
+                         StateMachine.CharacterController.transform.position;
+
+        LookPos.y = 0f;
+        
+        StateMachine.transform.rotation = Quaternion.LookRotation(LookPos);
+    }
 }
