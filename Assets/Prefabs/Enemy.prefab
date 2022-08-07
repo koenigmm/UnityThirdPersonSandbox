@@ -1639,6 +1639,7 @@ MonoBehaviour:
   <ForceReceiver>k__BackingField: {fileID: 7546341459667392266}
   <Agent>k__BackingField: {fileID: 1483666410366760767}
   <MovementSpeed>k__BackingField: 3
+  <AttackRange>k__BackingField: 1.5
 --- !u!114 &7546341459667392266
 MonoBehaviour:
   m_ObjectHideFlags: 0

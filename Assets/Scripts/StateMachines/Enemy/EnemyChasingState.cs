@@ -24,8 +24,21 @@ public class EnemyChasingState : EnemyBaseState
             StateMachine.SwitchState(new EnemyIdleState(StateMachine));
             return;
         }
+        
+        if (IsInAttackRange())
+            StateMachine.SwitchState(new EnemyAttackingState(StateMachine));
+        
         MoveToPlayer(deltaTime);
+        FacePlayer();
         StateMachine.Animator.SetFloat(_speedHash, 1f, AnimatorDampTime, deltaTime);
+    }
+
+    private bool IsInAttackRange()
+    {
+        var playerDistanceSqr =
+            (StateMachine.Player.transform.position - StateMachine.transform.position).sqrMagnitude;
+
+        return playerDistanceSqr <= StateMachine.AttackRange * StateMachine.AttackRange;
     }
 
     public override void Exit()
@@ -41,16 +54,5 @@ public class EnemyChasingState : EnemyBaseState
         Move(targetVector, deltaTime);
 
         StateMachine.Agent.velocity = StateMachine.CharacterController.velocity;
-    }
-    
-    // TODO move in parent class
-    protected void Move(Vector3 motion, float deltaTime)
-    {
-        StateMachine.CharacterController.Move((motion + StateMachine.ForceReceiver.Movement) * deltaTime);
-    }
-    
-    protected void Move(float deltaTime)
-    {
-        Move(Vector3.zero, deltaTime);
     }
 }

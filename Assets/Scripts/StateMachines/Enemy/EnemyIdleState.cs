@@ -25,18 +25,8 @@ public class EnemyIdleState : EnemyBaseState
             StateMachine.SwitchState(new EnemyChasingState(StateMachine));
             return;
         }
-        
+        FacePlayer();
         StateMachine.Animator.SetFloat(_speedHash, 0f, DampTime, deltaTime);
-    }
-
-    protected void Move(Vector3 motion, float deltaTime)
-    {
-        StateMachine.CharacterController.Move((motion + StateMachine.ForceReceiver.Movement) * deltaTime);
-    }
-    
-    protected void Move(float deltaTime)
-    {
-        Move(Vector3.zero, deltaTime);
     }
 
     public override void Exit()
