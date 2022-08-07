@@ -1506,6 +1506,8 @@ GameObject:
   - component: {fileID: 8453266383668057358}
   - component: {fileID: 6029164931830157581}
   - component: {fileID: 6077854898923851308}
+  - component: {fileID: 3846878445894342524}
+  - component: {fileID: 7546341459667392266}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1587,6 +1589,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8443abcf42bff38428e478cf969cb11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Animator>k__BackingField: {fileID: 3846878445894342524}
+  <PlayerChasingRange>k__BackingField: 10
+  <Player>k__BackingField: {fileID: 0}
+  <CharacterController>k__BackingField: {fileID: 543057182630749585}
+  <ForceReceiver>k__BackingField: {fileID: 7546341459667392266}
+--- !u!95 &3846878445894342524
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351724124949616242}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 259e4606556dae74fae4064018954938, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7546341459667392266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351724124949616242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094a822f97e9c76409ecccb63c0d1862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 543057182630749585}
+  drag: 0.3
 --- !u!1 &5533334298152091290
 GameObject:
   m_ObjectHideFlags: 0

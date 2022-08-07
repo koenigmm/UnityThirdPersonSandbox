@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 52b26e0819884164da9c0e2aaa0039f8, type: 2}
 --- !u!1 &26772829
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,11 +394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3520468305379590862, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000033175835
+      value: -0.00003317599
       objectReference: {fileID: 0}
     - target: {fileID: 3520468305379590862, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000008441507
+      value: 0.000008441548
       objectReference: {fileID: 0}
     - target: {fileID: 3520468305379590863, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
@@ -530,11 +530,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001693028
+      value: -0.00000001693028
       objectReference: {fileID: 0}
     - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000030700456
+      value: 0.0000000030700456
       objectReference: {fileID: 0}
     - target: {fileID: 8220335779157961760, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1302,7 +1302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5753593956599403365, guid: cb99efead18ef43449710b5d02fa3cd7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.66
+      value: -5.55
       objectReference: {fileID: 0}
     - target: {fileID: 5753593956599403365, guid: cb99efead18ef43449710b5d02fa3cd7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1310,7 +1310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5753593956599403365, guid: cb99efead18ef43449710b5d02fa3cd7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.9
+      value: 9.81
       objectReference: {fileID: 0}
     - target: {fileID: 5753593956599403365, guid: cb99efead18ef43449710b5d02fa3cd7, type: 3}
       propertyPath: m_LocalRotation.w
