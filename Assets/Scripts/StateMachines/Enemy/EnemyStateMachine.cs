@@ -16,6 +16,7 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public WeaponDamage Weapon { get; private set; }
     [field: SerializeField] public float AttackDamage { get; private set; }
+    [field: SerializeField] public float AttackKnockback { get; private set; }
 
     private void Start()
     {
