@@ -22,9 +22,10 @@ public class EnemyIdleState : EnemyBaseState
         Move(deltaTime);
         if (IsInChaseRange())
         {
-            Debug.Log("In Range");
+            StateMachine.SwitchState(new EnemyChasingState(StateMachine));
             return;
         }
+        
         StateMachine.Animator.SetFloat(_speedHash, 0f, DampTime, deltaTime);
     }
 
