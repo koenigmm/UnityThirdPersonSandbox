@@ -7,6 +7,7 @@ public class WeaponDamage : MonoBehaviour
 {
     [SerializeField] private Collider playerCollider;
     private List<Collider> _alreadyCollidedWith = new List<Collider>();
+    private float _damage;
 
     private void OnEnable()
     {
@@ -22,7 +23,12 @@ public class WeaponDamage : MonoBehaviour
 
         if (other.TryGetComponent<Health>(out var health))
         {
-            health.DealDamage(10f);
+            health.DealDamage(_damage);
         }
+    }
+
+    public void SetAttack(float damage)
+    {
+        _damage = damage;
     }
 }
