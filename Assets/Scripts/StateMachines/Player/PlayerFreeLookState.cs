@@ -20,7 +20,7 @@ public class PlayerFreeLookState : PlayerBaseState
     {
         if (StateMachine.InputReader.IsAttacking)
         {
-            StateMachine.SwitchState(new PlayerAttackingState(StateMachine));
+            StateMachine.SwitchState(new PlayerAttackingState(StateMachine, 0));
             return;
         }
         

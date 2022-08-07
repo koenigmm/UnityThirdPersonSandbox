@@ -1,11 +1,15 @@
 public class PlayerAttackingState : PlayerBaseState
 {
-    public PlayerAttackingState(PlayerStateMachine stateMachine) : base(stateMachine)
+    private Attack _attack;
+
+    public PlayerAttackingState(PlayerStateMachine stateMachine, int attackID) : base(stateMachine)
     {
+        _attack = stateMachine.Attacks[attackID];
     }
 
     public override void Enter()
     {
+        StateMachine.Animator.CrossFadeInFixedTime(_attack.AnimationName, 0.1f);
     }
 
     public override void Tick(float deltaTime)
