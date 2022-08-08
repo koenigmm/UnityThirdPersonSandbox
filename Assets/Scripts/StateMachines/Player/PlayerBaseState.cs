@@ -31,4 +31,16 @@ public abstract class PlayerBaseState : State
         
         StateMachine.transform.rotation = Quaternion.LookRotation(LookPos);
     }
+
+    protected void ReturnToLocomotion()
+    {
+        if (StateMachine.Targeter.CurrentTarget != null)
+        {
+            StateMachine.SwitchState(new PlayerTargetingState(StateMachine));
+        }
+        else
+        {
+            StateMachine.SwitchState(new PlayerFreeLookState(StateMachine));
+        }
+    }
 }
