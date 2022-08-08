@@ -1595,6 +1595,7 @@ GameObject:
   - component: {fileID: 6077854898923851308}
   - component: {fileID: 7546341459667392266}
   - component: {fileID: 8351061339426697638}
+  - component: {fileID: 5623942081611518253}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1729,7 +1730,9 @@ MonoBehaviour:
   <Weapon>k__BackingField: {fileID: 8284266104611893277}
   <AttackDamage>k__BackingField: 20
   <Health>k__BackingField: {fileID: 6029164931830157581}
-  <AttackKnockback>k__BackingField: 20
+  <AttackKnockback>k__BackingField: 10
+  <Target>k__BackingField: {fileID: 8453266383668057358}
+  <Ragdoll>k__BackingField: {fileID: 5623942081611518253}
 --- !u!114 &7546341459667392266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1758,6 +1761,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponLogic: {fileID: 6668306061887742316}
+--- !u!114 &5623942081611518253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351724124949616242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cb15a881133bbb4da23a6735bf70984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3846878445894342524}
+  characterController: {fileID: 543057182630749585}
 --- !u!1 &5533334298152091290
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,20 +18,29 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public float AttackDamage { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public float AttackKnockback { get; private set; }
+    [field: SerializeField] public Target Target { get; private set; }
+    [field: SerializeField] public Ragdoll Ragdoll { get; private set; }
 
     private void OnEnable()
     {
         Health.OnTakeDamage += HandleTakeDamage;
+        Health.OnDie += HandleDie;
     }
 
     private void OnDisable()
     {
         Health.OnTakeDamage -= HandleTakeDamage;
+        Health.OnDie -= HandleTakeDamage;
     }
 
     private void HandleTakeDamage()
     {
         SwitchState(new EnemyImpactState(this));
+    }
+
+    private void HandleDie()
+    {
+        SwitchState(new EnemyDeadState(this));
     }
 
     private void Start()
