@@ -15,6 +15,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public Attack[] Attacks { get; private set; }
+    [field: SerializeField] public float ImpactDistance { get; private set; } = -50f;
     public Transform MainCameraTransform { get; private set; }
     
     private void OnEnable()
@@ -29,7 +30,7 @@ public class PlayerStateMachine : StateMachine
 
     private void HandleTakeDamage()
     {
-        SwitchState(new PlayerFreeLookState(this));
+        SwitchState(new PlayerImpactState(this));
     }
 
     private void Start()

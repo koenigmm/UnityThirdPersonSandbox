@@ -12,8 +12,8 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Enter()
     {
-        StateMachine.InputReader.CancelEvent += OnCancel;
         StateMachine.Animator.CrossFadeInFixedTime(_targetingBlendTreeHash, CrossFadeDuration);
+        StateMachine.InputReader.CancelEvent += OnCancel;
     }
 
     public override void Tick(float deltaTime)
