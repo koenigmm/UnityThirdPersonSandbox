@@ -1,33 +1,37 @@
+﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyImpactState : EnemyBaseState
 {
-    private readonly int _impactHash = Animator.StringToHash("EnemyImpact");
-    private const float CrossFadeDuration = 0.1f;
-    private float _duration = 1f;
-    
+    private float _timer;
+    private float _animationClipLength;
     public EnemyImpactState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
     }
 
     public override void Enter()
     {
-        StateMachine.Animator.CrossFadeInFixedTime(_impactHash, CrossFadeDuration);
+        StateMachine.Animator.Play("EnemyImpact");
+        _animationClipLength = StateMachine.Animator.GetCurrentAnimatorStateInfo(0).length;
+        StateMachine.EnemyAI.HandleImpact();
     }
 
     public override void Tick(float deltaTime)
     {
-        Move(deltaTime);
-        
-        _duration -= Time.deltaTime;
+        _timer += deltaTime;
 
-        if (_duration <= 0f)
+        if (_timer >= _animationClipLength)
         {
-            StateMachine.SwitchState(new EnemyIdleState(StateMachine));
+            StateMachine.EnemyAI.ActivateAI();
+            StateMachine.SwitchState(new EnemyChasingState(StateMachine));
         }
+            
     }
 
     public override void Exit()
     {
     }
+
+    
 }
