@@ -6,13 +6,14 @@ public class EnemyImpactState : EnemyBaseState
 {
     private float _timer;
     private float _animationClipLength;
+    private const float TransitionTime = 0.1f;
     public EnemyImpactState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
     }
 
     public override void Enter()
     {
-        StateMachine.Animator.Play("EnemyImpact");
+        StateMachine.Animator.CrossFadeInFixedTime("EnemyImpact", TransitionTime);
         _animationClipLength = StateMachine.Animator.GetCurrentAnimatorStateInfo(0).length;
         StateMachine.EnemyAI.HandleImpact();
     }
