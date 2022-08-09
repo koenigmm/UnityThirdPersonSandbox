@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyChasingState : EnemyBaseState
 {
@@ -16,47 +17,40 @@ public class EnemyChasingState : EnemyBaseState
     public override void Enter()
     {
         StateMachine.Animator.CrossFadeInFixedTime(_locomotionHash, CrossFadeDuration);
+        StateMachine.EnemyAI.GetComponent<NavMeshAgent>().isStopped = false;
     }
 
     public override void Tick(float deltaTime)
     {
-        if (!IsInChaseRange())
+        if (!StateMachine.EnemyAI.IsInChaseRange())
         {
             StateMachine.SwitchState(new EnemyIdleState(StateMachine));
             return;
         }
+        
+        Debug.Log(IsInAttackRange());
 
         if (IsInAttackRange())
+        {
             StateMachine.SwitchState(new EnemyAttackingState(StateMachine));
-
-        MoveToPlayer(deltaTime);
-        FacePlayer();
+            Debug.Log("Is in Attack Range");
+        }
+        else
+        {
+        }
+        
         StateMachine.Animator.SetFloat(_speedHash, 1f, AnimatorDampTime, deltaTime);
     }
 
     private bool IsInAttackRange()
     {
-        var playerDistanceSqr =
-            (StateMachine.Player.transform.position - StateMachine.transform.position).sqrMagnitude;
-
-        return playerDistanceSqr <= StateMachine.AttackRange * StateMachine.AttackRange;
+        return Vector3.Distance(StateMachine.Player.transform.position, StateMachine.transform.position) <=
+               StateMachine.AttackRange;
     }
 
     public override void Exit()
     {
-        StateMachine.Agent.ResetPath();
+        StateMachine.EnemyAI.GetComponent<NavMeshAgent>().isStopped = true;
     }
-
-    private void MoveToPlayer(float deltaTime)
-    {
-        if (StateMachine.Agent.isOnNavMesh)
-        {
-            StateMachine.Agent.destination = StateMachine.Player.transform.position;
-
-            var targetVector = StateMachine.Agent.desiredVelocity.normalized * StateMachine.MovementSpeed;
-            Move(targetVector, deltaTime);
-        }
-
-        StateMachine.Agent.velocity = StateMachine.CharacterController.velocity;
-    }
+    
 }

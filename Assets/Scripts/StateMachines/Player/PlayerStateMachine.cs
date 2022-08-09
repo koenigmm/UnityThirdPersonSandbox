@@ -29,7 +29,7 @@ public class PlayerStateMachine : StateMachine
 
     private void HandleTakeDamage()
     {
-        SwitchState(new PlayerImpactState(this));
+        SwitchState(new PlayerFreeLookState(this));
     }
 
     private void Start()

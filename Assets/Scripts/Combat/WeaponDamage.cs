@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class WeaponDamage : MonoBehaviour
 {
-    [SerializeField] private Collider playerCollider;
+    [SerializeField] private bool isAIControlled;
+    private Collider _playerCollider;
     private List<Collider> _alreadyCollidedWith = new List<Collider>();
     private float _damage;
-    private float _knockback;
 
     private void OnEnable()
     {
@@ -17,26 +17,18 @@ public class WeaponDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == playerCollider) return;
+        if (isAIControlled && !other.CompareTag("Player")) return;
+        if (!isAIControlled && !other.CompareTag("Enemy")) return; 
+        
         if (_alreadyCollidedWith.Contains(other)) return;
-
+        if (!other.TryGetComponent<Health>(out var health)) return;
+        
+        health.DealDamage(_damage);
         _alreadyCollidedWith.Add(other);
-
-        if (other.TryGetComponent<Health>(out var health))
-        {
-            health.DealDamage(_damage);
-        }
-
-        if (other.TryGetComponent<ForceReceiver>(out var forceReceiver))
-        {
-            forceReceiver.AddForce((other.transform.position - playerCollider.transform.position).normalized *
-                                   _knockback);
-        }
     }
 
-    public void SetAttack(float damage, float knockback)
+    public void SetAttack(float damage)
     {
         _damage = damage;
-        _knockback = knockback;
     }
 }
