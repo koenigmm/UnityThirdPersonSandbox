@@ -22,24 +22,34 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
+
         if (!StateMachine.EnemyAI.IsInChaseRange())
         {
             StateMachine.SwitchState(new EnemyIdleState(StateMachine));
             return;
         }
         
-        Debug.Log(IsInAttackRange());
-
+        if (!StateMachine.Player.GetComponent<Health>().IsAlive())
+        {
+            HandlePlayerDeath();
+            return;
+        }
+        
         if (IsInAttackRange())
         {
             StateMachine.SwitchState(new EnemyAttackingState(StateMachine));
-            Debug.Log("Is in Attack Range");
         }
-        else
-        {
-        }
-        
+
         StateMachine.Animator.SetFloat(_speedHash, 1f, AnimatorDampTime, deltaTime);
+    }
+
+    private void HandlePlayerDeath()
+    {
+        StateMachine.EnemyAI.GetComponent<NavMeshAgent>().enabled = false;
+        StateMachine.EnemyAI.enabled = false;
+        StateMachine.Animator.CrossFadeInFixedTime(_locomotionHash,0.2f);
+        StateMachine.Animator.SetFloat(_speedHash, 0f);
+        StateMachine.enabled = false;
     }
 
     private bool IsInAttackRange()

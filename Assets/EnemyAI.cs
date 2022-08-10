@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,9 +5,8 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private float impactOffset = -10f;
     private NavMeshAgent _agent;
-    private float _chaseRange = 10f;
+    private const float ChaseRange = 10f;
     private GameObject _player;
-
 
     private void Awake()
     {
@@ -27,13 +24,13 @@ public class EnemyAI : MonoBehaviour
 
     public bool IsInChaseRange()
     {
-        return Vector3.Distance(transform.position, _player.transform.position) < _chaseRange;
+        return Vector3.Distance(transform.position, _player.transform.position) < ChaseRange;
     }
     
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _chaseRange);
+        Gizmos.DrawWireSphere(transform.position, ChaseRange);
     }
 
     public void HandleImpact()
