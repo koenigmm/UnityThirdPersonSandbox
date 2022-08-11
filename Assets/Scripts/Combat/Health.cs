@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
     public event Action OnTakeDamage;
     public event Action OnDie;
     [SerializeField] private float maxHealth = 100f;
+    public bool isInvulnerable;
 
     private float _health;
 
@@ -16,6 +17,7 @@ public class Health : MonoBehaviour
 
     public void DealDamage(float damage)
     {
+        if (isInvulnerable) return;
         _health = Mathf.Max(_health - damage, 0f);
         OnTakeDamage?.Invoke();
         

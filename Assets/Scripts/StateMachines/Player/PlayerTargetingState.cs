@@ -29,6 +29,11 @@ public class PlayerTargetingState : PlayerBaseState
             return;
         }
 
+        if (StateMachine.InputReader.IsBlocking)
+        {
+            StateMachine.SwitchState(new PlayerBlockingState(StateMachine));
+        }
+
         var movement = CalculateMovement();
         Move(movement * StateMachine.TargetingMovementSpeed, deltaTime);
 
