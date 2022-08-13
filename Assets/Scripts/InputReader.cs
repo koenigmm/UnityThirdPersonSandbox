@@ -75,4 +75,9 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         if (context.canceled)
             IsBlocking = false;
     }
+
+    public void OnExit(InputAction.CallbackContext context)
+    {
+        Application.Quit();
+    }
 }
