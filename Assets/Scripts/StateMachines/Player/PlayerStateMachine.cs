@@ -1,6 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerStateMachine : StateMachine
 {
@@ -16,8 +17,14 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public Attack[] Attacks { get; private set; }
     [field: SerializeField] public float ImpactDistance { get; private set; } = -50f;
+    [field: SerializeField] public float DodgeDuration { get; private set; } = 0.5f;
+    [field: SerializeField] public float DodgeLength { get; private set; } = 2f;
+    [field: SerializeField] public float DodgeCooldown { get; private set; } = 2f;
+
     public Transform MainCameraTransform { get; private set; }
-    
+
+    public float PreviousDodgeTime { get; set; } = Mathf.NegativeInfinity;
+
     private void OnEnable()
     {
         Health.OnTakeDamage += HandleTakeDamage;

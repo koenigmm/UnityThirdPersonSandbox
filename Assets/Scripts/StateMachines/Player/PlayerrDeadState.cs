@@ -14,6 +14,7 @@
 
     public override void Tick(float deltaTime)
     {
+        Move(deltaTime);
     }
 
     public override void Exit()

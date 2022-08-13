@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd54920c95ce8a439005d3da546c60f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCollider: {fileID: 743283600912093339}
+  isAIControlled: 0
 --- !u!54 &2363294735116069820
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1205,6 +1205,10 @@ MonoBehaviour:
     <Force>k__BackingField: 20
     <Damage>k__BackingField: 20
     <Knockback>k__BackingField: 20
+  <ImpactDistance>k__BackingField: -50
+  <DodgeDuration>k__BackingField: 0.1
+  <DodgeLength>k__BackingField: 0.75
+  <DodgeCooldown>k__BackingField: 1
 --- !u!95 &7118586325461247878
 Animator:
   serializedVersion: 4
@@ -1284,6 +1288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  isInvulnerable: 0
 --- !u!1 &2993587700892223217
 GameObject:
   m_ObjectHideFlags: 0
