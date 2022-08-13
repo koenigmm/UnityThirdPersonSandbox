@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyStateMachine : StateMachine
 {
@@ -8,9 +9,12 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public WeaponDamage Weapon { get; private set; }
     [field: SerializeField] public float AttackDamage { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
+    public NavMeshAgent Agent { get; private set; }
     public Target Target { get; private set; }
     public EnemyAI EnemyAI { get; private set; }
-    
+    public Collider Collider { get; private set; }
+    private Collider _ds;
+
     private void OnEnable()
     {
         Health.OnTakeDamage += HandleTakeDamage;
@@ -38,6 +42,8 @@ public class EnemyStateMachine : StateMachine
     {
         EnemyAI = GetComponent<EnemyAI>();
         Target = GetComponent<Target>();
+        Agent = GetComponent<NavMeshAgent>();
+        Collider = GetComponent<Collider>();
     }
 
     private void Start()
