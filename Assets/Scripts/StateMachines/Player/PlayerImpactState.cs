@@ -12,10 +12,10 @@ public class PlayerImpactState : PlayerBaseState
 
     public override void Enter()
     {
+        HandleImpact();
         StateMachine.Animator.CrossFadeInFixedTime(ImpactClipName, 0.1f);
         _animationClipLength = FindAnimationClipLength();
         _animationClipLength *= StateMachine.Animator.GetCurrentAnimatorStateInfo(0).speedMultiplier;
-        HandleImpact();
     }
 
     public override void Tick(float deltaTime)
@@ -40,7 +40,7 @@ public class PlayerImpactState : PlayerBaseState
 
     private void HandleImpact()
     {
-        StateMachine.CharacterController.SimpleMove(StateMachine.transform.forward * StateMachine.ImpactDistance);
+        StateMachine.CharacterController.Move(StateMachine.transform.forward * StateMachine.ImpactDistance);
     }
 
     private float FindAnimationClipLength()
