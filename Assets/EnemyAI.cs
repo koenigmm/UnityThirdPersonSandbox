@@ -16,9 +16,9 @@ public class EnemyAI : MonoBehaviour
     
     private void Update()
     {
-        if (!IsInChaseRange()) return;
+        if (!IsInChaseRange() || _agent.enabled == false) return;
         
-        _agent.enabled = true;
+        // _agent.enabled = true;
         _agent.SetDestination(_player.transform.position);
     }
 

@@ -19,7 +19,6 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public float ImpactDistance { get; private set; } = -50f;
     [field: SerializeField] public float DodgeDuration { get; private set; } = 0.5f;
     [field: SerializeField] public float DodgeLength { get; private set; } = 2f;
-    [field: SerializeField] public float DodgeCooldown { get; private set; } = 2f;
     [field: SerializeField] public float JumpForce { get; private set; } = 2f;
 
     public Transform MainCameraTransform { get; private set; }

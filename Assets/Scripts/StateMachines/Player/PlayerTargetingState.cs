@@ -7,8 +7,7 @@ public class PlayerTargetingState : PlayerBaseState
     private readonly int _targetingForwardHash = Animator.StringToHash("TargetingForward");
     private readonly int _targetingRightHash = Animator.StringToHash("TargetingRight");
     private const float CrossFadeDuration = 0.1f;
-    private Vector2 _dodgingDirectionInput;
-    private float _remaingingDodgeTime;
+
     public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -28,6 +27,7 @@ public class PlayerTargetingState : PlayerBaseState
             StateMachine.SwitchState(new PlayerAttackingState(StateMachine, 0));
             return;
         }
+
         if (StateMachine.Targeter.CurrentTarget == null)
         {
             StateMachine.SwitchState(new PlayerFreeLookState(StateMachine));
@@ -43,7 +43,7 @@ public class PlayerTargetingState : PlayerBaseState
         Move(movement * StateMachine.TargetingMovementSpeed, deltaTime);
 
         UpdateAnimator(deltaTime);
-        
+
         FaceTarget();
     }
 
@@ -51,22 +51,22 @@ public class PlayerTargetingState : PlayerBaseState
     {
         if (StateMachine.InputReader.MovementValue.y == 0)
         {
-            StateMachine.Animator.SetFloat(_targetingForwardHash, 0 ,0.1f, deltaTime);
+            StateMachine.Animator.SetFloat(_targetingForwardHash, 0, 0.1f, deltaTime);
         }
         else
         {
             var value = StateMachine.InputReader.MovementValue.y > 0 ? 1f : -1f;
-            StateMachine.Animator.SetFloat(_targetingForwardHash, value ,0.1f, deltaTime);
+            StateMachine.Animator.SetFloat(_targetingForwardHash, value, 0.1f, deltaTime);
         }
-        
+
         if (StateMachine.InputReader.MovementValue.x == 0)
         {
-            StateMachine.Animator.SetFloat(_targetingRightHash, 0 ,0.1f, deltaTime);
+            StateMachine.Animator.SetFloat(_targetingRightHash, 0, 0.1f, deltaTime);
         }
         else
         {
             var value = StateMachine.InputReader.MovementValue.x > 0 ? 1f : -1f;
-            StateMachine.Animator.SetFloat(_targetingRightHash, value ,0.1f, deltaTime);
+            StateMachine.Animator.SetFloat(_targetingRightHash, value, 0.1f, deltaTime);
         }
     }
 
@@ -90,11 +90,8 @@ public class PlayerTargetingState : PlayerBaseState
 
     private void OnDodge()
     {
-        if (Time.time - StateMachine.PreviousDodgeTime < StateMachine.DodgeCooldown) return;
-
-        StateMachine.PreviousDodgeTime = Time.time;
-        _dodgingDirectionInput = StateMachine.InputReader.MovementValue;
-        _remaingingDodgeTime = StateMachine.DodgeDuration;
+        if (StateMachine.InputReader.MovementValue == Vector2.zero) return;
+        StateMachine.SwitchState(new PlayerDodgingState(StateMachine, StateMachine.InputReader.MovementValue));
     }
 
     private Vector3 CalculateMovement(float deltaTime)
@@ -102,20 +99,9 @@ public class PlayerTargetingState : PlayerBaseState
         var movement = new Vector3();
         var transform = StateMachine.transform;
 
-        if (_remaingingDodgeTime > 0f)
-        {
-            movement += transform.right * (_dodgingDirectionInput.x * StateMachine.DodgeLength) / StateMachine.DodgeDuration;
-            movement += transform.forward * (_dodgingDirectionInput.y * StateMachine.DodgeLength) / StateMachine.DodgeDuration;
-            _remaingingDodgeTime = MathF.Max(_remaingingDodgeTime - deltaTime, 0f);
-        }
-        else
-        {
-            movement += transform.right * StateMachine.InputReader.MovementValue.x;
-            movement += transform.forward * StateMachine.InputReader.MovementValue.y;
+        movement += transform.right * StateMachine.InputReader.MovementValue.x;
+        movement += transform.forward * StateMachine.InputReader.MovementValue.y;
 
-        }
-
-        
         return movement;
     }
 }

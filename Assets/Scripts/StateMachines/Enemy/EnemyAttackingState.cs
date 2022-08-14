@@ -6,6 +6,9 @@ public class EnemyAttackingState : EnemyBaseState
 {
     private readonly int _attackHash = Animator.StringToHash("Attack");
     private const float TransitionDuration = 0.1f;
+    private const float WaitTime = 0.85f;
+    private float _timer;
+
     public EnemyAttackingState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -18,8 +21,11 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-        if(GetNormalizedTime(StateMachine.Animator) >= 1)
+        StateMachine.EnemyAI.enabled = false;
+        if(_timer >= WaitTime)
             StateMachine.SwitchState(new EnemyChasingState(StateMachine));
+        
+        _timer += deltaTime;
     }
 
     public override void Exit()

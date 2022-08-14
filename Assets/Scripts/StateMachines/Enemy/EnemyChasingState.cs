@@ -16,8 +16,10 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Enter()
     {
+        StateMachine.EnemyAI.enabled = true;
+        StateMachine.Agent.enabled = true;
         StateMachine.Animator.CrossFadeInFixedTime(_locomotionHash, CrossFadeDuration);
-        StateMachine.EnemyAI.GetComponent<NavMeshAgent>().isStopped = false;
+        StateMachine.Agent.isStopped = false;
     }
 
     public override void Tick(float deltaTime)
@@ -45,7 +47,7 @@ public class EnemyChasingState : EnemyBaseState
 
     private void HandlePlayerDeath()
     {
-        StateMachine.EnemyAI.GetComponent<NavMeshAgent>().enabled = false;
+        StateMachine.Agent.enabled = false;
         StateMachine.EnemyAI.enabled = false;
         StateMachine.Animator.CrossFadeInFixedTime(_locomotionHash,0.2f);
         StateMachine.Animator.SetFloat(_speedHash, 0f);
@@ -60,7 +62,8 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Exit()
     {
-        StateMachine.EnemyAI.GetComponent<NavMeshAgent>().isStopped = true;
+        StateMachine.EnemyAI.enabled = false;
+        StateMachine.Agent.enabled = false;
     }
     
 }

@@ -1206,9 +1206,9 @@ MonoBehaviour:
     <Damage>k__BackingField: 20
     <Knockback>k__BackingField: 20
   <ImpactDistance>k__BackingField: -50
-  <DodgeDuration>k__BackingField: 0.1
-  <DodgeLength>k__BackingField: 0.75
-  <DodgeCooldown>k__BackingField: 1
+  <DodgeDuration>k__BackingField: 0.6
+  <DodgeLength>k__BackingField: 3.5
+  <JumpForce>k__BackingField: 2
 --- !u!95 &7118586325461247878
 Animator:
   serializedVersion: 4
