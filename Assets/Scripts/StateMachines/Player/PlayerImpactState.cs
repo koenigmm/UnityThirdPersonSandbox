@@ -20,6 +20,7 @@ public class PlayerImpactState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        Move(deltaTime);
         _timer += deltaTime;
         if (_timer < _animationClipLength) return;
 

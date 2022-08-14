@@ -18,6 +18,7 @@ public class PlayerTargetingState : PlayerBaseState
         StateMachine.Animator.CrossFadeInFixedTime(_targetingBlendTreeHash, CrossFadeDuration);
         StateMachine.InputReader.DodgeEvent += OnDodge;
         StateMachine.InputReader.CancelEvent += OnCancel;
+        StateMachine.InputReader.JumpEvent += OnJump;
     }
 
     public override void Tick(float deltaTime)
@@ -73,6 +74,12 @@ public class PlayerTargetingState : PlayerBaseState
     {
         StateMachine.InputReader.CancelEvent -= OnCancel;
         StateMachine.InputReader.DodgeEvent -= OnDodge;
+        StateMachine.InputReader.JumpEvent -= OnJump;
+    }
+
+    private void OnJump()
+    {
+        StateMachine.SwitchState(new PlayerJumpState(StateMachine));
     }
 
     private void OnCancel()
