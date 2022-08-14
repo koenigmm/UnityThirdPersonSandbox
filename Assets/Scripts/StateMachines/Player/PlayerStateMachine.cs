@@ -52,5 +52,7 @@ public class PlayerStateMachine : StateMachine
     {
         MainCameraTransform = Camera.main.transform;
         SwitchState(new PlayerFreeLookState(this));
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

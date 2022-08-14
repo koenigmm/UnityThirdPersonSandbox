@@ -4,11 +4,11 @@ public class PlayerHangingState : PlayerBaseState
 {
     private readonly int _hangingAnimationHash = Animator.StringToHash("Hanging");
     private const float CrossFadeDuration = 0.2f;
-    private Vector3 _ledgeForward;
-    public PlayerHangingState(PlayerStateMachine stateMachine, Vector3 ledgeForward) : base(stateMachine)
+    private Vector3 _ledgeForward, _closestPoint;
+    public PlayerHangingState(PlayerStateMachine stateMachine, Vector3 ledgeForward, Vector3 closestPoint) : base(stateMachine)
     {
-     
         _ledgeForward = ledgeForward;
+        _closestPoint = closestPoint;
     }
 
     public override void Enter()

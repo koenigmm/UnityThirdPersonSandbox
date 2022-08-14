@@ -17,6 +17,7 @@ public class PlayerPullUpState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        if (GetNormalizedTime(StateMachine.Animator, "Climbing") < 1f) return;
         // TODO use normalizedTime in all other states
         if (StateMachine.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) return;
 

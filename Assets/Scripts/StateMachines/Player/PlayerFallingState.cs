@@ -21,9 +21,9 @@ public class PlayerFallingState : PlayerBaseState
         StateMachine.LedgeDetector.OnLedgeDetect += HandleLedgeDetect;
     }
 
-    private void HandleLedgeDetect(Vector3 ledgeForward)
+    private void HandleLedgeDetect(Vector3 ledgeForward, Vector3 closestPoint)
     {
-        StateMachine.SwitchState(new PlayerHangingState(StateMachine, ledgeForward));
+        StateMachine.SwitchState(new PlayerHangingState(StateMachine, ledgeForward, closestPoint));
     }
 
     public override void Tick(float deltaTime)

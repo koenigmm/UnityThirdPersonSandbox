@@ -22,7 +22,7 @@ public class PlayerAttackingState : PlayerBaseState
         Move(deltaTime);
         FaceTarget();
 
-        var normalizedTime = GetNormalizedTime(StateMachine.Animator);
+        var normalizedTime = GetNormalizedTime(StateMachine.Animator, "Attack");
 
         if (normalizedTime < 1f)
         {
