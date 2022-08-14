@@ -19,12 +19,18 @@ public class PlayerHangingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        if (StateMachine.InputReader.MovementValue.y > 0f)
+        {
+            StateMachine.SwitchState(new PlayerPullUpState(StateMachine));
+        }
+        
         if (StateMachine.InputReader.MovementValue.y < 0f)
         {
             StateMachine.CharacterController.Move(Vector3.zero);
             StateMachine.ForceReceiver.Reset();
             StateMachine.SwitchState(new PlayerFallingState(StateMachine));
         }
+
     }
 
     public override void Exit()

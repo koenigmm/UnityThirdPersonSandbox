@@ -4,7 +4,7 @@ public class PlayerJumpState : PlayerBaseState
 {
     private readonly int _animationClipHash = Animator.StringToHash("Jump");
     private const float AnimationBlendTime = 0.2f;
-    private Vector3 momentum;
+    private Vector3 _momentum;
 
     public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -13,14 +13,21 @@ public class PlayerJumpState : PlayerBaseState
     public override void Enter()
     {
         StateMachine.ForceReceiver.Jump(StateMachine.JumpForce);
-        momentum = StateMachine.CharacterController.velocity;
-        momentum.y = 0f;
+        _momentum = StateMachine.CharacterController.velocity;
+        _momentum.y = 0f;
         StateMachine.Animator.CrossFadeInFixedTime(_animationClipHash, AnimationBlendTime);
+
+        StateMachine.LedgeDetector.OnLedgeDetect += HandleLedgeDetect;
+    }
+
+    private void HandleLedgeDetect(Vector3 ledgeForward)
+    {
+        StateMachine.SwitchState(new PlayerHangingState(StateMachine, ledgeForward));
     }
 
     public override void Tick(float deltaTime)
     {
-       Move(momentum, deltaTime);
+       Move(_momentum, deltaTime);
 
        if (StateMachine.CharacterController.velocity.y <= 0f)
        {
@@ -33,6 +40,6 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void Exit()
     {
-       
+        StateMachine.LedgeDetector.OnLedgeDetect += HandleLedgeDetect;
     }
 }
