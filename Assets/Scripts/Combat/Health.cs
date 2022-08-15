@@ -33,4 +33,9 @@ public class Health : MonoBehaviour
     }
 
     public bool IsAlive() => _health > 0f;
+
+    public float GetFraction()
+    {
+        return _health / maxHealth;
+    }
 }
