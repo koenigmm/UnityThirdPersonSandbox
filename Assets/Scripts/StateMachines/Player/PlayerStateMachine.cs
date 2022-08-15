@@ -20,8 +20,10 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public float DodgeDuration { get; private set; } = 0.5f;
     [field: SerializeField] public float DodgeLength { get; private set; } = 2f;
     [field: SerializeField] public float JumpForce { get; private set; } = 2f;
+    [field: SerializeField] public float JumpStaminaCost { get; private set; } = 33f;
     [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
-
+    
+    public Stamina PlayerStamina { get; private set; }
     public Transform MainCameraTransform { get; private set; }
 
     public float PreviousDodgeTime { get; set; } = Mathf.NegativeInfinity;
@@ -46,6 +48,11 @@ public class PlayerStateMachine : StateMachine
     private void HandleDeath()
     {
         SwitchState(new PlayerrDeadState(this));
+    }
+
+    private void Awake()
+    {
+        PlayerStamina = GetComponent<Stamina>();
     }
 
     private void Start()

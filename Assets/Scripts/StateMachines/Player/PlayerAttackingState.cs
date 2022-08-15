@@ -15,6 +15,7 @@ public class PlayerAttackingState : PlayerBaseState
     {
         StateMachine.Animator.CrossFadeInFixedTime(_attack.AnimationName, _attack.TransitionDuration);
         StateMachine.Weapon.SetAttack(_attack.Damage);
+        StateMachine.PlayerStamina.ReduceStamina(_attack.StaminaCost);
     }
 
     public override void Tick(float deltaTime)
@@ -53,6 +54,9 @@ public class PlayerAttackingState : PlayerBaseState
     {
         if (_attack.ComboStateIndex == -1) return;
         if (normalizedTime < _attack.ComboAttackTime) return;
+        
+        if (StateMachine.Attacks[_attack.ComboStateIndex].StaminaCost >
+            StateMachine.PlayerStamina.CurrentStamina) return;
 
         StateMachine.SwitchState
         (

@@ -28,7 +28,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        if (StateMachine.InputReader.IsAttacking)
+        if (StateMachine.InputReader.IsAttacking && StateMachine.PlayerStamina.CurrentStamina > 0)
         {
             StateMachine.SwitchState(new PlayerAttackingState(StateMachine, 0));
             return;
@@ -55,7 +55,10 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private void OnJump()
     {
-        StateMachine.SwitchState(new PlayerJumpState(StateMachine));
+        if (StateMachine.PlayerStamina.CurrentStamina > StateMachine.JumpStaminaCost)
+        {
+            StateMachine.SwitchState(new PlayerJumpState(StateMachine));
+        }
     }
 
     private Vector3 CalculateMovement()

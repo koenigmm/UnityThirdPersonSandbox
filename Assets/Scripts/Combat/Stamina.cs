@@ -13,19 +13,23 @@ public class Stamina : MonoBehaviour
 
     private void Start()
     {
-        CurrentStamina = 10f;
+        CurrentStamina = maxStamina;
         OnStaminaChange?.Invoke();
     }
 
     public void ReduceStamina(float staminaCost)
     {
+        if (staminaCost < 0f)
+        {
+            Debug.LogError(
+                $"You should use positive values staminaCost: {staminaCost} " +
+                $"is handled as absolute value to prevent unwanted restoring");
+        }
+
         staminaCost = Math.Abs(staminaCost);
-        Debug.LogError(
-            $"You should use positive values staminaCost: {staminaCost} " +
-            $"is handled as absolute value to prevent unwanted restoring");
 
         CurrentStamina = Mathf.Max(0, CurrentStamina - staminaCost);
-        
+
         OnStaminaChange?.Invoke();
     }
 
@@ -34,7 +38,7 @@ public class Stamina : MonoBehaviour
     private void Update()
     {
         var isRestoring = !Mathf.Approximately(CurrentStamina, maxStamina);
-        
+
         if (isRestoring && _timer > restoringInterval)
         {
             CurrentStamina = MathF.Min(maxStamina, CurrentStamina + restoringAmountPerInterval);
@@ -47,10 +51,5 @@ public class Stamina : MonoBehaviour
         }
 
         _timer += Time.deltaTime;
-        
-
     }
-
-   
-    
 }

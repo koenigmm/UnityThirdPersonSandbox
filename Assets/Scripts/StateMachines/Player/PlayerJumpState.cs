@@ -16,6 +16,7 @@ public class PlayerJumpState : PlayerBaseState
         _momentum = StateMachine.CharacterController.velocity;
         _momentum.y = 0f;
         StateMachine.Animator.CrossFadeInFixedTime(_animationClipHash, AnimationBlendTime);
+        StateMachine.PlayerStamina.ReduceStamina(StateMachine.JumpStaminaCost);
 
         StateMachine.LedgeDetector.OnLedgeDetect += HandleLedgeDetect;
     }

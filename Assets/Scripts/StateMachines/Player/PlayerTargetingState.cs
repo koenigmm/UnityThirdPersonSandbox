@@ -79,7 +79,10 @@ public class PlayerTargetingState : PlayerBaseState
 
     private void OnJump()
     {
-        StateMachine.SwitchState(new PlayerJumpState(StateMachine));
+        if (StateMachine.PlayerStamina.CurrentStamina > StateMachine.JumpStaminaCost)
+        {
+            StateMachine.SwitchState(new PlayerJumpState(StateMachine));
+        }
     }
 
     private void OnTarget()
