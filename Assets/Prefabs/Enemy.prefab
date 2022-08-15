@@ -1595,7 +1595,6 @@ GameObject:
   - component: {fileID: 8351061339426697638}
   - component: {fileID: 632363089}
   - component: {fileID: 632363097}
-  - component: {fileID: 632363081}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1620,7 +1619,7 @@ Transform:
   - {fileID: 3865435298175122}
   - {fileID: 3376958006597270711}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &1483666410366760767
 NavMeshAgent:
@@ -1708,6 +1707,9 @@ MonoBehaviour:
   <Weapon>k__BackingField: {fileID: 8284266104611893277}
   <AttackDamage>k__BackingField: 20
   <Health>k__BackingField: {fileID: 6029164931830157581}
+  <ChaseRange>k__BackingField: 10
+  <ImpactOffset>k__BackingField: -1.5
+  <StunningDelay>k__BackingField: 1
 --- !u!114 &8351061339426697638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1751,19 +1753,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1.05, z: 0}
---- !u!114 &632363081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5351724124949616242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a554ad97289a91940ad7836d344687e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impactOffset: -2
 --- !u!1 &5533334298152091290
 GameObject:
   m_ObjectHideFlags: 0

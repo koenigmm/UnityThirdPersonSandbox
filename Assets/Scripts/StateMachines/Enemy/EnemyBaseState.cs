@@ -12,12 +12,9 @@ public abstract class EnemyBaseState : State
         StateMachine = stateMachine;
     }
     
-    public float FindAnimationClipLength(string animationClipName)
+    protected bool IsInChaseRange()
     {
-        return (from animationClip in StateMachine.Animator.runtimeAnimatorController.animationClips
-            where animationClip.name == animationClipName 
-            select animationClip.length).FirstOrDefault();
+        var distance = Vector3.Distance(StateMachine.transform.position, StateMachine.Player.transform.position);
+        return distance < StateMachine.ChaseRange;
     }
-    
-
 }

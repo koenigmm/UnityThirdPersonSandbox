@@ -12,7 +12,6 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter()
     {
-        // TODO merge with EnemyAI Script
         DeactivateAI();
         StateMachine.Animator.CrossFadeInFixedTime(_animationHash, BlendTime);
         DeactivateCollider();
@@ -21,7 +20,6 @@ public class EnemyDeadState : EnemyBaseState
     private void DeactivateAI()
     {
         StateMachine.Agent.enabled = false;
-        StateMachine.EnemyAI.enabled = false;
         StateMachine.Target.DestroyTarget();
     }
 

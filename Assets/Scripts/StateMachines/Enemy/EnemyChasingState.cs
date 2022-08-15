@@ -16,8 +16,6 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Enter()
     {
-        StateMachine.EnemyAI.enabled = true;
-        StateMachine.Agent.enabled = true;
         StateMachine.Animator.CrossFadeInFixedTime(_locomotionHash, CrossFadeDuration);
         StateMachine.Agent.isStopped = false;
     }
@@ -25,7 +23,7 @@ public class EnemyChasingState : EnemyBaseState
     public override void Tick(float deltaTime)
     {
 
-        if (!StateMachine.EnemyAI.IsInChaseRange())
+        if (!IsInChaseRange())
         {
             StateMachine.SwitchState(new EnemyIdleState(StateMachine));
             return;
@@ -40,15 +38,17 @@ public class EnemyChasingState : EnemyBaseState
         if (IsInAttackRange())
         {
             StateMachine.SwitchState(new EnemyAttackingState(StateMachine));
+            StateMachine.Agent.SetDestination(StateMachine.transform.position);
+            return;
         }
 
         StateMachine.Animator.SetFloat(_speedHash, 1f, AnimatorDampTime, deltaTime);
+        StateMachine.Agent.SetDestination(StateMachine.Player.transform.position);
     }
 
     private void HandlePlayerDeath()
     {
         StateMachine.Agent.enabled = false;
-        StateMachine.EnemyAI.enabled = false;
         StateMachine.Animator.CrossFadeInFixedTime(_locomotionHash,0.2f);
         StateMachine.Animator.SetFloat(_speedHash, 0f);
         StateMachine.enabled = false;
@@ -62,8 +62,7 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Exit()
     {
-        StateMachine.EnemyAI.enabled = false;
-        StateMachine.Agent.enabled = false;
+        StateMachine.Agent.isStopped = true;
     }
     
 }

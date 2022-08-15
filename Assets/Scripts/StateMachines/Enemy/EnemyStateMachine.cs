@@ -9,9 +9,11 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public WeaponDamage Weapon { get; private set; }
     [field: SerializeField] public float AttackDamage { get; private set; }
     [field: SerializeField] public Health Health { get; private set; }
+    [field: SerializeField] public float ChaseRange { get; private set; } = 10f;
+    [field: SerializeField] public float ImpactOffset { get; private set; } = -2.5f;
+    [field: SerializeField] public float StunningDelay { get; private set; } = 1f;
     public NavMeshAgent Agent { get; private set; }
     public Target Target { get; private set; }
-    public EnemyAI EnemyAI { get; private set; }
     public Collider Collider { get; private set; }
     private Collider _ds;
 
@@ -40,7 +42,6 @@ public class EnemyStateMachine : StateMachine
 
     private void Awake()
     {
-        EnemyAI = GetComponent<EnemyAI>();
         Target = GetComponent<Target>();
         Agent = GetComponent<NavMeshAgent>();
         Collider = GetComponent<Collider>();

@@ -19,7 +19,7 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-        if (StateMachine.EnemyAI.IsInChaseRange())
+        if (IsInChaseRange())
         {
             StateMachine.SwitchState(new EnemyChasingState(StateMachine));
             return;

@@ -13,18 +13,18 @@ public class EnemyImpactState : EnemyBaseState
 
     public override void Enter()
     {
+        StateMachine.Agent.isStopped = true;
         StateMachine.Animator.CrossFadeInFixedTime("EnemyImpact", TransitionTime);
         _animationClipLength = StateMachine.Animator.GetCurrentAnimatorStateInfo(0).length;
-        StateMachine.EnemyAI.HandleImpact();
+        HandleImpact();
     }
 
     public override void Tick(float deltaTime)
     {
         _timer += deltaTime;
 
-        if (_timer >= _animationClipLength)
+        if (_timer >= StateMachine.StunningDelay)
         {
-            StateMachine.EnemyAI.ActivateAI();
             StateMachine.SwitchState(new EnemyChasingState(StateMachine));
         }
             
@@ -32,6 +32,14 @@ public class EnemyImpactState : EnemyBaseState
 
     public override void Exit()
     {
+        StateMachine.Agent.isStopped = false;
+    }
+    
+    private void HandleImpact()
+    {
+        StateMachine.enabled = false;
+        StateMachine.transform.Translate(0, 0, StateMachine.ImpactOffset, Space.Self);
+        StateMachine.enabled = true;
     }
 
     
