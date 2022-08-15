@@ -13,6 +13,7 @@ public class PlayerPullUpState : PlayerBaseState
     public override void Enter()
     {
         StateMachine.Animator.CrossFadeInFixedTime(_pullUpAnimationHash, CrossFadeBlendTime);
+        StateMachine.ForceReceiver.enabled = false;
     }
 
     public override void Tick(float deltaTime)
@@ -32,5 +33,6 @@ public class PlayerPullUpState : PlayerBaseState
     {
         StateMachine.CharacterController.Move(Vector3.zero);
         StateMachine.ForceReceiver.Reset();
+        StateMachine.ForceReceiver.enabled = true;
     }
 }

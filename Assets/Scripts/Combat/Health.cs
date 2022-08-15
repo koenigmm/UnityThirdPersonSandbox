@@ -9,25 +9,40 @@ public class Health : MonoBehaviour
     public bool isInvulnerable;
 
     private float _health;
+    private ForceReceiver _forceReceiver;
 
-    private void Start()
+    private void OnEnable()
     {
-        _health = maxHealth;
+        if (gameObject.CompareTag("Player"))
+            _forceReceiver.OnDeadlyVelocity += HandleDeadlyVelocity;
     }
+
+    private void HandleDeadlyVelocity() => DealDamage(maxHealth);
+
+
+    private void OnDisable()
+    {
+        if (gameObject.CompareTag("Player"))
+            _forceReceiver.OnDeadlyVelocity -= HandleDeadlyVelocity;
+    }
+
+    private void Awake() => _forceReceiver = GetComponent<ForceReceiver>();
+
+    private void Start() => _health = maxHealth;
 
     public void DealDamage(float damage)
     {
         if (isInvulnerable) return;
         _health = Mathf.Max(_health - damage, 0f);
         OnTakeDamage?.Invoke();
-        
+
         if (_health <= 0f)
         {
             Debug.Log("Die");
             OnDie?.Invoke();
             return;
         }
-        
+
 
         print(_health);
     }

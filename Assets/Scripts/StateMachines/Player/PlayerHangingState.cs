@@ -15,6 +15,7 @@ public class PlayerHangingState : PlayerBaseState
     {
         StateMachine.transform.rotation = Quaternion.LookRotation(_ledgeForward, Vector3.up);
         StateMachine.Animator.CrossFadeInFixedTime(_hangingAnimationHash, CrossFadeDuration);
+        StateMachine.ForceReceiver.enabled = false;
     }
 
     public override void Tick(float deltaTime)
@@ -35,6 +36,6 @@ public class PlayerHangingState : PlayerBaseState
 
     public override void Exit()
     {
-        
+        StateMachine.ForceReceiver.enabled = true;
     }
 }

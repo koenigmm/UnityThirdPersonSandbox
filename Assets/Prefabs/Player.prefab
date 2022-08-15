@@ -1117,9 +1117,10 @@ GameObject:
   - component: {fileID: 3845863779781808557}
   - component: {fileID: 7352514352880789286}
   - component: {fileID: 5898911176019190844}
+  - component: {fileID: 6669640495687572731}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1187,7 +1188,7 @@ MonoBehaviour:
     <ComboStateIndex>k__BackingField: 1
     <ComboAttackTime>k__BackingField: 0.6
     <ForceTime>k__BackingField: 0.35
-    <Force>k__BackingField: 15
+    <Force>k__BackingField: 5
     <Damage>k__BackingField: 10
     <Knockback>k__BackingField: 15
   - <AnimationName>k__BackingField: Attack2
@@ -1195,7 +1196,7 @@ MonoBehaviour:
     <ComboStateIndex>k__BackingField: 2
     <ComboAttackTime>k__BackingField: 0.5
     <ForceTime>k__BackingField: 0.35
-    <Force>k__BackingField: 15
+    <Force>k__BackingField: 5
     <Damage>k__BackingField: 15
     <Knockback>k__BackingField: 20
   - <AnimationName>k__BackingField: Attack3
@@ -1203,13 +1204,13 @@ MonoBehaviour:
     <ComboStateIndex>k__BackingField: -1
     <ComboAttackTime>k__BackingField: 0
     <ForceTime>k__BackingField: 0.35
-    <Force>k__BackingField: 20
+    <Force>k__BackingField: 5
     <Damage>k__BackingField: 20
     <Knockback>k__BackingField: 20
-  <ImpactDistance>k__BackingField: -50
+  <ImpactDistance>k__BackingField: -2.5
   <DodgeDuration>k__BackingField: 0.6
   <DodgeLength>k__BackingField: 3.5
-  <JumpForce>k__BackingField: 2
+  <JumpForce>k__BackingField: 5
   <LedgeDetector>k__BackingField: {fileID: 6072907918614749779}
 --- !u!95 &7118586325461247878
 Animator:
@@ -1242,13 +1243,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.75
-  m_Radius: 0.3
+  m_Height: 2
+  m_Radius: 0.21
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.025
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0.875, z: 0}
+  m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!114 &3845863779781808557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,7 +1264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 743283600912093339}
   _agent: {fileID: 0}
-  drag: 0.1
+  drag: 0.3
+  deadlyVelocityFactor: 300
 --- !u!114 &7352514352880789286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,6 +1293,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   isInvulnerable: 0
+--- !u!114 &6669640495687572731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834197436992109030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d0139609bda3604087af6ca47e767ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cineTargetGroup: {fileID: 0}
 --- !u!1 &2993587700892223217
 GameObject:
   m_ObjectHideFlags: 0

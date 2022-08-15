@@ -6,24 +6,39 @@ using UnityEngine.AI;
 
 public class ForceReceiver : MonoBehaviour
 {
+    public event Action OnDeadlyVelocity;
     [SerializeField] private CharacterController controller;
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private float drag = 0.3f;
+    [SerializeField] private float deadlyVelocityFactor = 300f;
     private float _verticalVelocity;
     private Vector3 _impact;
     private Vector3 _dampingVelocity;
+    private bool _hasDeadlyVelocity;
 
     public Vector3 Movement => _impact + Vector3.up * _verticalVelocity;
 
     private void Update()
     {
+        if (controller.isGrounded && _hasDeadlyVelocity)
+        {
+            OnDeadlyVelocity?.Invoke();
+            _hasDeadlyVelocity = false;
+        }
+        
         if (_verticalVelocity < 0f && controller.isGrounded)
         {
             _verticalVelocity = Physics.gravity.y * Time.deltaTime;
         }
+        
         else
         {
             _verticalVelocity += Physics.gravity.y * Time.deltaTime;
+        }
+
+        if (_verticalVelocity <= Physics.gravity.y * deadlyVelocityFactor * Time.deltaTime)
+        {
+            _hasDeadlyVelocity = true;
         }
 
         _impact = Vector3.SmoothDamp(_impact, Vector3.zero, ref _dampingVelocity, drag);
