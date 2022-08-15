@@ -22,7 +22,6 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-
         if (!IsInChaseRange())
         {
             StateMachine.SwitchState(new EnemyIdleState(StateMachine));
@@ -37,8 +36,10 @@ public class EnemyChasingState : EnemyBaseState
         
         if (IsInAttackRange())
         {
-            StateMachine.SwitchState(new EnemyAttackingState(StateMachine));
+            var lookPos = StateMachine.Player.transform.position - StateMachine.transform.position;
             StateMachine.Agent.SetDestination(StateMachine.transform.position);
+            StateMachine.transform.LookAt(StateMachine.Player.transform);
+            StateMachine.SwitchState(new EnemyAttackingState(StateMachine));
             return;
         }
 

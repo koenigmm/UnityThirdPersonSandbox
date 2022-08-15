@@ -12,6 +12,7 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public float ChaseRange { get; private set; } = 10f;
     [field: SerializeField] public float ImpactOffset { get; private set; } = -2.5f;
     [field: SerializeField] public float StunningDelay { get; private set; } = 1f;
+    [field: SerializeField] public float AttackDelay { get; private set; } = 0.9f;
     public NavMeshAgent Agent { get; private set; }
     public Target Target { get; private set; }
     public Collider Collider { get; private set; }
