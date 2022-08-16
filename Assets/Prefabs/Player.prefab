@@ -1192,7 +1192,7 @@ MonoBehaviour:
     <Force>k__BackingField: 5
     <Damage>k__BackingField: 10
     <Knockback>k__BackingField: 15
-    <StaminaCost>k__BackingField: 10
+    <StaminaCost>k__BackingField: 20
   - <AnimationName>k__BackingField: Attack2
     <TransitionDuration>k__BackingField: 0.1
     <ComboStateIndex>k__BackingField: 2

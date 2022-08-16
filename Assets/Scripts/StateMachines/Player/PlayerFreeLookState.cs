@@ -27,7 +27,8 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        if (StateMachine.InputReader.IsAttacking && StateMachine.PlayerStamina.CurrentStamina > 0)
+        var hasEnoughStaminaToAttack = StateMachine.PlayerStamina.CurrentStamina > StateMachine.Attacks[0].StaminaCost;
+        if (StateMachine.InputReader.IsAttacking && hasEnoughStaminaToAttack)
         {
             StateMachine.SwitchState(new PlayerAttackingState(StateMachine, 0));
             return;

@@ -16,7 +16,6 @@ public class EnemyStateMachine : StateMachine
     public NavMeshAgent Agent { get; private set; }
     public Target Target { get; private set; }
     public Collider Collider { get; private set; }
-    private Collider _ds;
 
     private void OnEnable()
     {
