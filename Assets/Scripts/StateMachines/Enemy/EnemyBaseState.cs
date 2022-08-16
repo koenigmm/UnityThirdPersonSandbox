@@ -4,7 +4,8 @@ public abstract class EnemyBaseState : State
 {
 
     protected EnemyStateMachine StateMachine;
-    public EnemyBaseState(EnemyStateMachine stateMachine)
+    protected const float DEFAULT_BLEND_TIME = 0.1f;
+    protected EnemyBaseState(EnemyStateMachine stateMachine)
     {
         StateMachine = stateMachine;
     }

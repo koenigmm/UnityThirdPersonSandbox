@@ -30,16 +30,9 @@ public class EnemyStateMachine : StateMachine
         Health.OnDie -= HandleDeath;
     }
 
-    private void HandleTakeDamage()
-    {
-        SwitchState(new EnemyImpactState(this));
-    }
+    private void HandleTakeDamage() => SwitchState(new EnemyImpactState(this));
 
-    private void HandleDeath()
-    {
-        SwitchState(new EnemyDeadState(this));
-        
-    }
+    private void HandleDeath() => SwitchState(new EnemyDeadState(this));
 
     private void Awake()
     {

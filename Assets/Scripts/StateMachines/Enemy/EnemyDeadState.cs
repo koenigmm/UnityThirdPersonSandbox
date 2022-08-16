@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyDeadState : EnemyBaseState
 {
     private readonly int _animationHash = Animator.StringToHash("EnemyDeath");
-    private const float BlendTime = 0.2f;
+    private const float DeathAnimationBlendTime = 0.2f;
 
     public EnemyDeadState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
@@ -13,7 +12,7 @@ public class EnemyDeadState : EnemyBaseState
     public override void Enter()
     {
         DeactivateAI();
-        StateMachine.Animator.CrossFadeInFixedTime(_animationHash, BlendTime);
+        StateMachine.Animator.CrossFadeInFixedTime(_animationHash, DeathAnimationBlendTime);
         DeactivateCollider();
     }
 

@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine;
 
 public class EnemyImpactState : EnemyBaseState
 {
     private float _timer;
-    private float _animationClipLength;
-    private const float TransitionTime = 0.1f;
     public EnemyImpactState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -14,8 +10,7 @@ public class EnemyImpactState : EnemyBaseState
     public override void Enter()
     {
         StateMachine.Agent.isStopped = true;
-        StateMachine.Animator.CrossFadeInFixedTime("EnemyImpact", TransitionTime);
-        _animationClipLength = StateMachine.Animator.GetCurrentAnimatorStateInfo(0).length;
+        StateMachine.Animator.CrossFadeInFixedTime("EnemyImpact", DEFAULT_BLEND_TIME);
         HandleImpact();
     }
 
@@ -30,11 +25,8 @@ public class EnemyImpactState : EnemyBaseState
             
     }
 
-    public override void Exit()
-    {
-        StateMachine.Agent.isStopped = false;
-    }
-    
+    public override void Exit() => StateMachine.Agent.isStopped = false;
+
     private void HandleImpact()
     {
         StateMachine.enabled = false;

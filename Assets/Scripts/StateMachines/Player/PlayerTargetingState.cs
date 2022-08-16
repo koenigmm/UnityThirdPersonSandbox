@@ -50,24 +50,25 @@ public class PlayerTargetingState : PlayerBaseState
 
     private void UpdateAnimator(float deltaTime)
     {
+        const float dampTime = 0.1f;
         if (StateMachine.InputReader.MovementValue.y == 0)
         {
-            StateMachine.Animator.SetFloat(_targetingForwardHash, 0, 0.1f, deltaTime);
+            StateMachine.Animator.SetFloat(_targetingForwardHash, 0, dampTime, deltaTime);
         }
         else
         {
             var value = StateMachine.InputReader.MovementValue.y > 0 ? 1f : -1f;
-            StateMachine.Animator.SetFloat(_targetingForwardHash, value, 0.1f, deltaTime);
+            StateMachine.Animator.SetFloat(_targetingForwardHash, value, dampTime, deltaTime);
         }
 
         if (StateMachine.InputReader.MovementValue.x == 0)
         {
-            StateMachine.Animator.SetFloat(_targetingRightHash, 0, 0.1f, deltaTime);
+            StateMachine.Animator.SetFloat(_targetingRightHash, 0, dampTime, deltaTime);
         }
         else
         {
             var value = StateMachine.InputReader.MovementValue.x > 0 ? 1f : -1f;
-            StateMachine.Animator.SetFloat(_targetingRightHash, value, 0.1f, deltaTime);
+            StateMachine.Animator.SetFloat(_targetingRightHash, value, dampTime, deltaTime);
         }
     }
 
