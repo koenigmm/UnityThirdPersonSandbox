@@ -6,7 +6,6 @@ public class PlayerTargetingState : PlayerBaseState
     private readonly int _targetingBlendTreeHash = Animator.StringToHash("TargetingBlendTree");
     private readonly int _targetingForwardHash = Animator.StringToHash("TargetingForward");
     private readonly int _targetingRightHash = Animator.StringToHash("TargetingRight");
-    private const float CrossFadeDuration = 0.1f;
 
     public PlayerTargetingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -14,7 +13,7 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Enter()
     {
-        StateMachine.Animator.CrossFadeInFixedTime(_targetingBlendTreeHash, CrossFadeDuration);
+        StateMachine.Animator.CrossFadeInFixedTime(_targetingBlendTreeHash, DEFAULT_CROSS_FADE_DURATION);
         StateMachine.InputReader.DodgeEvent += OnDodge;
         StateMachine.InputReader.TargetEvent += OnTarget;
         StateMachine.InputReader.JumpEvent += OnJump;
@@ -22,7 +21,8 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        if (StateMachine.InputReader.IsAttacking)
+        var hasEnoughStaminaToAttack = StateMachine.PlayerStamina.CurrentStamina >= StateMachine.Attacks[0].StaminaCost;
+        if (StateMachine.InputReader.IsAttacking && hasEnoughStaminaToAttack)
         {
             StateMachine.SwitchState(new PlayerAttackingState(StateMachine, 0));
             return;
@@ -34,8 +34,8 @@ public class PlayerTargetingState : PlayerBaseState
             return;
         }
 
-        var hasEnoughStamina = StateMachine.PlayerStamina.CurrentStamina >= StateMachine.BlockingStaminaCost;
-        if (StateMachine.InputReader.IsBlocking && hasEnoughStamina)
+        var hasEnoughStaminaToBlock = StateMachine.PlayerStamina.CurrentStamina >= StateMachine.BlockingStaminaCost;
+        if (StateMachine.InputReader.IsBlocking && hasEnoughStaminaToBlock)
         {
             StateMachine.SwitchState(new PlayerBlockingState(StateMachine));
         }

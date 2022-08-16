@@ -1,9 +1,6 @@
-using UnityEngine;
-
 public class PlayerAttackingState : PlayerBaseState
 {
-    private Attack _attack;
-    private float _previousFrameTime;
+    private readonly Attack _attack;
     private bool _alreadyAppliedForce;
 
     public PlayerAttackingState(PlayerStateMachine stateMachine, int attackIndex) : base(stateMachine)
@@ -46,8 +43,6 @@ public class PlayerAttackingState : PlayerBaseState
                 StateMachine.SwitchState(new PlayerFreeLookState(StateMachine));
             }
         }
-
-        _previousFrameTime = normalizedTime;
     }
 
     private void TryComboAttack(float normalizedTime)
@@ -68,10 +63,7 @@ public class PlayerAttackingState : PlayerBaseState
         );
     }
 
-    public override void Exit()
-    {
-    }
-    
+    public override void Exit() { }
 
     private void TryApplyForce()
     {

@@ -4,7 +4,6 @@ public class PlayerPullUpState : PlayerBaseState
 {
     private readonly int _pullUpAnimationHash = Animator.StringToHash("Pullup");
     private readonly Vector3 _offset = new Vector3(0f, 2.325f, 0.65f);
-    private const float CrossFadeBlendTime = 0.2f;
 
     public PlayerPullUpState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -12,7 +11,7 @@ public class PlayerPullUpState : PlayerBaseState
 
     public override void Enter()
     {
-        StateMachine.Animator.CrossFadeInFixedTime(_pullUpAnimationHash, CrossFadeBlendTime);
+        StateMachine.Animator.CrossFadeInFixedTime(_pullUpAnimationHash, DEFAULT_CROSS_FADE_DURATION);
         StateMachine.ForceReceiver.enabled = false;
     }
 

@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerJumpState : PlayerBaseState
 {
     private readonly int _animationClipHash = Animator.StringToHash("Jump");
-    private const float AnimationBlendTime = 0.2f;
     private Vector3 _momentum;
 
     public PlayerJumpState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -15,7 +14,7 @@ public class PlayerJumpState : PlayerBaseState
         StateMachine.ForceReceiver.Jump(StateMachine.JumpForce);
         _momentum = StateMachine.CharacterController.velocity;
         _momentum.y = 0f;
-        StateMachine.Animator.CrossFadeInFixedTime(_animationClipHash, AnimationBlendTime);
+        StateMachine.Animator.CrossFadeInFixedTime(_animationClipHash, DEFAULT_CROSS_FADE_DURATION);
         StateMachine.PlayerStamina.ReduceStamina(StateMachine.JumpStaminaCost);
 
         StateMachine.LedgeDetector.OnLedgeDetect += HandleLedgeDetect;

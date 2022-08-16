@@ -5,8 +5,7 @@ public class PlayerFreeLookState : PlayerBaseState
     private readonly int _freeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
     private readonly int _freeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
     private const float AnimatorDampTime = 0.1f;
-    private const float CrossFadeDuration = 0.1f;
-    private bool _shouldFade;
+    private readonly bool _shouldFade;
 
     public PlayerFreeLookState(PlayerStateMachine stateMachine, bool shouldFade = true) : base(stateMachine)
     {
@@ -20,7 +19,7 @@ public class PlayerFreeLookState : PlayerBaseState
         StateMachine.Animator.SetFloat(_freeLookSpeedHash, 0f);
         
         if (_shouldFade)
-            StateMachine.Animator.CrossFadeInFixedTime(_freeLookBlendTreeHash, CrossFadeDuration);
+            StateMachine.Animator.CrossFadeInFixedTime(_freeLookBlendTreeHash, DEFAULT_CROSS_FADE_DURATION);
         
         else 
             StateMachine.Animator.Play(_freeLookBlendTreeHash);
