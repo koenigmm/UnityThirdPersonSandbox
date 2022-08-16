@@ -1217,6 +1217,8 @@ MonoBehaviour:
   <JumpForce>k__BackingField: 5
   <JumpStaminaCost>k__BackingField: 33
   <LedgeDetector>k__BackingField: {fileID: 6072907918614749779}
+  <DodgeStaminaCost>k__BackingField: 25
+  <BlockingStaminaCost>k__BackingField: 15
 --- !u!95 &7118586325461247878
 Animator:
   serializedVersion: 4

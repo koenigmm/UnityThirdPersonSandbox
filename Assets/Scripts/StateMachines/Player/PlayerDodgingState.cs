@@ -7,7 +7,6 @@ public class PlayerDodgingState : PlayerBaseState
     private readonly int _dodgeRightHash = Animator.StringToHash("DodgeRight");
     private Vector3 _dodgingDirectionInput;
     private float _remainingDodgeTime;
-    private const float CrossFadeDuration = 0.2f;
     public PlayerDodgingState(PlayerStateMachine stateMachine, Vector3 dodgingDirectionInput) : base(stateMachine)
     {
         _dodgingDirectionInput = dodgingDirectionInput;
@@ -16,12 +15,13 @@ public class PlayerDodgingState : PlayerBaseState
     public override void Enter()
     {
         _remainingDodgeTime = StateMachine.DodgeDuration;
-        
+
         StateMachine.Animator.SetFloat(_dodgeForwardHash, _dodgingDirectionInput.y);
         StateMachine.Animator.SetFloat(_dodgeRightHash, _dodgingDirectionInput.x);
-        StateMachine.Animator.CrossFadeInFixedTime(_dodgeBlendTreeHash, CrossFadeDuration);
+        StateMachine.Animator.CrossFadeInFixedTime(_dodgeBlendTreeHash, DEFAULT_CROSS_FADE_DURATION);
 
         StateMachine.Health.isInvulnerable = true;
+        StateMachine.PlayerStamina.ReduceStamina(StateMachine.DodgeStaminaCost);
     }
 
     public override void Tick(float deltaTime)

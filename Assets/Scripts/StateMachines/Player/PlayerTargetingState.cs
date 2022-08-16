@@ -34,7 +34,8 @@ public class PlayerTargetingState : PlayerBaseState
             return;
         }
 
-        if (StateMachine.InputReader.IsBlocking)
+        var hasEnoughStamina = StateMachine.PlayerStamina.CurrentStamina >= StateMachine.BlockingStaminaCost;
+        if (StateMachine.InputReader.IsBlocking && hasEnoughStamina)
         {
             StateMachine.SwitchState(new PlayerBlockingState(StateMachine));
         }
@@ -94,6 +95,7 @@ public class PlayerTargetingState : PlayerBaseState
     private void OnDodge()
     {
         if (StateMachine.InputReader.MovementValue == Vector2.zero) return;
+        if (StateMachine.PlayerStamina.CurrentStamina < StateMachine.DodgeStaminaCost) return;
         StateMachine.SwitchState(new PlayerDodgingState(StateMachine, StateMachine.InputReader.MovementValue));
     }
 

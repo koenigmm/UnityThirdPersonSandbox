@@ -3,7 +3,8 @@
 public class PlayerBlockingState : PlayerBaseState
 {
     private readonly int _blockAnimationHash = Animator.StringToHash("Block");
-    private const float AnimationBlendTime = 0.2f;
+    private float _timer;
+    private const float STAMINA_REDUCING_INTERVAL = 1f;
 
     public PlayerBlockingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -12,15 +13,24 @@ public class PlayerBlockingState : PlayerBaseState
     public override void Enter()
     {
         StateMachine.Health.isInvulnerable = true;
-        StateMachine.Animator.CrossFadeInFixedTime(_blockAnimationHash, AnimationBlendTime);
+        StateMachine.PlayerStamina.CanRestore = false;
+        StateMachine.Animator.CrossFadeInFixedTime(_blockAnimationHash, DEFAULT_CROSS_FADE_DURATION);
     }
 
     public override void Tick(float deltaTime)
     {
         Move(deltaTime);
-        
-        if (!StateMachine.InputReader.IsBlocking)
+
+        if (_timer >= STAMINA_REDUCING_INTERVAL)
         {
+            StateMachine.PlayerStamina.ReduceStamina(StateMachine.BlockingStaminaCost);
+            _timer = 0f;
+        }
+
+        var hasEnoughStamina = StateMachine.PlayerStamina.CurrentStamina >= StateMachine.BlockingStaminaCost;
+        if (!StateMachine.InputReader.IsBlocking || !hasEnoughStamina)
+        {
+            StateMachine.Health.isInvulnerable = false;
             StateMachine.SwitchState(new PlayerTargetingState(StateMachine));
             return;
         }
@@ -30,10 +40,13 @@ public class PlayerBlockingState : PlayerBaseState
             StateMachine.SwitchState(new PlayerFreeLookState(StateMachine));
             return;
         }
+
+        _timer += deltaTime;
     }
 
     public override void Exit()
     {
         StateMachine.Health.isInvulnerable = false;
+        StateMachine.PlayerStamina.CanRestore = true;
     }
 }

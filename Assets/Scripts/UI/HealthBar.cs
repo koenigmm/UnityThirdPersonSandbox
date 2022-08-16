@@ -13,19 +13,9 @@ public class HealthBar : MonoBehaviour
         _slider = GetComponent<Slider>();
     }
 
-    private void OnEnable()
-    {
-        _playerHealth.OnTakeDamage += UpdateHealthBar;
-    }
+    private void OnEnable() => _playerHealth.OnTakeDamage += UpdateHealthBar;
 
-    private void OnDisable()
-    {
-        _playerHealth.OnTakeDamage -= UpdateHealthBar;
-    }
+    private void OnDisable() => _playerHealth.OnTakeDamage -= UpdateHealthBar;
 
-    private void UpdateHealthBar()
-    {
-        _slider.value = _playerHealth.GetFraction();
-    }
-
+    private void UpdateHealthBar() => _slider.value = _playerHealth.GetFraction();
 }

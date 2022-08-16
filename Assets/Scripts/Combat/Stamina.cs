@@ -1,11 +1,11 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class Stamina : MonoBehaviour
 {
     public event Action OnStaminaChange;
     public float CurrentStamina { get; private set; }
+    public bool CanRestore { get; set; } = true;
     [SerializeField] private float maxStamina = 100f;
     [SerializeField] private float restoringInterval = 1f;
     [SerializeField] private float restoringAmountPerInterval = 5f;
@@ -37,6 +37,8 @@ public class Stamina : MonoBehaviour
 
     private void Update()
     {
+        if (!CanRestore) return;
+        
         var isRestoring = !Mathf.Approximately(CurrentStamina, maxStamina);
 
         if (isRestoring && _timer > restoringInterval)

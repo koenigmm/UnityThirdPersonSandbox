@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,19 +14,9 @@ public class StaminaDisplay : MonoBehaviour
         _slider = GetComponent<Slider>();
     }
 
-    private void OnEnable()
-    {
-        _stamina.OnStaminaChange += HandleStaminaChange;
-    }
+    private void OnEnable() => _stamina.OnStaminaChange += HandleStaminaChange;
+    
+    private void OnDisable() => _stamina.OnStaminaChange -= HandleStaminaChange;
 
-
-    private void OnDisable()
-    {
-        _stamina.OnStaminaChange -= HandleStaminaChange;
-    }
-
-    private void HandleStaminaChange()
-    {
-        _slider.value = _stamina.GetStaminaFraction();
-    }
+    private void HandleStaminaChange() => _slider.value = _stamina.GetStaminaFraction();
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class PlayerBaseState : State
 {
     protected PlayerStateMachine StateMachine;
+    protected const float DEFAULT_CROSS_FADE_DURATION = 0.2f;
 
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {

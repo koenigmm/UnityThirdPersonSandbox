@@ -1,7 +1,4 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerStateMachine : StateMachine
 {
@@ -22,11 +19,24 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public float JumpForce { get; private set; } = 2f;
     [field: SerializeField] public float JumpStaminaCost { get; private set; } = 33f;
     [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
+    [field: SerializeField] public float DodgeStaminaCost { get; private set; } = 25f;
+    [field: SerializeField] public float BlockingStaminaCost { get; set; } = 10f;
     
     public Stamina PlayerStamina { get; private set; }
     public Transform MainCameraTransform { get; private set; }
 
     public float PreviousDodgeTime { get; set; } = Mathf.NegativeInfinity;
+
+
+    private void Awake() => PlayerStamina = GetComponent<Stamina>();
+
+    private void Start()
+    {
+        MainCameraTransform = Camera.main.transform;
+        SwitchState(new PlayerFreeLookState(this));
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     private void OnEnable()
     {
@@ -40,26 +50,9 @@ public class PlayerStateMachine : StateMachine
         Health.OnDie -= HandleDeath;
     }
 
-    private void HandleTakeDamage()
-    {
-        SwitchState(new PlayerImpactState(this));
-    }
+    private void HandleTakeDamage() => SwitchState(new PlayerImpactState(this));
 
-    private void HandleDeath()
-    {
-        SwitchState(new PlayerrDeadState(this));
-    }
+    private void HandleDeath() => SwitchState(new PlayerrDeadState(this));
 
-    private void Awake()
-    {
-        PlayerStamina = GetComponent<Stamina>();
-    }
-
-    private void Start()
-    {
-        MainCameraTransform = Camera.main.transform;
-        SwitchState(new PlayerFreeLookState(this));
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
+    
 }

@@ -13,17 +13,12 @@ public class Health : MonoBehaviour
 
     private void OnEnable()
     {
-        if (gameObject.CompareTag("Player"))
-            _forceReceiver.OnDeadlyVelocity += HandleDeadlyVelocity;
+        if (gameObject.CompareTag("Player")) _forceReceiver.OnDeadlyVelocity += HandleDeadlyVelocity;
     }
-
-    private void HandleDeadlyVelocity() => DealDamage(maxHealth);
-
-
+    
     private void OnDisable()
     {
-        if (gameObject.CompareTag("Player"))
-            _forceReceiver.OnDeadlyVelocity -= HandleDeadlyVelocity;
+        if (gameObject.CompareTag("Player")) _forceReceiver.OnDeadlyVelocity -= HandleDeadlyVelocity;
     }
 
     private void Awake() => _forceReceiver = GetComponent<ForceReceiver>();
@@ -42,15 +37,12 @@ public class Health : MonoBehaviour
             OnDie?.Invoke();
             return;
         }
-
-
         print(_health);
     }
 
     public bool IsAlive() => _health > 0f;
 
-    public float GetFraction()
-    {
-        return _health / maxHealth;
-    }
+    public float GetFraction() => _health / maxHealth;
+    
+    private void HandleDeadlyVelocity() => DealDamage(maxHealth);
 }
