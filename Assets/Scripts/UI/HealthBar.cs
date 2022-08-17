@@ -15,14 +15,14 @@ public class HealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerHealth.OnHealthValueChange += UpdateHealthBar;
-        _playerHealth.OnLevelUp += UpdateHealthBar;
+        _playerHealth.OnDamage += UpdateHealthBar;
+        _playerHealth.OnHealOrLevelUp += UpdateHealthBar;
     }
 
     private void OnDisable()
     {
-        _playerHealth.OnHealthValueChange -= UpdateHealthBar;
-        _playerHealth.OnLevelUp -= UpdateHealthBar;
+        _playerHealth.OnDamage -= UpdateHealthBar;
+        _playerHealth.OnHealOrLevelUp -= UpdateHealthBar;
     }
 
     private void UpdateHealthBar() => _slider.value = _playerHealth.GetFraction();

@@ -21,6 +21,8 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
     [field: SerializeField] public float DodgeStaminaCost { get; private set; } = 25f;
     [field: SerializeField] public float BlockingStaminaCost { get; set; } = 10f;
+
+    public bool isInInteractionArea;
     
     public Stamina PlayerStamina { get; private set; }
     public Transform MainCameraTransform { get; private set; }
@@ -38,7 +40,7 @@ public class PlayerStateMachine : StateMachine
 
     private void OnEnable()
     {
-        Health.OnHealthValueChange += HandleHealthValueChange;
+        Health.OnDamage += HandleDamage;
         Health.OnDie += HandleDeath;
         
         Cursor.lockState = CursorLockMode.Locked;
@@ -47,11 +49,11 @@ public class PlayerStateMachine : StateMachine
 
     private void OnDisable()
     {
-        Health.OnHealthValueChange -= HandleHealthValueChange;
+        Health.OnDamage -= HandleDamage;
         Health.OnDie -= HandleDeath;
     }
 
-    private void HandleHealthValueChange() => SwitchState(new PlayerImpactState(this));
+    private void HandleDamage() => SwitchState(new PlayerImpactState(this));
 
     private void HandleDeath() => SwitchState(new PlayerrDeadState(this));
 

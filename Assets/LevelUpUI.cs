@@ -26,7 +26,7 @@ public class LevelUpUI : MonoBehaviour
 
     private void ToggleUIVisibility()
     {
-        if (_showUI)
+        if (_showUI && _playerStateMachine.isInInteractionArea)
         {
             levelUpCanvas.enabled = true;
             Cursor.lockState = CursorLockMode.None;

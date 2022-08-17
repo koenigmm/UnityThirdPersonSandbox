@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public event Action OnHealthValueChange;
-    public event Action OnLevelUp;
+    public event Action OnDamage;
+    public event Action OnHealOrLevelUp;
     public event Action OnDie;
     public bool isInvulnerable;
 
@@ -38,15 +38,18 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
-        _maxHealth = _level.GetMaxHealth();
-        _health = _level.GetMaxHealth();
+        // _maxHealth = _level.GetMaxHealth();
+        // _health = _level.GetMaxHealth();
+        _maxHealth = 200f;
+        _health = 1f;
+        OnHealOrLevelUp?.Invoke();
     }
 
     public void DealDamage(float damage)
     {
         if (isInvulnerable) return;
         _health = Mathf.Max(_health - damage, 0f);
-        OnHealthValueChange?.Invoke();
+        OnDamage?.Invoke();
 
         if (_health <= 0f)
         {
@@ -55,6 +58,14 @@ public class Health : MonoBehaviour
             return;
         }
         print(_health);
+    }
+
+    public bool Heal(float healthPoints)
+    {
+        var healthBeforeHealing = _health;
+        _health = MathF.Min(_maxHealth, healthPoints + _health);
+        OnHealOrLevelUp?.Invoke();
+        return healthBeforeHealing < _health;
     }
 
     public bool IsAlive() => _health > 0f;
@@ -66,6 +77,6 @@ public class Health : MonoBehaviour
     {
         _maxHealth = _level.GetMaxHealth();
         _health = MathF.Max(_maxHealth * (levelUpRestorePercentage / 100f), _health);
-        OnLevelUp?.Invoke();
+        OnHealOrLevelUp?.Invoke();
     }
 }
