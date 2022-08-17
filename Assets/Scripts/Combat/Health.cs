@@ -5,25 +5,36 @@ public class Health : MonoBehaviour
 {
     public event Action OnTakeDamage;
     public event Action OnDie;
-    [SerializeField] private float maxHealth = 100f;
+    private float _maxHealth;
     public bool isInvulnerable;
 
     private float _health;
     private ForceReceiver _forceReceiver;
+    private Level _level;
 
     private void OnEnable()
     {
-        if (gameObject.CompareTag("Player")) _forceReceiver.OnDeadlyVelocity += HandleDeadlyVelocity;
+        if (!gameObject.CompareTag("Player")) return;
+        _forceReceiver.OnDeadlyVelocity += HandleDeadlyVelocity;
+        _level.OnHealthLevelUp += HandleLevelUp;
     }
+
     
+
     private void OnDisable()
     {
-        if (gameObject.CompareTag("Player")) _forceReceiver.OnDeadlyVelocity -= HandleDeadlyVelocity;
+        if (!gameObject.CompareTag("Player")) return;
+        _forceReceiver.OnDeadlyVelocity -= HandleDeadlyVelocity;
+        _level.OnHealthLevelUp -= HandleLevelUp;
     }
 
-    private void Awake() => _forceReceiver = GetComponent<ForceReceiver>();
+    private void Awake()
+    {
+        _forceReceiver = GetComponent<ForceReceiver>();
+        _level = GetComponent<Level>();
+    }
 
-    private void Start() => _health = maxHealth;
+    private void Start() => _health = _level.GetMaxHealth();
 
     public void DealDamage(float damage)
     {
@@ -42,7 +53,8 @@ public class Health : MonoBehaviour
 
     public bool IsAlive() => _health > 0f;
 
-    public float GetFraction() => _health / maxHealth;
+    public float GetFraction() => _health / _maxHealth;
     
-    private void HandleDeadlyVelocity() => DealDamage(maxHealth);
+    private void HandleDeadlyVelocity() => DealDamage(_maxHealth);
+    private void HandleLevelUp() => _maxHealth = _level.GetMaxHealth();
 }

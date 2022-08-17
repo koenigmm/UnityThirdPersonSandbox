@@ -6,16 +6,30 @@ public class Stamina : MonoBehaviour
     public event Action OnStaminaChange;
     public float CurrentStamina { get; private set; }
     public bool CanRestore { get; set; } = true;
-    [SerializeField] private float maxStamina = 100f;
+    [SerializeField] private float maxStamina;
     [SerializeField] private float restoringInterval = 1f;
     [SerializeField] private float restoringAmountPerInterval = 5f;
     private float _timer;
+    private Level _level;
+
+    private void Awake()
+    {
+        _level = GetComponent<Level>();
+    }
 
     private void Start()
     {
+        maxStamina = _level.GetMaxStamina();
         CurrentStamina = maxStamina;
         OnStaminaChange?.Invoke();
+        _level.IncreaseLevel(PlayerAttributes.Stamina);
     }
+
+    private void OnEnable() => _level.OnStaminaLevelUp += HandleLevelUp;
+
+    private void OnDisable() => _level.OnStaminaLevelUp -= HandleLevelUp;
+
+    private void HandleLevelUp() => maxStamina = _level.GetMaxStamina();
 
     public void ReduceStamina(float staminaCost)
     {

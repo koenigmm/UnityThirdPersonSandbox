@@ -1119,6 +1119,7 @@ GameObject:
   - component: {fileID: 5898911176019190844}
   - component: {fileID: 6669640495687572731}
   - component: {fileID: 3230971186840921439}
+  - component: {fileID: 7769072485675963761}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1328,6 +1329,29 @@ MonoBehaviour:
   maxStamina: 100
   restoringInterval: 1
   restoringAmountPerInterval: 5
+--- !u!114 &7769072485675963761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834197436992109030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdf5584aab5cbaf459da3c7770c5b3d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressions:
+  - playerAttribute: 0
+    levels:
+    - 100
+    - 150
+    - 200
+  - playerAttribute: 1
+    levels:
+    - 100
+    - 150
+    - 200
 --- !u!1 &2993587700892223217
 GameObject:
   m_ObjectHideFlags: 0
