@@ -34,7 +34,11 @@ public class Health : MonoBehaviour
         _level = GetComponent<Level>();
     }
 
-    private void Start() => _health = _level.GetMaxHealth();
+    private void Start()
+    {
+        _maxHealth = _level.GetMaxHealth();
+        _health = _level.GetMaxHealth();
+    }
 
     public void DealDamage(float damage)
     {

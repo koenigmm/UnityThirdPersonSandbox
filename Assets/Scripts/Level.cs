@@ -14,7 +14,6 @@ public class Level : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(GetMaxHealth());
         _healthLevelCount = GetLevelCount(PlayerAttributes.Health);
         _staminaLevelCount = GetLevelCount(PlayerAttributes.Stamina);
     }

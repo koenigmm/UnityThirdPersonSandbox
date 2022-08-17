@@ -22,7 +22,6 @@ public class Stamina : MonoBehaviour
         maxStamina = _level.GetMaxStamina();
         CurrentStamina = maxStamina;
         OnStaminaChange?.Invoke();
-        _level.IncreaseLevel(PlayerAttributes.Stamina);
     }
 
     private void OnEnable() => _level.OnStaminaLevelUp += HandleLevelUp;

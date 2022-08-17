@@ -1590,6 +1590,7 @@ GameObject:
   - component: {fileID: 1483666410366760767}
   - component: {fileID: 3846878445894342524}
   - component: {fileID: 8453266383668057358}
+  - component: {fileID: -848628584255566844}
   - component: {fileID: 6029164931830157581}
   - component: {fileID: 6077854898923851308}
   - component: {fileID: 8351061339426697638}
@@ -1675,6 +1676,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa70adafd72b6084da0432ef191ead9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-848628584255566844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351724124949616242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdf5584aab5cbaf459da3c7770c5b3d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressions:
+  - playerAttribute: 0
+    levels:
+    - 100
 --- !u!114 &6029164931830157581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1687,7 +1704,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a077c3c34c757244a7dbdcbcc5cbfaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
   isInvulnerable: 0
 --- !u!114 &6077854898923851308
 MonoBehaviour:

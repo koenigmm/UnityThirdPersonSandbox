@@ -4118,6 +4118,10 @@ PrefabInstance:
       value: -5.0931873
       objectReference: {fileID: 0}
     - target: {fileID: 2817346387057676269, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: maxStamina
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2817346387057676269, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: restoringInterval
       value: 0.5
       objectReference: {fileID: 0}
@@ -4339,11 +4343,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3520468306715417690, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000059604638
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3520468306715417690, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000029802319
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3520468306715417691, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
@@ -4577,6 +4581,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -23.13826
       objectReference: {fileID: 0}
+    - target: {fileID: 6926189824094994371, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: progressions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926189824094994371, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: progressions.Array.data[2].playerAttribute
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926189824094994371, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: progressions.Array.data[2].levels.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926189824094994371, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: progressions.Array.data[2].levels.Array.data[0]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926189824094994371, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: progressions.Array.data[2].levels.Array.data[1]
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926189824094994371, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: progressions.Array.data[2].levels.Array.data[2]
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 7041381043508374400, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 80.745766
@@ -4715,11 +4743,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8220335779157961760, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0000021996536
+      value: 0.0000017156003
       objectReference: {fileID: 0}
     - target: {fileID: 8220335779157961760, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000011920929
+      value: 0.00000071525574
       objectReference: {fileID: 0}
     - target: {fileID: 8220335779157961760, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalPosition.z

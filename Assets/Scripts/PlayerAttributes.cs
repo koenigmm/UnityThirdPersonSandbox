@@ -1,5 +1,6 @@
 public enum PlayerAttributes
 {
     Health,
-    Stamina
+    Stamina,
+    Oxygen
 }
