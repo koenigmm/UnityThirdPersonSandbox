@@ -19,7 +19,7 @@ public class Level : MonoBehaviour
     }
 
 
-    public void IncreaseLevel(PlayerAttributes playerAttribute)
+    private void IncreaseLevel(PlayerAttributes playerAttribute)
     {
         if (playerAttribute == PlayerAttributes.Health)
         {
@@ -35,6 +35,9 @@ public class Level : MonoBehaviour
             OnStaminaLevelUp?.Invoke();
         }
     }
+
+    public void IncreaseHealthLevel() => IncreaseLevel(PlayerAttributes.Health);
+    public void IncreaseStaminaLevel() => IncreaseLevel(PlayerAttributes.Stamina);
 
 
     public float GetMaxHealth() => GetMaxValueFromProgression(PlayerAttributes.Health, _healthLevel);

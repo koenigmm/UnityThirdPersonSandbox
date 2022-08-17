@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public event Action OnTakeDamage;
+    public event Action OnHealthValueChange;
+    public event Action OnLevelUp;
     public event Action OnDie;
-    private float _maxHealth;
     public bool isInvulnerable;
 
+    [SerializeField] private float levelUpRestorePercentage = 75f;
+    private float _maxHealth;
     private float _health;
     private ForceReceiver _forceReceiver;
     private Level _level;
@@ -44,7 +46,7 @@ public class Health : MonoBehaviour
     {
         if (isInvulnerable) return;
         _health = Mathf.Max(_health - damage, 0f);
-        OnTakeDamage?.Invoke();
+        OnHealthValueChange?.Invoke();
 
         if (_health <= 0f)
         {
@@ -60,5 +62,10 @@ public class Health : MonoBehaviour
     public float GetFraction() => _health / _maxHealth;
     
     private void HandleDeadlyVelocity() => DealDamage(_maxHealth);
-    private void HandleLevelUp() => _maxHealth = _level.GetMaxHealth();
+    private void HandleLevelUp()
+    {
+        _maxHealth = _level.GetMaxHealth();
+        _health = _maxHealth * (levelUpRestorePercentage / 100f);
+        OnLevelUp?.Invoke();
+    }
 }

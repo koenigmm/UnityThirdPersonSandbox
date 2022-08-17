@@ -53,7 +53,7 @@ public class Stamina : MonoBehaviour
         if (!CanRestore) return;
         
         var isRestoring = !Mathf.Approximately(CurrentStamina, maxStamina);
-
+        
         if (isRestoring && _timer > restoringInterval)
         {
             CurrentStamina = MathF.Min(maxStamina, CurrentStamina + restoringAmountPerInterval);
