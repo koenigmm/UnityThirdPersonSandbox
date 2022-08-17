@@ -65,7 +65,7 @@ public class Health : MonoBehaviour
     private void HandleLevelUp()
     {
         _maxHealth = _level.GetMaxHealth();
-        _health = _maxHealth * (levelUpRestorePercentage / 100f);
+        _health = MathF.Max(_maxHealth * (levelUpRestorePercentage / 100f), _health);
         OnLevelUp?.Invoke();
     }
 }

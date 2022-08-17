@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Target : MonoBehaviour
@@ -10,7 +8,6 @@ public class Target : MonoBehaviour
 
     private void OnDestroy()
     {
-        Debug.Log("Destroy");
         OnDestroyed?.Invoke(this);
     }
 

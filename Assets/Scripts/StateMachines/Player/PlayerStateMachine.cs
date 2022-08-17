@@ -34,14 +34,15 @@ public class PlayerStateMachine : StateMachine
     {
         MainCameraTransform = Camera.main.transform;
         SwitchState(new PlayerFreeLookState(this));
-        // Cursor.lockState = CursorLockMode.Locked;
-        // Cursor.visible = false;
     }
 
     private void OnEnable()
     {
         Health.OnHealthValueChange += HandleHealthValueChange;
         Health.OnDie += HandleDeath;
+        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void OnDisable()

@@ -1301,7 +1301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInvulnerable: 0
-  levelUpRestorePercentage: 75
+  levelUpRestorePercentage: 80
 --- !u!114 &6669640495687572731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1345,9 +1345,9 @@ MonoBehaviour:
   progressions:
   - playerAttribute: 0
     levels:
-    - 100
     - 150
     - 200
+    - 250
   - playerAttribute: 1
     levels:
     - 100
