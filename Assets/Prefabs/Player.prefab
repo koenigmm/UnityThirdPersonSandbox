@@ -1121,6 +1121,7 @@ GameObject:
   - component: {fileID: 3230971186840921439}
   - component: {fileID: 7769072485675963761}
   - component: {fileID: 3323229260028380312}
+  - component: {fileID: 2148397857325257544}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1365,6 +1366,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8efa8173d82afac41a4738691583a9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2148397857325257544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834197436992109030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbcf200557c9154e83a1fc98d788767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healingPotionHealthPoints: 0
 --- !u!1 &2993587700892223217
 GameObject:
   m_ObjectHideFlags: 0

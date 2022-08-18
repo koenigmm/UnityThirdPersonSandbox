@@ -116,6 +116,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ConsumePotion"",
+                    ""type"": ""Button"",
+                    ""id"": ""28c9f52d-49b8-4e46-b662-7f74127cb6c4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -382,6 +391,28 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""ToggleAttributes"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2c1531fc-98e0-4435-99da-c217415ab5d4"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""ConsumePotion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""074b4c38-9538-4b45-a1c4-5096db8d5a84"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ConsumePotion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -428,6 +459,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_Exit = m_Player.FindAction("Exit", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_ToggleAttributes = m_Player.FindAction("ToggleAttributes", throwIfNotFound: true);
+        m_Player_ConsumePotion = m_Player.FindAction("ConsumePotion", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -497,6 +529,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Exit;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_ToggleAttributes;
+    private readonly InputAction m_Player_ConsumePotion;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -511,6 +544,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Exit => m_Wrapper.m_Player_Exit;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @ToggleAttributes => m_Wrapper.m_Player_ToggleAttributes;
+        public InputAction @ConsumePotion => m_Wrapper.m_Player_ConsumePotion;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -550,6 +584,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @ToggleAttributes.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleAttributes;
                 @ToggleAttributes.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleAttributes;
                 @ToggleAttributes.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleAttributes;
+                @ConsumePotion.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsumePotion;
+                @ConsumePotion.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsumePotion;
+                @ConsumePotion.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsumePotion;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -584,6 +621,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @ToggleAttributes.started += instance.OnToggleAttributes;
                 @ToggleAttributes.performed += instance.OnToggleAttributes;
                 @ToggleAttributes.canceled += instance.OnToggleAttributes;
+                @ConsumePotion.started += instance.OnConsumePotion;
+                @ConsumePotion.performed += instance.OnConsumePotion;
+                @ConsumePotion.canceled += instance.OnConsumePotion;
             }
         }
     }
@@ -618,5 +658,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnExit(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnToggleAttributes(InputAction.CallbackContext context);
+        void OnConsumePotion(InputAction.CallbackContext context);
     }
 }
