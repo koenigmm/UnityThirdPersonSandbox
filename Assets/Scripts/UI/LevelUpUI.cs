@@ -6,7 +6,7 @@ public class LevelUpUI : MonoBehaviour
     [SerializeField] private Canvas attributesUI;
    
     private PlayerStateMachine _playerStateMachine;
-    private bool _showUI;
+    private bool _showUI = true;
     private InputReader _playerInputReader;
     private ForceReceiver _playerForceReceiver;
 

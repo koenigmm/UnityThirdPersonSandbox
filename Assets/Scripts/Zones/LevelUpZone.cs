@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
@@ -6,31 +7,45 @@ public class LevelUpZone : MonoBehaviour
     
     private ParticleSystem _particleSystem;
     private PlayerStateMachine _stateMachine;
-    private bool _canShowUI;
+    private Canvas _hintCanvas;
+    private bool _isTouchingPlayer;
 
     private void Awake()
     {
         _particleSystem = GetComponentInChildren<ParticleSystem>();
         GetComponent<Collider>().isTrigger = true;
+        _hintCanvas = GetComponentInChildren<Canvas>();
     }
 
     private void Start()
     {
         _particleSystem.Stop();
+        _hintCanvas.enabled = false;
     }
-    
+
+    private void Update()
+    {
+        if (!_isTouchingPlayer) return;
+        var lookPos = _stateMachine.transform.position - _hintCanvas.transform.position;
+        lookPos.y = 0f;
+        var lookForwardRotation = Quaternion.LookRotation(lookPos);
+        const float interpolationFactor = 2.5f;
+        _hintCanvas.transform.rotation = Quaternion.Slerp(_hintCanvas.transform.rotation, lookForwardRotation, Time.deltaTime * interpolationFactor);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        _canShowUI = other.TryGetComponent(out _stateMachine);
-        if (!_canShowUI) return;
+        _isTouchingPlayer = other.TryGetComponent(out _stateMachine);
+        if (!_isTouchingPlayer) return;
         HandleCampfireZone(other);
     }
     
 
     private void HandleCampfireZone(Component other)
     {
-        if (_canShowUI)
+        if (_isTouchingPlayer)
         {
+            _hintCanvas.enabled = true;
             _stateMachine.isInInteractionArea = true;
             _particleSystem.Play();
         }
@@ -38,13 +53,14 @@ public class LevelUpZone : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (_canShowUI)
+        if (_isTouchingPlayer)
         {
+            _hintCanvas.enabled = false;
             _stateMachine.isInInteractionArea = false;
             _stateMachine = null;
             _particleSystem.Stop();
         }
 
-        _canShowUI = false;
+        _isTouchingPlayer = false;
     }
 }

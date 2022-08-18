@@ -18,6 +18,7 @@ public class EnemyDeadState : EnemyBaseState
 
     private void DeactivateAI()
     {
+        StateMachine.Weapon.enabled = false;
         StateMachine.Agent.enabled = false;
         StateMachine.Target.DestroyTarget();
     }
@@ -25,6 +26,7 @@ public class EnemyDeadState : EnemyBaseState
     private void DeactivateCollider()
     {
         StateMachine.Collider.enabled = false;
+        
         foreach (var collider in StateMachine.GetComponentsInChildren<Collider>())
         {
             collider.enabled = false;
