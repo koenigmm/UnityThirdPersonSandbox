@@ -38,10 +38,8 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
-        // _maxHealth = _level.GetMaxHealth();
-        // _health = _level.GetMaxHealth();
-        _maxHealth = 200f;
-        _health = 1f;
+        _maxHealth = _level.GetMaxHealth();
+        _health = _level.GetMaxHealth();
         OnHealOrLevelUp?.Invoke();
     }
 

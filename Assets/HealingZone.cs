@@ -13,7 +13,7 @@ public class HealingZone : MonoBehaviour
     private PlayerStateMachine _stateMachine;
     private float _timer;
     private bool _canUsePlayerStateMachine;
-    private bool _isUsedAndEmpty = true;
+    private bool _isUsedAndEmpty;
     private Collider _collider;
     private MeshRenderer _meshRenderer;
 
@@ -21,9 +21,9 @@ public class HealingZone : MonoBehaviour
     {
         _collider = GetComponent<Collider>();
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
-        
+
         // For Saving System
-        if (!_isUsedAndEmpty)
+        if (_isUsedAndEmpty)
             DeactivateHealingZone();
     }
 
@@ -64,7 +64,7 @@ public class HealingZone : MonoBehaviour
         if (canHeal)
             _healthPointsInZone -= healthPerInterval;
 
-        if (Mathf.Approximately(0f, _healthPointsInZone))
+        if (Mathf.Approximately(0f, _healthPointsInZone)) 
             DeactivateHealingZone();
     }
 
@@ -74,7 +74,7 @@ public class HealingZone : MonoBehaviour
         _meshRenderer.enabled = false;
         _canUsePlayerStateMachine = false;
         _stateMachine = null;
-        _isUsedAndEmpty = false;
+        _isUsedAndEmpty = true;
 
         if (canRespawn)
             StartCoroutine(ActivateHealingZone());
@@ -83,6 +83,7 @@ public class HealingZone : MonoBehaviour
     private IEnumerator ActivateHealingZone()
     {
         yield return new WaitForSeconds(respawnTime);
+        _isUsedAndEmpty = false;
         _healthPointsInZone = amountOfHealthPoints;
         _collider.enabled = true;
         _meshRenderer.enabled = true;
