@@ -4,9 +4,9 @@ using UnityEngine;
 public class Stamina : MonoBehaviour
 {
     public event Action OnStaminaChange;
+    public float MaxStamina { get; private set; }
     public float CurrentStamina { get; private set; }
     public bool CanRestore { get; set; } = true;
-    [SerializeField] private float maxStamina;
     [SerializeField] private float restoringInterval = 1f;
     [SerializeField] private float restoringAmountPerInterval = 5f;
     private float _timer;
@@ -19,8 +19,8 @@ public class Stamina : MonoBehaviour
 
     private void Start()
     {
-        maxStamina = _level.GetMaxStamina();
-        CurrentStamina = maxStamina;
+        MaxStamina = _level.GetMaxStamina();
+        CurrentStamina = MaxStamina;
         OnStaminaChange?.Invoke();
     }
 
@@ -28,7 +28,7 @@ public class Stamina : MonoBehaviour
 
     private void OnDisable() => _level.OnStaminaLevelUp -= HandleLevelUp;
 
-    private void HandleLevelUp() => maxStamina = _level.GetMaxStamina();
+    private void HandleLevelUp() => MaxStamina = _level.GetMaxStamina();
 
     public void ReduceStamina(float staminaCost)
     {
@@ -46,17 +46,17 @@ public class Stamina : MonoBehaviour
         OnStaminaChange?.Invoke();
     }
 
-    public float GetStaminaFraction() => CurrentStamina / maxStamina;
+    public float GetStaminaFraction() => CurrentStamina / MaxStamina;
 
     private void Update()
     {
         if (!CanRestore) return;
         
-        var isRestoring = !Mathf.Approximately(CurrentStamina, maxStamina);
+        var isRestoring = !Mathf.Approximately(CurrentStamina, MaxStamina);
         
         if (isRestoring && _timer > restoringInterval)
         {
-            CurrentStamina = MathF.Min(maxStamina, CurrentStamina + restoringAmountPerInterval);
+            CurrentStamina = MathF.Min(MaxStamina, CurrentStamina + restoringAmountPerInterval);
             OnStaminaChange?.Invoke();
         }
 

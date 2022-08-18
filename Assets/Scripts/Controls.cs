@@ -107,6 +107,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleAttributes"",
+                    ""type"": ""Button"",
+                    ""id"": ""9912cab3-ffff-4ef4-8a7a-389b751f9cf1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -351,6 +360,28 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d7b222a-8a13-49b4-83ab-3b6aba911979"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""ToggleAttributes"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""97ca6561-1adb-4399-9a7d-5d3f994e18d3"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ToggleAttributes"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -396,6 +427,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
         m_Player_Exit = m_Player.FindAction("Exit", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_ToggleAttributes = m_Player.FindAction("ToggleAttributes", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -464,6 +496,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Block;
     private readonly InputAction m_Player_Exit;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_ToggleAttributes;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -477,6 +510,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Block => m_Wrapper.m_Player_Block;
         public InputAction @Exit => m_Wrapper.m_Player_Exit;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @ToggleAttributes => m_Wrapper.m_Player_ToggleAttributes;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -513,6 +547,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @ToggleAttributes.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleAttributes;
+                @ToggleAttributes.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleAttributes;
+                @ToggleAttributes.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleAttributes;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -544,6 +581,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @ToggleAttributes.started += instance.OnToggleAttributes;
+                @ToggleAttributes.performed += instance.OnToggleAttributes;
+                @ToggleAttributes.canceled += instance.OnToggleAttributes;
             }
         }
     }
@@ -577,5 +617,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnBlock(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnToggleAttributes(InputAction.CallbackContext context);
     }
 }

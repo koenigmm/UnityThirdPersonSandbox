@@ -1221,6 +1221,7 @@ MonoBehaviour:
   <LedgeDetector>k__BackingField: {fileID: 6072907918614749779}
   <DodgeStaminaCost>k__BackingField: 25
   <BlockingStaminaCost>k__BackingField: 15
+  isInInteractionArea: 0
 --- !u!95 &7118586325461247878
 Animator:
   serializedVersion: 4
@@ -1327,9 +1328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f978a8af7ae514fad4dd51de532fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 100
   restoringInterval: 1
-  restoringAmountPerInterval: 5
+  restoringAmountPerInterval: 10
 --- !u!114 &7769072485675963761
 MonoBehaviour:
   m_ObjectHideFlags: 0

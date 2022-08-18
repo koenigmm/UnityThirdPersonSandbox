@@ -1,8 +1,11 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StaminaDisplay : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI _healthValuesElement;
     private Stamina _stamina;
     private Slider _slider;
 
@@ -18,5 +21,11 @@ public class StaminaDisplay : MonoBehaviour
     
     private void OnDisable() => _stamina.OnStaminaChange -= HandleStaminaChange;
 
-    private void HandleStaminaChange() => _slider.value = _stamina.GetStaminaFraction();
+    private void HandleStaminaChange()
+    {
+        _slider.value = _stamina.GetStaminaFraction();
+        var stamina = MathF.Floor(_stamina.CurrentStamina);
+        var staminaElementText = $"{stamina} / {_stamina.MaxStamina}";
+        _healthValuesElement.text = staminaElementText;
+    }
 }

@@ -11,6 +11,10 @@ public class Level : MonoBehaviour
 
     private int _healthLevelCount;
     private int _staminaLevelCount;
+    
+    public int GetUIHealthLevel => _healthLevel + 1;
+    public int GetUIStaminaLevel => _staminaLevel + 1;
+
 
     private void Start()
     {
@@ -36,6 +40,7 @@ public class Level : MonoBehaviour
         }
     }
 
+  
     public void IncreaseHealthLevel() => IncreaseLevel(PlayerAttributes.Health);
     public void IncreaseStaminaLevel() => IncreaseLevel(PlayerAttributes.Stamina);
 

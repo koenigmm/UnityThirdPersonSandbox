@@ -4,11 +4,15 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class HealingZone : MonoBehaviour
 {
+    [Header("Health")] 
     [SerializeField] private float amountOfHealthPoints = 100f;
-    [SerializeField] private float healthPerInterval = 5f;
-    [SerializeField] private int interval = 1;
+    [SerializeField]  private float healthPerInterval = 5f;
+    [SerializeField]  private int interval = 1;
+
+    [Header("Respawn")]
     [SerializeField] private bool canRespawn;
     [SerializeField] private float respawnTime = 60f;
+    
     private float _healthPointsInZone;
     private PlayerStateMachine _stateMachine;
     private float _timer;
@@ -64,7 +68,7 @@ public class HealingZone : MonoBehaviour
         if (canHeal)
             _healthPointsInZone -= healthPerInterval;
 
-        if (Mathf.Approximately(0f, _healthPointsInZone)) 
+        if (Mathf.Approximately(0f, _healthPointsInZone))
             DeactivateHealingZone();
     }
 

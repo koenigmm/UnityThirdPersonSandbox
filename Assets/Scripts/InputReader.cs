@@ -9,6 +9,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action DodgeEvent;
     public event Action TargetEvent;
     public event Action InteractEvent;
+    public event Action ShowAttributesEvent;
     public bool IsAttacking { get; private set; }
     public bool IsBlocking { get; private set; }
 
@@ -79,5 +80,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         if (!context.performed) return;
         InteractEvent?.Invoke();
+    }
+
+    public void OnToggleAttributes(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        ShowAttributesEvent?.Invoke();
     }
 }

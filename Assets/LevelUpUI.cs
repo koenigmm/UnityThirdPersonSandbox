@@ -1,9 +1,10 @@
-using System;
 using UnityEngine;
 
 public class LevelUpUI : MonoBehaviour
 {
     [SerializeField] private Canvas levelUpCanvas;
+    [SerializeField] private Canvas attributesUI;
+   
     private PlayerStateMachine _playerStateMachine;
     private bool _showUI;
     private InputReader _playerInputReader;
@@ -24,10 +25,11 @@ public class LevelUpUI : MonoBehaviour
 
     private void OnDisable() => _playerInputReader.InteractEvent -= ToggleUIVisibility;
 
-    private void ToggleUIVisibility()
+    public void ToggleUIVisibility()
     {
         if (_showUI && _playerStateMachine.isInInteractionArea)
         {
+            attributesUI.enabled = true;
             levelUpCanvas.enabled = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -41,6 +43,7 @@ public class LevelUpUI : MonoBehaviour
             _playerForceReceiver.enabled = true;
             _playerStateMachine.enabled = true;
             _playerStateMachine.Animator.enabled = true;
+            attributesUI.enabled = false;
         }
 
         _showUI = !_showUI;
