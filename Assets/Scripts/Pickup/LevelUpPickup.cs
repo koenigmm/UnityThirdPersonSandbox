@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Pickup : MonoBehaviour
+public class LevelUpPickup : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.TryGetComponent<LevelUpToken>(out var inventory)) return;
+        if (!other.TryGetComponent<LevelUpTokenInventory>(out var inventory)) return;
         inventory.IncreaseLevelUpTokens();
         Destroy(gameObject);
     }

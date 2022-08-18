@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9148869170343036625}
+  - component: {fileID: 3634902693513372562}
+  - component: {fileID: 5633020977098549106}
   m_Layer: 0
   m_Name: Pickup_LevelUpToken
   m_TagString: Untagged
@@ -32,6 +34,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3634902693513372562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930625726843062584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48594c9f5362bee4ab5fe6e743b8e02e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &5633020977098549106
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930625726843062584}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5703617166050015948
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,8 +70,6 @@ GameObject:
   - component: {fileID: 4985323768320385749}
   - component: {fileID: 4094397728695228806}
   - component: {fileID: 3636320863206377694}
-  - component: {fileID: 3887020057563631796}
-  - component: {fileID: 7592122071861742109}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -117,28 +142,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3887020057563631796
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5703617166050015948}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7592122071861742109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5703617166050015948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48594c9f5362bee4ab5fe6e743b8e02e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

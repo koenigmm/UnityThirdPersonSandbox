@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class LevelUpToken : MonoBehaviour
+public class LevelUpTokenInventory : MonoBehaviour
 {
     public event Action OnTokenValueChange;
     public int AmountOfLevelUpTokens { get; private set; }
