@@ -10,7 +10,11 @@ public class EnemyIdleState : EnemyBaseState
     {
     }
 
-    public override void Enter() => StateMachine.Animator.CrossFadeInFixedTime(_locomotionHash, DEFAULT_BLEND_TIME);
+    public override void Enter()
+    {
+        StateMachine.Animator.CrossFadeInFixedTime(_locomotionHash, DEFAULT_BLEND_TIME);
+        SetHealthBarCanvasActive(false);
+    }
 
     public override void Tick(float deltaTime)
     {

@@ -14,6 +14,7 @@ public class EnemyAttackingState : EnemyBaseState
         StateMachine.Agent.isStopped = true;
         StateMachine.Weapon.SetAttack(StateMachine.AttackDamage);
         StateMachine.Animator.CrossFadeInFixedTime(_attackHash, DEFAULT_BLEND_TIME);
+        SetHealthBarCanvasActive(true);
     }
 
     public override void Tick(float deltaTime)

@@ -13,6 +13,7 @@ public class EnemyDeadState : EnemyBaseState
     {
         DeactivateAI();
         StateMachine.Animator.CrossFadeInFixedTime(_animationHash, DeathAnimationBlendTime);
+        SetHealthBarCanvasActive(false);
         DeactivateCollider();
     }
 
