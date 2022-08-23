@@ -13,6 +13,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action ConsumePotionEvent;
     public bool IsAttacking { get; private set; }
     public bool IsBlocking { get; private set; }
+    public Vector2 LookPosition { get; private set; }
 
     private Controls _controls;
 
@@ -47,6 +48,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnLook(InputAction.CallbackContext context)
     {
+        LookPosition = context.ReadValue<Vector2>();
     }
 
     public void OnTarget(InputAction.CallbackContext context)
