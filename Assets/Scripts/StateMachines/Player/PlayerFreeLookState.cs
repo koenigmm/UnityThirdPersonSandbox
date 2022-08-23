@@ -33,6 +33,11 @@ public class PlayerFreeLookState : PlayerBaseState
             StateMachine.SwitchState(new PlayerAttackingState(StateMachine, 0));
             return;
         }
+
+        if (StateMachine.InputReader.IsAiming)
+        {
+            StateMachine.SwitchState(new PlayerShootingState(StateMachine));
+        }
         
         var movement = CalculateMovement();
         Move(movement * StateMachine.FreeLookMovementSpeed, deltaTime);
@@ -60,20 +65,7 @@ public class PlayerFreeLookState : PlayerBaseState
             StateMachine.SwitchState(new PlayerJumpState(StateMachine));
         }
     }
-
-    private Vector3 CalculateMovement()
-    {
-        var forward = StateMachine.MainCameraTransform.forward;
-        var right = StateMachine.MainCameraTransform.right;
-
-        forward.y = 0f;
-        right.y = 0f;
-
-        forward.Normalize();
-        right.Normalize();
-
-        return forward * StateMachine.InputReader.MovementValue.y + right * StateMachine.InputReader.MovementValue.x;
-    }
+    
 
     private void FaceMovementDirection(Vector3 movement, float deltaTime)
     {

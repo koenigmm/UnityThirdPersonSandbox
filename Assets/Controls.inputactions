@@ -103,6 +103,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Aim",
+                    "type": "Button",
+                    "id": "371f459d-b857-4a0f-9009-a5e5bbf0eb32",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -232,7 +241,7 @@
                     "id": "ab265851-6c29-4377-8bf1-fb4ab45f8455",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "ScaleVector2(x=30,y=20)",
                     "groups": "Gamepad",
                     "action": "Look",
                     "isComposite": false,
@@ -285,7 +294,7 @@
                 {
                     "name": "",
                     "id": "520d73cf-b570-4b29-979a-3adb1907bfcc",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Mouse>/backButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse and Keyboard",
@@ -389,6 +398,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "ConsumePotion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c18d60e6-8da4-4bf0-a5ba-4395d4a75e05",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse and Keyboard",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "430e7f5a-0e9f-4c62-adb2-0e52af908078",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

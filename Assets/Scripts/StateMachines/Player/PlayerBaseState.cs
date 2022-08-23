@@ -42,4 +42,18 @@ public abstract class PlayerBaseState : State
             StateMachine.SwitchState(new PlayerFreeLookState(StateMachine));
         }
     }
+    
+    protected Vector3 CalculateMovement()
+    {
+        var forward = StateMachine.MainCameraTransform.forward;
+        var right = StateMachine.MainCameraTransform.right;
+
+        forward.y = 0f;
+        right.y = 0f;
+
+        forward.Normalize();
+        right.Normalize();
+
+        return forward * StateMachine.InputReader.MovementValue.y + right * StateMachine.InputReader.MovementValue.x;
+    }
 }

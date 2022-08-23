@@ -13,6 +13,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action ConsumePotionEvent;
     public bool IsAttacking { get; private set; }
     public bool IsBlocking { get; private set; }
+    public bool IsAiming { get; private set; }
     public Vector2 LookPosition { get; private set; }
 
     private Controls _controls;
@@ -95,5 +96,13 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         if (!context.performed) return;
         ConsumePotionEvent?.Invoke();
+    }
+
+    public void OnAim(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            IsAiming = true;
+        if (context.canceled)
+            IsAiming = false;
     }
 }

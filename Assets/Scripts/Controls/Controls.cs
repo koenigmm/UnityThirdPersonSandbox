@@ -125,6 +125,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""371f459d-b857-4a0f-9009-a5e5bbf0eb32"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -254,7 +263,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""id"": ""ab265851-6c29-4377-8bf1-fb4ab45f8455"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2(x=30,y=20)"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -307,7 +316,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""520d73cf-b570-4b29-979a-3adb1907bfcc"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Mouse>/backButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse and Keyboard"",
@@ -413,6 +422,28 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""ConsumePotion"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c18d60e6-8da4-4bf0-a5ba-4395d4a75e05"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""430e7f5a-0e9f-4c62-adb2-0e52af908078"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -460,6 +491,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_ToggleAttributes = m_Player.FindAction("ToggleAttributes", throwIfNotFound: true);
         m_Player_ConsumePotion = m_Player.FindAction("ConsumePotion", throwIfNotFound: true);
+        m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -530,6 +562,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_ToggleAttributes;
     private readonly InputAction m_Player_ConsumePotion;
+    private readonly InputAction m_Player_Aim;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -545,6 +578,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @ToggleAttributes => m_Wrapper.m_Player_ToggleAttributes;
         public InputAction @ConsumePotion => m_Wrapper.m_Player_ConsumePotion;
+        public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -587,6 +621,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @ConsumePotion.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsumePotion;
                 @ConsumePotion.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsumePotion;
                 @ConsumePotion.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnConsumePotion;
+                @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -624,6 +661,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @ConsumePotion.started += instance.OnConsumePotion;
                 @ConsumePotion.performed += instance.OnConsumePotion;
                 @ConsumePotion.canceled += instance.OnConsumePotion;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
             }
         }
     }
@@ -659,5 +699,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnToggleAttributes(InputAction.CallbackContext context);
         void OnConsumePotion(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
     }
 }
