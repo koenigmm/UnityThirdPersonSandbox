@@ -1181,7 +1181,7 @@ MonoBehaviour:
   cameraTarget: {fileID: 25629955952243822}
   minPitchAngle: -40
   maxPitchAngle: 60
-  cameraSpeed: 5
+  cameraSpeed: 7
   invertInputPitchValue: 1
 --- !u!114 &3410796591002239157
 MonoBehaviour:

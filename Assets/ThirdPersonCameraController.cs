@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class ThirdPersonCameraController : MonoBehaviour
@@ -11,21 +10,17 @@ public class ThirdPersonCameraController : MonoBehaviour
     private InputReader _inputReader;
     private float _cameraTargetPitch, _cameraTargetYaw;
 
-    private void Awake()
-    {
-        _inputReader = FindObjectOfType<InputReader>();
-    }
+    private void Awake() => _inputReader = FindObjectOfType<InputReader>();
 
-    private void Start()
-    {
-        _cameraTargetYaw = cameraTarget.transform.rotation.eulerAngles.y;
-    }
+    private void Start() => _cameraTargetYaw = cameraTarget.transform.rotation.eulerAngles.y;
 
+    private void Update() => RotateCameraTargetAndCharacterController();
 
-    private void LateUpdate()
+    private void RotateCameraTargetAndCharacterController()
     {
+        const float interpolationRatio = 20f;
+
         _cameraTargetYaw += _inputReader.LookPosition.x * Time.deltaTime * cameraSpeed;
-
 
         if (invertInputPitchValue)
             _cameraTargetPitch -= _inputReader.LookPosition.y * Time.deltaTime * cameraSpeed;
@@ -35,8 +30,11 @@ public class ThirdPersonCameraController : MonoBehaviour
         _cameraTargetYaw = ClampAngle(_cameraTargetYaw, float.MinValue, float.MaxValue);
         _cameraTargetPitch = ClampAngle(_cameraTargetPitch, minPitchAngle, maxPitchAngle);
 
+        cameraTarget.rotation = Quaternion.Euler(_cameraTargetPitch, _cameraTargetYaw, 0f);
 
-        cameraTarget.transform.rotation = Quaternion.Euler(_cameraTargetPitch, _cameraTargetYaw, 0f);
+        if (!_inputReader.IsAiming) return;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, _cameraTargetYaw, 0f),
+            Time.deltaTime * interpolationRatio);
     }
 
     private static float ClampAngle(float angle, float minAngle, float maxAngle)
