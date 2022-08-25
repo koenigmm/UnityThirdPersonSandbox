@@ -22,8 +22,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
     [field: SerializeField] public float DodgeStaminaCost { get; private set; } = 25f;
     [field: SerializeField] public float BlockingStaminaCost { get; set; } = 10f;
-    [field: SerializeField] public GameObject DebugProjectile { get; set; }
-    [field: SerializeField] public Transform DebugProjectileLaunchPoint { get; set; }
+    [field: SerializeField] public Weapon CurrentWeapon { get; private set; }
 
     public bool isInInteractionArea;
     

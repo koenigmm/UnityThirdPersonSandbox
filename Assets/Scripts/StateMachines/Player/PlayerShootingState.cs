@@ -32,25 +32,14 @@ public class PlayerShootingState : PlayerBaseState
         if (StateMachine.InputReader.IsAttacking == false)
             _isShooting = false;
 
-        if (StateMachine.InputReader.IsAttacking && !_isShooting)
-        {
-            var screenCenter = new Vector2(Screen.width * 0.5f , Screen.height * 0.5f);
-            var rayToCenter = Camera.main.ScreenPointToRay(screenCenter);
-
-
-            var hasHit = Physics.Raycast(rayToCenter, out var raycastHit, 900f, StateMachine.DefaultLayerMask);
-
-            if (hasHit)
-            {
-                var toHitDirection = (raycastHit.point - StateMachine.DebugProjectileLaunchPoint.position).normalized;
-                GameObject.Instantiate(StateMachine.DebugProjectile, StateMachine.DebugProjectileLaunchPoint.position, Quaternion.LookRotation(toHitDirection, Vector3.up));
-                _isShooting = true;
-            }
-        }
 
         UpdateAnimator(deltaTime);
         var movement = CalculateMovement();
         Move(movement * StateMachine.TargetingMovementSpeed, deltaTime);
+
+        if (!StateMachine.InputReader.IsAttacking || _isShooting) return;
+        StateMachine.CurrentWeapon.Shoot();
+        _isShooting = true;
     }
 
     public override void Exit()

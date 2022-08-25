@@ -11,6 +11,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action InteractEvent;
     public event Action ShowAttributesEvent;
     public event Action ConsumePotionEvent;
+    public event Action OnReloadWeapon;
+
     public bool IsAttacking { get; private set; }
     public bool IsBlocking { get; private set; }
     public bool IsAiming { get; private set; }
@@ -104,5 +106,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
             IsAiming = true;
         if (context.canceled)
             IsAiming = false;
+    }
+
+    public void OnReload(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        OnReloadWeapon?.Invoke();
     }
 }

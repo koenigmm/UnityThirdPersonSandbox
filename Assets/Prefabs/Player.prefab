@@ -1123,6 +1123,7 @@ GameObject:
   - component: {fileID: 7769072485675963761}
   - component: {fileID: 3323229260028380312}
   - component: {fileID: 2148397857325257544}
+  - component: {fileID: 7014277120043651154}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1152,6 +1153,7 @@ Transform:
   - {fileID: 4729031395669916165}
   - {fileID: 7794493304992215049}
   - {fileID: 6132074860040971170}
+  - {fileID: 8677610330369840339}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1179,6 +1181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254b8d5f21d17a2489d6259f9caf03d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canAim: 0
   cameraTarget: {fileID: 25629955952243822}
   minPitchAngle: -40
   maxPitchAngle: 60
@@ -1242,8 +1245,7 @@ MonoBehaviour:
   <LedgeDetector>k__BackingField: {fileID: 6072907918614749779}
   <DodgeStaminaCost>k__BackingField: 25
   <BlockingStaminaCost>k__BackingField: 15
-  <DebugProjectile>k__BackingField: {fileID: 7983585134507241592, guid: d11cbd24a6048ba4f846227cf312b581, type: 3}
-  <DebugProjectileLaunchPoint>k__BackingField: {fileID: 6132074860040971170}
+  <CurrentWeapon>k__BackingField: {fileID: 5203675036640427320}
   isInInteractionArea: 0
   DefaultLayerMask:
     serializedVersion: 2
@@ -1407,6 +1409,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healingPotionHealthPoints: 0
+--- !u!114 &7014277120043651154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834197436992109030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ce3a8100664c1193a031b7f56cb9be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoInventoryStartValues:
+  - type: 0
+    amount: 0
+  - type: 1
+    amount: 0
 --- !u!1 &2993587700892223217
 GameObject:
   m_ObjectHideFlags: 0
@@ -2853,6 +2872,56 @@ Transform:
   m_Father: {fileID: 6822512980726353993}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -0.54411596, y: 22.444319, z: -27.621815}
+--- !u!1 &6397187644598275627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8677610330369840339}
+  - component: {fileID: 5203675036640427320}
+  m_Layer: 0
+  m_Name: TestWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8677610330369840339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6397187644598275627}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3179197335369212764}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5203675036640427320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6397187644598275627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc12744707049f6a4d9de1a5dd84263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 40
+  range: 500
+  maxAmmoInWeapon: 5
+  currentAmmo: 0
+  ammoInventory: {fileID: 7014277120043651154}
+  ammoType: 0
 --- !u!1 &6775179685277568036
 GameObject:
   m_ObjectHideFlags: 0
