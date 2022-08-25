@@ -1954,8 +1954,7 @@ GameObject:
   - component: {fileID: 6029164931830157581}
   - component: {fileID: 6077854898923851308}
   - component: {fileID: 8351061339426697638}
-  - component: {fileID: 632363089}
-  - component: {fileID: 632363097}
+  - component: {fileID: 6473639470320871963}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -2099,23 +2098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponLogic: {fileID: 6668306061887742316}
---- !u!54 &632363089
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5351724124949616242}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 1
---- !u!136 &632363097
+--- !u!136 &6473639470320871963
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2126,9 +2109,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 2.5
   m_Direction: 1
-  m_Center: {x: 0, y: 1.05, z: 0}
+  m_Center: {x: 0, y: 0.89, z: 0}
 --- !u!1 &5533334298152091290
 GameObject:
   m_ObjectHideFlags: 0

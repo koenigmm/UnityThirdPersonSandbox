@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
@@ -21,6 +22,8 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
     [field: SerializeField] public float DodgeStaminaCost { get; private set; } = 25f;
     [field: SerializeField] public float BlockingStaminaCost { get; set; } = 10f;
+    [field: SerializeField] public GameObject DebugProjectile { get; set; }
+    [field: SerializeField] public Transform DebugProjectileLaunchPoint { get; set; }
 
     public bool isInInteractionArea;
     
@@ -28,6 +31,9 @@ public class PlayerStateMachine : StateMachine
     public Transform MainCameraTransform { get; private set; }
 
     public float PreviousDodgeTime { get; set; } = Mathf.NegativeInfinity;
+    public LayerMask DefaultLayerMask;
+
+    [SerializeField] private List<GameObject> meleeGameObjects;
 
 
     private void Awake() => PlayerStamina = GetComponent<Stamina>();
@@ -56,6 +62,14 @@ public class PlayerStateMachine : StateMachine
     private void HandleDamage() => SwitchState(new PlayerImpactState(this));
 
     private void HandleDeath() => SwitchState(new PlayerrDeadState(this));
+
+    public void SetMeleeGameObjectsActive(bool isActive)
+    {
+        foreach (var meleeGameObject in meleeGameObjects)
+        {
+            meleeGameObject.SetActive(isActive);
+        }
+    }
 
     
 }
