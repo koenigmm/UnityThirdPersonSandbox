@@ -11,15 +11,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] private AmmoInventory ammoInventory;
     [SerializeField] private AmmoType ammoType;
 
-    private InputReader _inputReader;
-
-    private void Awake() => _inputReader = FindObjectOfType<InputReader>();
-
-    private void OnEnable() => _inputReader.OnReloadWeapon += Reload;
-
-    private void OnDisable() => _inputReader.OnReloadWeapon -= Reload;
-
-
     public void Shoot()
     {
         if (currentAmmo <= 0) return;
@@ -36,10 +27,12 @@ public class Weapon : MonoBehaviour
             enemyHealth.DealDamage(damage);
     }
 
-    private void Reload()
+    public bool TryReload()
     {
-        if (currentAmmo == maxAmmoInWeapon) return;
+        var currentAmmoBeforeReload = currentAmmo; 
+        if (currentAmmo == maxAmmoInWeapon) return false;
         var ammoNeededToFillWeapon = maxAmmoInWeapon - currentAmmo;
         currentAmmo += ammoInventory.GetAmmo(ammoType, ammoNeededToFillWeapon);
+        return currentAmmo != currentAmmoBeforeReload;
     }
 }

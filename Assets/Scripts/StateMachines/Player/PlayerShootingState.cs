@@ -20,20 +20,19 @@ public class PlayerShootingState : PlayerBaseState
         StateMachine.PlayerThirdPersonCameraController.canAim = true;
         StateMachine.Animator.CrossFadeInFixedTime(_shootingBlendTreeHash, DEFAULT_CROSS_FADE_DURATION);
         StateMachine.SetMeleeGameObjectsActive(false);
+        StateMachine.InputReader.OnReloadWeapon += HandleReload;
     }
 
     public override void Tick(float deltaTime)
     {
-        if (!StateMachine.InputReader.IsAiming)
-        {
+        if (!StateMachine.InputReader.IsAiming) 
             StateMachine.SwitchState(new PlayerFreeLookState(StateMachine));
-        }
 
         if (StateMachine.InputReader.IsAttacking == false)
             _isShooting = false;
-
-
+        
         UpdateAnimator(deltaTime);
+        
         var movement = CalculateMovement();
         Move(movement * StateMachine.TargetingMovementSpeed, deltaTime);
 
@@ -45,6 +44,7 @@ public class PlayerShootingState : PlayerBaseState
     public override void Exit()
     {
         StateMachine.SetMeleeGameObjectsActive(true);
+        StateMachine.InputReader.OnReloadWeapon -= HandleReload;
     }
 
     private void UpdateAnimator(float deltaTime)
@@ -69,5 +69,11 @@ public class PlayerShootingState : PlayerBaseState
             var value = StateMachine.InputReader.MovementValue.x > 0 ? 1f : -1f;
             StateMachine.Animator.SetFloat(_shootingRunRightHash, value, dampTime, deltaTime);
         }
+    }
+    
+    private void HandleReload()
+    {
+        if (StateMachine.CurrentWeapon.TryReload())
+            StateMachine.SwitchState(new PlayerReloadingState(StateMachine, true));
     }
 }

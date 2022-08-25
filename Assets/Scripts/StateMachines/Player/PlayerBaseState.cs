@@ -56,4 +56,5 @@ public abstract class PlayerBaseState : State
 
         return forward * StateMachine.InputReader.MovementValue.y + right * StateMachine.InputReader.MovementValue.x;
     }
+    
 }

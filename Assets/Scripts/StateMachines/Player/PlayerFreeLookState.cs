@@ -15,16 +15,15 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Enter()
     {
         StateMachine.PlayerThirdPersonCameraController.canAim = true;
+        // TODO rename (event naming convention)
         StateMachine.InputReader.TargetEvent += OnTarget;
         StateMachine.InputReader.JumpEvent += OnJump;
-        StateMachine.Animator.SetFloat(_freeLookSpeedHash, 0f);
 
-        if (_shouldFade)
-            StateMachine.Animator.CrossFadeInFixedTime(_freeLookBlendTreeHash, DEFAULT_CROSS_FADE_DURATION);
-
-        else
-            StateMachine.Animator.Play(_freeLookBlendTreeHash);
+        StateMachine.InputReader.OnReloadWeapon += HandleReload;
+        StartAnimation();
     }
+
+   
 
     public override void Tick(float deltaTime)
     {
@@ -39,7 +38,13 @@ public class PlayerFreeLookState : PlayerBaseState
         {
             StateMachine.SwitchState(new PlayerShootingState(StateMachine));
         }
+        
 
+        HandleMoveInput(deltaTime);
+    }
+
+    private void HandleMoveInput(float deltaTime)
+    {
         var movement = CalculateMovement();
         Move(movement * StateMachine.FreeLookMovementSpeed, deltaTime);
 
@@ -59,6 +64,7 @@ public class PlayerFreeLookState : PlayerBaseState
     {
         StateMachine.InputReader.TargetEvent -= OnTarget;
         StateMachine.InputReader.JumpEvent -= OnJump;
+        StateMachine.InputReader.OnReloadWeapon -= HandleReload;
     }
 
     private void OnJump()
@@ -83,4 +89,24 @@ public class PlayerFreeLookState : PlayerBaseState
         if (!StateMachine.Targeter.SelectTarget()) return;
         StateMachine.SwitchState(new PlayerTargetingState(StateMachine));
     }
+    
+    private void HandleReload()
+    {
+        if (StateMachine.CurrentWeapon.TryReload())
+        {
+            StateMachine.SwitchState(new PlayerReloadingState(StateMachine));
+        }
+    }
+    
+     private void StartAnimation()
+    {
+        StateMachine.Animator.SetFloat(_freeLookSpeedHash, 0f);
+
+        if (_shouldFade)
+            StateMachine.Animator.CrossFadeInFixedTime(_freeLookBlendTreeHash, DEFAULT_CROSS_FADE_DURATION);
+
+        else
+            StateMachine.Animator.Play(_freeLookBlendTreeHash);
+    }
+    
 }
