@@ -14,6 +14,7 @@ public class PlayerDodgingState : PlayerBaseState
 
     public override void Enter()
     {
+        StateMachine.PlayerThirdPersonCameraController.canAim = false;
         _remainingDodgeTime = StateMachine.DodgeDuration;
 
         StateMachine.Animator.SetFloat(_dodgeForwardHash, _dodgingDirectionInput.y);

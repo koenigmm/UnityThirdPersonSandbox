@@ -3,6 +3,7 @@
 public class EnemyImpactState : EnemyBaseState
 {
     private float _timer;
+    
     public EnemyImpactState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -16,13 +17,9 @@ public class EnemyImpactState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-        _timer += deltaTime;
+        if (_timer >= StateMachine.StunningDelay) StateMachine.SwitchState(new EnemyChasingState(StateMachine, true));
 
-        if (_timer >= StateMachine.StunningDelay)
-        {
-            StateMachine.SwitchState(new EnemyChasingState(StateMachine));
-        }
-            
+        _timer += deltaTime;
     }
 
     public override void Exit() => StateMachine.Agent.isStopped = false;

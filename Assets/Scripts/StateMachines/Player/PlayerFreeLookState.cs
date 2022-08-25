@@ -14,6 +14,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Enter()
     {
+        StateMachine.PlayerThirdPersonCameraController.canAim = true;
         StateMachine.InputReader.TargetEvent += OnTarget;
         StateMachine.InputReader.JumpEvent += OnJump;
         StateMachine.Animator.SetFloat(_freeLookSpeedHash, 0f);

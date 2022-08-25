@@ -17,6 +17,7 @@ public class PlayerShootingState : PlayerBaseState
 
     public override void Enter()
     {
+        StateMachine.PlayerThirdPersonCameraController.canAim = true;
         StateMachine.Animator.CrossFadeInFixedTime(_shootingBlendTreeHash, DEFAULT_CROSS_FADE_DURATION);
         StateMachine.SetMeleeGameObjectsActive(false);
     }

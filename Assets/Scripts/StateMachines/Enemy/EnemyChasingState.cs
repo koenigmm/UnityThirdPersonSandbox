@@ -5,9 +5,11 @@ public class EnemyChasingState : EnemyBaseState
     private readonly int _locomotionHash = Animator.StringToHash("Locomotion");
     private readonly int _speedHash = Animator.StringToHash("Speed");
     private const float AnimatorDampTime = 0.1f;
+    private bool _isProvoked;
 
-    public EnemyChasingState(EnemyStateMachine stateMachine) : base(stateMachine)
+    public EnemyChasingState(EnemyStateMachine stateMachine, bool isProvoked = false) : base(stateMachine)
     {
+        _isProvoked = isProvoked;
     }
 
     public override void Enter()
@@ -18,7 +20,7 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-        if (!IsInChaseRange())
+        if (!IsInChaseRange() && !_isProvoked)
         {
             StateMachine.SwitchState(new EnemyIdleState(StateMachine));
             return;
@@ -32,9 +34,7 @@ public class EnemyChasingState : EnemyBaseState
 
         if (IsInAttackRange())
         {
-            var lookPos = StateMachine.Player.transform.position - StateMachine.transform.position;
-            StateMachine.Agent.SetDestination(StateMachine.transform.position);
-            StateMachine.transform.LookAt(StateMachine.Player.transform);
+            // StateMachine.Agent.SetDestination(StateMachine.transform.position);
             StateMachine.SwitchState(new EnemyAttackingState(StateMachine));
             return;
         }

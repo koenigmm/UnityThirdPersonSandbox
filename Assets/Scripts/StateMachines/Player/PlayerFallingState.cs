@@ -14,6 +14,7 @@ public class PlayerFallingState : PlayerBaseState
 
     public override void Enter()
     {
+        StateMachine.PlayerThirdPersonCameraController.canAim = false;
         momentum = StateMachine.CharacterController.velocity;
         momentum.y = 0f;
         StateMachine.Animator.CrossFadeInFixedTime(_animationClipHash, _blendTime);

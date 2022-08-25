@@ -11,6 +11,7 @@ public class PlayerHangingState : PlayerBaseState
 
     public override void Enter()
     {
+        StateMachine.PlayerThirdPersonCameraController.canAim = false;
         StateMachine.transform.rotation = Quaternion.LookRotation(_ledgeForward, Vector3.up);
         StateMachine.Animator.CrossFadeInFixedTime(_hangingAnimationHash, DEFAULT_CROSS_FADE_DURATION);
         StateMachine.ForceReceiver.enabled = false;

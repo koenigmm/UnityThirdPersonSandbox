@@ -11,6 +11,7 @@ public class PlayerPullUpState : PlayerBaseState
 
     public override void Enter()
     {
+        StateMachine.PlayerThirdPersonCameraController.canAim = false;
         StateMachine.Animator.CrossFadeInFixedTime(_pullUpAnimationHash, DEFAULT_CROSS_FADE_DURATION);
         StateMachine.ForceReceiver.enabled = false;
     }

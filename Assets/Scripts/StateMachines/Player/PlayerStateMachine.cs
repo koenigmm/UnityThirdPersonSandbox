@@ -29,6 +29,7 @@ public class PlayerStateMachine : StateMachine
     
     public Stamina PlayerStamina { get; private set; }
     public Transform MainCameraTransform { get; private set; }
+    public ThirdPersonCameraController PlayerThirdPersonCameraController { get; private set; }
 
     public float PreviousDodgeTime { get; set; } = Mathf.NegativeInfinity;
     public LayerMask DefaultLayerMask;
@@ -36,7 +37,11 @@ public class PlayerStateMachine : StateMachine
     [SerializeField] private List<GameObject> meleeGameObjects;
 
 
-    private void Awake() => PlayerStamina = GetComponent<Stamina>();
+    private void Awake()
+    {
+        PlayerStamina = GetComponent<Stamina>();
+        PlayerThirdPersonCameraController = GetComponent<ThirdPersonCameraController>();
+    }
 
     private void Start()
     {

@@ -11,8 +11,11 @@ public class PlayerrDeadState : PlayerBaseState
     {
     }
 
-    public override void Enter() =>
+    public override void Enter()
+    {
+        StateMachine.PlayerThirdPersonCameraController.canAim = false;
         StateMachine.Animator.CrossFadeInFixedTime(DeadAnimationName, DEFAULT_CROSS_FADE_DURATION);
+    }
 
     public override void Tick(float deltaTime)
     {

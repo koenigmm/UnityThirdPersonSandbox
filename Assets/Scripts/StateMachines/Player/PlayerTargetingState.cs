@@ -16,6 +16,7 @@ public class PlayerTargetingState : PlayerBaseState
         StateMachine.InputReader.DodgeEvent += OnDodge;
         StateMachine.InputReader.TargetEvent += OnTarget;
         StateMachine.InputReader.JumpEvent += OnJump;
+        StateMachine.PlayerThirdPersonCameraController.canAim = false;
     }
 
     public override void Tick(float deltaTime)

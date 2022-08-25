@@ -11,6 +11,7 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void Enter()
     {
+        StateMachine.PlayerThirdPersonCameraController.canAim = false;
         StateMachine.ForceReceiver.Jump(StateMachine.JumpForce);
         _momentum = StateMachine.CharacterController.velocity;
         _momentum.y = 0f;

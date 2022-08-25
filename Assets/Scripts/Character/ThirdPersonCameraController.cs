@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class ThirdPersonCameraController : MonoBehaviour
 {
+    public bool canAim;
+    
     [SerializeField] private Transform cameraTarget;
     [SerializeField] private float minPitchAngle, maxPitchAngle;
     [SerializeField] private float cameraSpeed = 5f;
     [SerializeField] private bool invertInputPitchValue = true;
-
+    
     private InputReader _inputReader;
     private float _cameraTargetPitch, _cameraTargetYaw;
 
@@ -32,7 +34,7 @@ public class ThirdPersonCameraController : MonoBehaviour
 
         cameraTarget.rotation = Quaternion.Euler(_cameraTargetPitch, _cameraTargetYaw, 0f);
 
-        if (!_inputReader.IsAiming) return;
+        if (!_inputReader.IsAiming || !canAim) return;
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, _cameraTargetYaw, 0f),
             Time.deltaTime * interpolationRatio);
     }
