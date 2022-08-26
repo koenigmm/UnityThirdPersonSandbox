@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Weapon : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private int currentAmmo = 0;
     [SerializeField] private AmmoInventory ammoInventory;
     [SerializeField] private AmmoType ammoType;
+    [SerializeField] private VisualEffect muzzleVFX;
 
     public int CurrentAmmo => currentAmmo;
     public AmmoType AmmoType => ammoType;
@@ -23,6 +25,12 @@ public class Weapon : MonoBehaviour
     {
         if (ammoInventory != null) return;
         ammoInventory = GetComponentInParent<AmmoInventory>();
+    }
+
+    private void Start()
+    {
+        muzzleVFX.enabled = true;
+        muzzleVFX.Stop();
     }
 
 
@@ -38,6 +46,7 @@ public class Weapon : MonoBehaviour
 
         currentAmmo = Math.Max(0, currentAmmo - 1);
         OnAmmoChange?.Invoke();
+        muzzleVFX.Play();
 
         if (raycastHit.transform.TryGetComponent(out Health enemyHealth))
             enemyHealth.DealDamage(damage);
