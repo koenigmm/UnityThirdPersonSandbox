@@ -5371,6 +5371,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.5355942
       objectReference: {fileID: 0}
+    - target: {fileID: 4897845265171765130, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: ammoInventory
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897845265171765130, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: reloadingTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5063432096362442814, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 23.593689
@@ -11727,7 +11735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -101.6, y: 25}
+  m_AnchoredPosition: {x: -101.6001, y: 25}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1350778872

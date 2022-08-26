@@ -30,9 +30,6 @@ public class PlayerStateMachine : StateMachine
     public Transform MainCameraTransform { get; private set; }
     public ThirdPersonCameraController PlayerThirdPersonCameraController { get; private set; }
 
-    public float PreviousDodgeTime { get; set; } = Mathf.NegativeInfinity;
-    public LayerMask DefaultLayerMask;
-
     [SerializeField] private List<GameObject> meleeGameObjects;
 
 

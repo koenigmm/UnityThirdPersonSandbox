@@ -5,8 +5,11 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public event Action OnAmmoChange;
+    [Header("Weapon Attributes")]
     [SerializeField] private float damage = 10f;
     [SerializeField] private float range = 100f;
+    [SerializeField] private float reloadingTime = 1.5f;
+    [Header("Ammo")]
     [SerializeField] private int maxAmmoInWeapon = 10;
     [SerializeField] private int currentAmmo = 0;
     [SerializeField] private AmmoInventory ammoInventory;
@@ -14,7 +17,14 @@ public class Weapon : MonoBehaviour
 
     public int CurrentAmmo => currentAmmo;
     public AmmoType AmmoType => ammoType;
-    
+    public float ReloadingTime => reloadingTime;
+
+    private void Awake()
+    {
+        if (ammoInventory != null) return;
+        ammoInventory = GetComponentInParent<AmmoInventory>();
+    }
+
 
     public void Shoot()
     {
