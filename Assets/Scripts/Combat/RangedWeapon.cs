@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.VFX;
 
-public class Weapon : MonoBehaviour
+public class RangedWeapon : MonoBehaviour
 {
     public event Action OnAmmoChange;
     [Header("Weapon Attributes")]

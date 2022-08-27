@@ -12,7 +12,7 @@ public class PlayerAttackingState : PlayerBaseState
     {
         StateMachine.PlayerThirdPersonCameraController.canAim = false;
         StateMachine.Animator.CrossFadeInFixedTime(_attack.AnimationName, _attack.TransitionDuration);
-        StateMachine.Weapon.SetAttack(_attack.Damage);
+        StateMachine.Sword.SetAttack(_attack.Damage);
         StateMachine.PlayerStamina.ReduceStamina(_attack.StaminaCost);
     }
 

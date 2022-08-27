@@ -2079,7 +2079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <AttackRange>k__BackingField: 2
-  <Weapon>k__BackingField: {fileID: 8284266104611893277}
+  <Sword>k__BackingField: {fileID: 8284266104611893277}
   <AttackDamage>k__BackingField: 20
   <ChaseRange>k__BackingField: 10
   <ImpactOffset>k__BackingField: -1.5

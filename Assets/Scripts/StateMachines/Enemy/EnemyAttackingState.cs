@@ -13,7 +13,7 @@ public class EnemyAttackingState : EnemyBaseState
     public override void Enter()
     {
         StateMachine.Agent.isStopped = true;
-        StateMachine.Weapon.SetAttack(StateMachine.AttackDamage);
+        StateMachine.Sword.SetAttack(StateMachine.AttackDamage);
         StateMachine.Animator.CrossFadeInFixedTime(_attackHash, DEFAULT_BLEND_TIME);
         SetHealthBarCanvasActive(true);
     }

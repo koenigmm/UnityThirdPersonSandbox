@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponDamage : MonoBehaviour
+public class SwordDamage : MonoBehaviour
 {
     [SerializeField] private bool isAIControlled;
     private Collider _playerCollider;

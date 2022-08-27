@@ -20,8 +20,6 @@ public class ThirdPersonCameraController : MonoBehaviour
 
     private void RotateCameraTargetAndCharacterController()
     {
-        const float interpolationRatio = 20f;
-
         _cameraTargetYaw += _inputReader.LookPosition.x * Time.deltaTime * cameraSpeed;
 
         if (invertInputPitchValue)
@@ -35,6 +33,12 @@ public class ThirdPersonCameraController : MonoBehaviour
         cameraTarget.rotation = Quaternion.Euler(_cameraTargetPitch, _cameraTargetYaw, 0f);
 
         if (!_inputReader.IsAiming || !canAim) return;
+        LookAtAimTarget();
+        
+    }
+
+    public void LookAtAimTarget(float interpolationRatio = 20f)
+    {
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, _cameraTargetYaw, 0f),
             Time.deltaTime * interpolationRatio);
     }

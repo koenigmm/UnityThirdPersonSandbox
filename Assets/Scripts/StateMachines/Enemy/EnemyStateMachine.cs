@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyStateMachine : StateMachine
 {
     [field: SerializeField] public float AttackRange { get; private set; }
-    [field: SerializeField] public WeaponDamage Weapon { get; private set; }
+    [field: SerializeField] public SwordDamage Sword { get; private set; }
     [field: SerializeField] public float AttackDamage { get; private set; }
     [field: SerializeField] public float ChaseRange { get; private set; } = 10f;
     [field: SerializeField] public float ImpactOffset { get; private set; } = -2.5f;

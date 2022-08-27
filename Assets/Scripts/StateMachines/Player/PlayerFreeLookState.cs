@@ -15,6 +15,7 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Enter()
     {
         StateMachine.PlayerThirdPersonCameraController.canAim = true;
+        StateMachine.SetCurrentRangedWeaponActive(false);
         // TODO rename (event naming convention)
         StateMachine.InputReader.TargetEvent += OnTarget;
         StateMachine.InputReader.JumpEvent += OnJump;
@@ -92,7 +93,7 @@ public class PlayerFreeLookState : PlayerBaseState
     
     private void HandleReload()
     {
-        if (StateMachine.CurrentWeapon.TryReload())
+        if (StateMachine.CurrentRangedWeapon.TryReload())
         {
             StateMachine.SwitchState(new PlayerReloadingState(StateMachine));
         }

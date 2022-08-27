@@ -19,7 +19,7 @@ public class EnemyDeadState : EnemyBaseState
 
     private void DeactivateAI()
     {
-        StateMachine.Weapon.enabled = false;
+        StateMachine.Sword.enabled = false;
         StateMachine.Agent.enabled = false;
         StateMachine.Target.DestroyTarget();
     }

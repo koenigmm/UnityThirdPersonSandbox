@@ -3,16 +3,11 @@ using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
-    [field: SerializeField] public InputReader InputReader { get; private set; }
-    [field: SerializeField] public CharacterController CharacterController { get; private set; }
-    [field: SerializeField] public Animator Animator { get; private set; }
-    [field: SerializeField] public WeaponDamage Weapon { get; private set; }
+    [field: SerializeField] public SwordDamage Sword { get; private set; }
     [field: SerializeField] public float FreeLookMovementSpeed { get; private set; }
     [field: SerializeField] public float TargetingMovementSpeed { get; private set; }
     [field: SerializeField] public float RotationDamping { get; private set; }
     [field: SerializeField] public Targeter Targeter { get; private set; }
-    [field: SerializeField] public ForceReceiver ForceReceiver { get; private set; }
-    [field: SerializeField] public Health Health { get; private set; }
     [field: SerializeField] public Attack[] Attacks { get; private set; }
     [field: SerializeField] public float ImpactDistance { get; private set; } = -50f;
     [field: SerializeField] public float DodgeDuration { get; private set; } = 0.5f;
@@ -22,21 +17,33 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public LedgeDetector LedgeDetector { get; private set; }
     [field: SerializeField] public float DodgeStaminaCost { get; private set; } = 25f;
     [field: SerializeField] public float BlockingStaminaCost { get; set; } = 10f;
-    [field: SerializeField] public Weapon CurrentWeapon { get; private set; }
-
-    public bool isInInteractionArea;
+    [field: SerializeField] public RangedWeapon CurrentRangedWeapon { get; private set; }
     
-    public Stamina PlayerStamina { get; private set; }
-    public Transform MainCameraTransform { get; private set; }
-    public ThirdPersonCameraController PlayerThirdPersonCameraController { get; private set; }
+    public bool isInInteractionArea;
 
     [SerializeField] private List<GameObject> meleeGameObjects;
 
+    
+    public InputReader InputReader { get; private set; }
+    public Health Health { get; private set; }
+    public ForceReceiver ForceReceiver { get; private set; }
+    public Animator Animator { get; private set; }
+    public Stamina PlayerStamina { get; private set; }
+    public Transform MainCameraTransform { get; private set; }
+    public ThirdPersonCameraController PlayerThirdPersonCameraController { get; private set; }
+    public CharacterController CharacterController { get; private set; }
+    
+  
 
     private void Awake()
     {
         PlayerStamina = GetComponent<Stamina>();
         PlayerThirdPersonCameraController = GetComponent<ThirdPersonCameraController>();
+        InputReader = GetComponent<InputReader>();
+        Health = GetComponent<Health>();
+        ForceReceiver = GetComponent<ForceReceiver>();
+        Animator = GetComponent<Animator>();
+        CharacterController = GetComponent<CharacterController>();
     }
 
     private void Start()
@@ -49,7 +56,7 @@ public class PlayerStateMachine : StateMachine
     {
         Health.OnDamage += HandleDamage;
         Health.OnDie += HandleDeath;
-        
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -72,5 +79,6 @@ public class PlayerStateMachine : StateMachine
         }
     }
 
-    
+    public void SetCurrentRangedWeaponActive(bool isActive) =>
+        CurrentRangedWeapon.GetComponent<MeshRenderer>().enabled = isActive;
 }

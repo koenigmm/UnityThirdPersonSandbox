@@ -4,7 +4,7 @@ using UnityEngine;
 public class AmmoDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI ammoDisplayTextField;
-    private Weapon _currentWeapon;
+    private RangedWeapon _currentRangedWeapon;
     private AmmoInventory _ammoInventory;
     private PlayerStateMachine _playerStateMachine;
 
@@ -12,26 +12,26 @@ public class AmmoDisplay : MonoBehaviour
     {
         var player = GameObject.FindWithTag("Player");
         _playerStateMachine = player.GetComponent<PlayerStateMachine>();
-        _currentWeapon = _playerStateMachine.CurrentWeapon;
+        _currentRangedWeapon = _playerStateMachine.CurrentRangedWeapon;
         _ammoInventory = player.GetComponent<AmmoInventory>();
     }
     
 
     private void OnEnable()
     {
-        _currentWeapon.OnAmmoChange += UpdateTextField;
+        _currentRangedWeapon.OnAmmoChange += UpdateTextField;
         _ammoInventory.OnAmmoChange += UpdateTextField;
     }
 
     private void OnDisable()
     {
-        _currentWeapon.OnAmmoChange -= UpdateTextField;
+        _currentRangedWeapon.OnAmmoChange -= UpdateTextField;
         _ammoInventory.OnAmmoChange -= UpdateTextField;
     }
 
     private void UpdateTextField()
     {
-        var ammoDisplayText = $"{_currentWeapon.CurrentAmmo} / {_ammoInventory.GetAmountOfAmmo(_currentWeapon.AmmoType)}";
+        var ammoDisplayText = $"{_currentRangedWeapon.CurrentAmmo} / {_ammoInventory.GetAmountOfAmmo(_currentRangedWeapon.AmmoType)}";
         ammoDisplayTextField.text = ammoDisplayText;
     }
 }

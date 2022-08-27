@@ -11,17 +11,20 @@ public class PlayerReloadingState : PlayerBaseState
     {
         _animationHash = Animator.StringToHash("Reloading");
         _isAiming = isAiming;
-        _reloadingTimeFromCurrentWeapon = StateMachine.CurrentWeapon.ReloadingTime;
+        _reloadingTimeFromCurrentWeapon = StateMachine.CurrentRangedWeapon.ReloadingTime;
     }
 
     public override void Enter()
     {
+        StateMachine.SetCurrentRangedWeaponActive(true);
+        StateMachine.PlayerThirdPersonCameraController.canAim = true;
         StateMachine.Animator.CrossFadeInFixedTime(_animationHash, DEFAULT_CROSS_FADE_DURATION);
         StateMachine.SetMeleeGameObjectsActive(false);
     }
 
     public override void Tick(float deltaTime)
     {
+        StateMachine.PlayerThirdPersonCameraController.LookAtAimTarget();
         var movement = CalculateMovement();
         Move(movement * StateMachine.FreeLookMovementSpeed, deltaTime);
 
@@ -34,6 +37,8 @@ public class PlayerReloadingState : PlayerBaseState
 
     public override void Exit()
     {
+        StateMachine.SetCurrentRangedWeaponActive(false);
+        StateMachine.PlayerThirdPersonCameraController.canAim = true;
         StateMachine.SetMeleeGameObjectsActive(true);
     }
 }

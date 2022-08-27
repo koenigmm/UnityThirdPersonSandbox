@@ -17,6 +17,7 @@ public class PlayerShootingState : PlayerBaseState
 
     public override void Enter()
     {
+        StateMachine.SetCurrentRangedWeaponActive(true);
         StateMachine.PlayerThirdPersonCameraController.canAim = true;
         StateMachine.Animator.CrossFadeInFixedTime(_shootingBlendTreeHash, DEFAULT_CROSS_FADE_DURATION);
         StateMachine.SetMeleeGameObjectsActive(false);
@@ -37,12 +38,13 @@ public class PlayerShootingState : PlayerBaseState
         Move(movement * StateMachine.TargetingMovementSpeed, deltaTime);
 
         if (!StateMachine.InputReader.IsAttacking || _isShooting) return;
-        StateMachine.CurrentWeapon.Shoot();
+        StateMachine.CurrentRangedWeapon.Shoot();
         _isShooting = true;
     }
 
     public override void Exit()
     {
+        StateMachine.SetCurrentRangedWeaponActive(false);
         StateMachine.SetMeleeGameObjectsActive(true);
         StateMachine.InputReader.OnReloadWeapon -= HandleReload;
     }
@@ -73,7 +75,7 @@ public class PlayerShootingState : PlayerBaseState
     
     private void HandleReload()
     {
-        if (StateMachine.CurrentWeapon.TryReload())
+        if (StateMachine.CurrentRangedWeapon.TryReload())
             StateMachine.SwitchState(new PlayerReloadingState(StateMachine, true));
     }
 }

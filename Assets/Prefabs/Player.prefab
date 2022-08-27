@@ -1154,7 +1154,7 @@ Transform:
   - {fileID: 7794493304992215049}
   - {fileID: 8677610330369840339}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-8272569400086665777
 MonoBehaviour:
@@ -1201,7 +1201,7 @@ MonoBehaviour:
   <InputReader>k__BackingField: {fileID: -8272569400086665777}
   <CharacterController>k__BackingField: {fileID: 743283600912093339}
   <Animator>k__BackingField: {fileID: 7118586325461247878}
-  <Weapon>k__BackingField: {fileID: 188787925330130089}
+  <Sword>k__BackingField: {fileID: 188787925330130089}
   <FreeLookMovementSpeed>k__BackingField: 6
   <TargetingMovementSpeed>k__BackingField: 5
   <RotationDamping>k__BackingField: 10
@@ -1244,7 +1244,7 @@ MonoBehaviour:
   <LedgeDetector>k__BackingField: {fileID: 6072907918614749779}
   <DodgeStaminaCost>k__BackingField: 25
   <BlockingStaminaCost>k__BackingField: 15
-  <CurrentWeapon>k__BackingField: {fileID: 5203675036640427320}
+  <CurrentRangedWeapon>k__BackingField: {fileID: 5203675036640427320}
   isInInteractionArea: 0
   meleeGameObjects:
   - {fileID: 2667134486858134899}
@@ -3518,6 +3518,10 @@ PrefabInstance:
     - target: {fileID: 8231188049552942514, guid: 68e106c30ff31e14c9485152aca28536, type: 3}
       propertyPath: m_Name
       value: TestWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8231188049552942514, guid: 68e106c30ff31e14c9485152aca28536, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
