@@ -4869,7 +4869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 450667927170974115, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.777897
+      value: 1.7767857
       objectReference: {fileID: 0}
     - target: {fileID: 586115917254228141, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4951,10 +4951,6 @@ PrefabInstance:
       propertyPath: m_Instructions.Array.data[2].m_FullHash
       value: 256035187
       objectReference: {fileID: 0}
-    - target: {fileID: 2637451163907926535, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
-      propertyPath: <JumpStaminaCost>k__BackingField
-      value: 33
-      objectReference: {fileID: 0}
     - target: {fileID: 2688396696131255914, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 8.534379
@@ -4970,14 +4966,6 @@ PrefabInstance:
     - target: {fileID: 2817346387057676269, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: maxStamina
       value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2817346387057676269, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
-      propertyPath: restoringInterval
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2817346387057676269, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
-      propertyPath: restoringAmountPerInterval
-      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2869155321969740270, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5133,7 +5121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3520468305379590863, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.777897
+      value: 1.7767857
       objectReference: {fileID: 0}
     - target: {fileID: 3520468306247621558, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_YAxis.Value
@@ -5197,7 +5185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3520468306374459977, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.777897
+      value: 1.7767857
       objectReference: {fileID: 0}
     - target: {fileID: 3520468306715417690, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5229,7 +5217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3520468306715417691, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.777897
+      value: 1.7767857
       objectReference: {fileID: 0}
     - target: {fileID: 3527548828652932609, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5285,7 +5273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4161083400777762577, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.777897
+      value: 1.7767857
       objectReference: {fileID: 0}
     - target: {fileID: 4174375229016707533, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5329,7 +5317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4513686308123428601, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.777897
+      value: 1.7767857
       objectReference: {fileID: 0}
     - target: {fileID: 4784894507462416280, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5481,7 +5469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6698680675256654985, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.777897
+      value: 1.7767857
       objectReference: {fileID: 0}
     - target: {fileID: 6806717190170058129, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: CameraSide
@@ -5506,30 +5494,6 @@ PrefabInstance:
     - target: {fileID: 6834078638731675913, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -24.537
-      objectReference: {fileID: 0}
-    - target: {fileID: 6926189824094994371, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
-      propertyPath: progressions.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6926189824094994371, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
-      propertyPath: progressions.Array.data[2].playerAttribute
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6926189824094994371, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
-      propertyPath: progressions.Array.data[2].levels.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6926189824094994371, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
-      propertyPath: progressions.Array.data[2].levels.Array.data[0]
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6926189824094994371, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
-      propertyPath: progressions.Array.data[2].levels.Array.data[1]
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 6926189824094994371, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
-      propertyPath: progressions.Array.data[2].levels.Array.data[2]
-      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7041381043508374400, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5581,19 +5545,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9839536
+      value: 0.98395354
       objectReference: {fileID: 0}
     - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.17842492
+      value: 0.1784249
       objectReference: {fileID: 0}
     - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000032782555
+      value: -0.00000026822087
       objectReference: {fileID: 0}
     - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000052154064
+      value: 0.00000004097819
       objectReference: {fileID: 0}
     - target: {fileID: 7698500862289121625, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5613,7 +5577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7698947644593990887, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.777897
+      value: 1.7767857
       objectReference: {fileID: 0}
     - target: {fileID: 7746502919773743482, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5657,7 +5621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7940719388761592259, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.777897
+      value: 1.7767857
       objectReference: {fileID: 0}
     - target: {fileID: 8064225698592168681, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5697,11 +5661,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8220335779157961760, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0000021996536
+      value: 0.0000017156003
       objectReference: {fileID: 0}
     - target: {fileID: 8220335779157961760, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000011920929
+      value: 0.00000071525574
       objectReference: {fileID: 0}
     - target: {fileID: 8220335779157961760, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9419,7 +9383,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29162
+  m_Name: pb_Mesh29930
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -11821,7 +11785,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29504
+  m_Name: pb_Mesh30272
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -12283,7 +12247,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29462
+  m_Name: pb_Mesh30232
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -15937,10 +15901,6 @@ PrefabInstance:
     - target: {fileID: 1483666410366760767, guid: cb99efead18ef43449710b5d02fa3cd7, type: 3}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1483666410366760767, guid: cb99efead18ef43449710b5d02fa3cd7, type: 3}
-      propertyPath: m_Acceleration
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1520750833557352800, guid: cb99efead18ef43449710b5d02fa3cd7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -20306,7 +20266,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29240
+  m_Name: pb_Mesh30008
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2

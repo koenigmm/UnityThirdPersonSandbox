@@ -1154,7 +1154,7 @@ Transform:
   - {fileID: 7794493304992215049}
   - {fileID: 8677610330369840339}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-8272569400086665777
 MonoBehaviour:
@@ -1198,16 +1198,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2508caf55b9bceb40bd0b0c2a1ff79c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <InputReader>k__BackingField: {fileID: -8272569400086665777}
-  <CharacterController>k__BackingField: {fileID: 743283600912093339}
-  <Animator>k__BackingField: {fileID: 7118586325461247878}
   <Sword>k__BackingField: {fileID: 188787925330130089}
   <FreeLookMovementSpeed>k__BackingField: 6
   <TargetingMovementSpeed>k__BackingField: 5
   <RotationDamping>k__BackingField: 10
   <Targeter>k__BackingField: {fileID: 5925158935515403535}
-  <ForceReceiver>k__BackingField: {fileID: 3845863779781808557}
-  <Health>k__BackingField: {fileID: 5898911176019190844}
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: Attack1
     <TransitionDuration>k__BackingField: 0.1
@@ -1355,8 +1350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f978a8af7ae514fad4dd51de532fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restoringInterval: 1
-  restoringAmountPerInterval: 10
+  restoringInterval: 0.5
+  restoringAmountPerInterval: 3.5
 --- !u!114 &7769072485675963761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,11 +1370,15 @@ MonoBehaviour:
     - 150
     - 200
     - 250
+    - 300
+    - 350
   - playerAttribute: 1
     levels:
     - 100
     - 150
     - 200
+    - 250
+    - 300
 --- !u!114 &3323229260028380312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1404,7 +1403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbcf200557c9154e83a1fc98d788767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healingPotionHealthPoints: 0
+  restoringPercentage: 100
 --- !u!114 &7014277120043651154
 MonoBehaviour:
   m_ObjectHideFlags: 0

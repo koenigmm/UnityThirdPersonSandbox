@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class HealingPotionsInventory : MonoBehaviour
 {
-    [Tooltip("Default is MaxHealth")]
-    [SerializeField] private float healingPotionHealthPoints;
+    [Tooltip("Default is MaxHealth"), Range(1, 100)]
+    [SerializeField] private int restoringPercentage = 100;
+
+    private float _restoringFraction;
 
     public event Action OnPotionUpdate;
     public int AmountOfPotions { get; private set; }
@@ -17,6 +20,9 @@ public class HealingPotionsInventory : MonoBehaviour
         _playerHealth = player.GetComponent<Health>();
         _inputReader = player.GetComponent<InputReader>();
     }
+
+    private void Start() => _restoringFraction = restoringPercentage / 100f;
+
 
     private void OnEnable() => _inputReader.ConsumePotionEvent += UseHealingPotion;
 
@@ -37,9 +43,10 @@ public class HealingPotionsInventory : MonoBehaviour
         return true;
     }
 
-    public void UseHealingPotion()
+    private void UseHealingPotion()
     {
-        if (DecreaseAmountOfHealthPotions()) _playerHealth.Heal(_playerHealth.MaxHealth);
+        if (DecreaseAmountOfHealthPotions()) 
+            _playerHealth.Heal( _playerHealth.MaxHealth * _restoringFraction);
     }
     
     
