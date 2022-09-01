@@ -14,6 +14,7 @@ public class EnemyAttackingState : EnemyBaseState
     {
         StateMachine.Agent.isStopped = true;
         StateMachine.Sword.SetAttack(StateMachine.AttackDamage);
+        StateMachine.Sword.enabled = true;
         StateMachine.Animator.CrossFadeInFixedTime(_attackHash, DEFAULT_BLEND_TIME);
         SetHealthBarCanvasActive(true);
     }
@@ -32,5 +33,9 @@ public class EnemyAttackingState : EnemyBaseState
         _timer += deltaTime;
     }
 
-    public override void Exit() => StateMachine.Agent.isStopped = false;
+    public override void Exit()
+    {
+        StateMachine.Agent.isStopped = false;
+        StateMachine.Sword.enabled = false;
+    }
 }

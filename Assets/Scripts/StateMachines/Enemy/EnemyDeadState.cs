@@ -11,6 +11,7 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter()
     {
+        StateMachine.Sword.enabled = false;
         DeactivateAI();
         StateMachine.Animator.CrossFadeInFixedTime(_animationHash, DeathAnimationBlendTime);
         SetHealthBarCanvasActive(false);
@@ -19,7 +20,6 @@ public class EnemyDeadState : EnemyBaseState
 
     private void DeactivateAI()
     {
-        StateMachine.Sword.enabled = false;
         StateMachine.Agent.enabled = false;
         StateMachine.Target.DestroyTarget();
     }
@@ -27,7 +27,7 @@ public class EnemyDeadState : EnemyBaseState
     private void DeactivateCollider()
     {
         StateMachine.Collider.enabled = false;
-        
+
         foreach (var collider in StateMachine.GetComponentsInChildren<Collider>())
         {
             collider.enabled = false;

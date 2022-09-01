@@ -1,18 +1,20 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.VFX;
 
 [RequireComponent(typeof(SphereCollider))]
 public class HealingZone : MonoBehaviour
 {
-    [Header("Health")] 
-    [SerializeField] private float amountOfHealthPoints = 100f;
-    [SerializeField]  private float healthPerInterval = 5f;
-    [SerializeField]  private int interval = 1;
+    [Header("Health")] [SerializeField] private float amountOfHealthPoints = 100f;
+    [SerializeField] private float healthPerInterval = 5f;
+    [SerializeField] private int interval = 1;
 
-    [Header("Respawn")]
-    [SerializeField] private bool canRespawn;
+    [Header("VFX")] [SerializeField] private VisualEffect healthVFX;
+
+    [Header("Respawn")] [SerializeField] private bool canRespawn;
     [SerializeField] private float respawnTime = 60f;
-    
+
     private float _healthPointsInZone;
     private PlayerStateMachine _stateMachine;
     private float _timer;
@@ -31,9 +33,12 @@ public class HealingZone : MonoBehaviour
             DeactivateHealingZone();
     }
 
-    private void Start()
+    private void Start() => _healthPointsInZone = amountOfHealthPoints;
+
+    private void OnEnable()
     {
-        _healthPointsInZone = amountOfHealthPoints;
+        healthVFX.gameObject.SetActive(true);
+        healthVFX.Stop();
     }
 
     private void Update()
@@ -46,17 +51,21 @@ public class HealingZone : MonoBehaviour
         _timer += Time.deltaTime;
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         _timer = 0f;
         _canUsePlayerStateMachine = other.TryGetComponent(out _stateMachine);
+
+        if (!_canUsePlayerStateMachine) return;
+        var canHeal = _stateMachine.Health.CurrentHealth < _stateMachine.Health.MaxHealth;
+        if (canHeal) healthVFX.Play();
     }
 
     private void OnTriggerExit(Collider other)
     {
         _stateMachine = null;
         _canUsePlayerStateMachine = false;
+        healthVFX.Stop();
     }
 
 
@@ -67,6 +76,8 @@ public class HealingZone : MonoBehaviour
 
         if (canHeal)
             _healthPointsInZone -= healthPerInterval;
+        else
+            healthVFX.Stop();
 
         if (Mathf.Approximately(0f, _healthPointsInZone))
             DeactivateHealingZone();
@@ -79,6 +90,7 @@ public class HealingZone : MonoBehaviour
         _canUsePlayerStateMachine = false;
         _stateMachine = null;
         _isUsedAndEmpty = true;
+        healthVFX.Stop();
 
         if (canRespawn)
             StartCoroutine(ActivateHealingZone());

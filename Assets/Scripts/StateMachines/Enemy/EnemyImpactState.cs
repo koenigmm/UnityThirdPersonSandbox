@@ -10,6 +10,7 @@ public class EnemyImpactState : EnemyBaseState
 
     public override void Enter()
     {
+        StateMachine.Sword.enabled = false;
         SetHealthBarCanvasActive(true);
         StateMachine.Agent.isStopped = true;
         StateMachine.Animator.CrossFadeInFixedTime("EnemyImpact", DEFAULT_BLEND_TIME);

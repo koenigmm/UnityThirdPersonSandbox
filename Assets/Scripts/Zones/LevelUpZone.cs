@@ -5,21 +5,18 @@ using UnityEngine;
 public class LevelUpZone : MonoBehaviour
 {
     
-    private ParticleSystem _particleSystem;
     private PlayerStateMachine _stateMachine;
     private Canvas _hintCanvas;
     private bool _isTouchingPlayer;
 
     private void Awake()
     {
-        _particleSystem = GetComponentInChildren<ParticleSystem>();
         GetComponent<Collider>().isTrigger = true;
         _hintCanvas = GetComponentInChildren<Canvas>();
     }
 
     private void Start()
     {
-        _particleSystem.Stop();
         _hintCanvas.enabled = false;
     }
 
@@ -47,7 +44,6 @@ public class LevelUpZone : MonoBehaviour
         {
             _hintCanvas.enabled = true;
             _stateMachine.isInInteractionArea = true;
-            _particleSystem.Play();
         }
     }
 
@@ -58,7 +54,6 @@ public class LevelUpZone : MonoBehaviour
             _hintCanvas.enabled = false;
             _stateMachine.isInInteractionArea = false;
             _stateMachine = null;
-            _particleSystem.Stop();
         }
 
         _isTouchingPlayer = false;

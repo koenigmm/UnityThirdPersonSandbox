@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9148869170343036625}
   - component: {fileID: 3634902693513372562}
   - component: {fileID: 5633020977098549106}
+  - component: {fileID: 8080995569492715614}
   m_Layer: 0
   m_Name: Pickup_LevelUpToken
   m_TagString: Untagged
@@ -59,6 +60,23 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8080995569492715614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930625726843062584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099bb53d47bc52f4f84e2b8a9f060181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMoveBetweenTwoPoints: 1
+  canRotate: 0
+  anglePerSecond: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0.5, z: 0}
+  moveInterpolationSpeed: 0.5
 --- !u!1 &5703617166050015948
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +138,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: beb15a772a244f24ba61ca61357ad70e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

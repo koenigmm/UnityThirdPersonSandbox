@@ -10,6 +10,7 @@ public class PlayerAttackingState : PlayerBaseState
 
     public override void Enter()
     {
+        StateMachine.Sword.enabled = true;
         StateMachine.PlayerThirdPersonCameraController.canAim = false;
         StateMachine.Animator.CrossFadeInFixedTime(_attack.AnimationName, _attack.TransitionDuration);
         StateMachine.Sword.SetAttack(_attack.Damage);
@@ -64,7 +65,10 @@ public class PlayerAttackingState : PlayerBaseState
         );
     }
 
-    public override void Exit() { }
+    public override void Exit()
+    {
+        StateMachine.Sword.enabled = false;
+    }
 
     private void TryApplyForce()
     {

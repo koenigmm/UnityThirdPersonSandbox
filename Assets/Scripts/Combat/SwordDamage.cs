@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,11 +8,12 @@ public class SwordDamage : MonoBehaviour
     private Collider _playerCollider;
     private List<Collider> _alreadyCollidedWith = new List<Collider>();
     private float _damage;
+    private Collider _collider
+        ;
 
-    private void OnEnable()
-    {
-        _alreadyCollidedWith.Clear();
-    }
+    private void Awake() => _collider = GetComponent<Collider>();
+
+    private void OnEnable() => _alreadyCollidedWith.Clear();
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,8 +27,5 @@ public class SwordDamage : MonoBehaviour
         _alreadyCollidedWith.Add(other);
     }
 
-    public void SetAttack(float damage)
-    {
-        _damage = damage;
-    }
+    public void SetAttack(float damage) => _damage = damage;
 }

@@ -20,7 +20,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     private Controls _controls;
 
-    private void Start()
+    private void OnEnable()
     {
         _controls = new Controls();
         _controls.Player.SetCallbacks(this);

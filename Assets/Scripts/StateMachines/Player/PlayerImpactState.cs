@@ -13,6 +13,7 @@ public class PlayerImpactState : PlayerBaseState
     public override void Enter()
     {
         StateMachine.PlayerThirdPersonCameraController.canAim = false;
+        StateMachine.Sword.enabled = false;
         HandleImpact();
         StateMachine.Animator.CrossFadeInFixedTime(ImpactClipName, 0.1f);
         _animationClipLength = FindAnimationClipLength();

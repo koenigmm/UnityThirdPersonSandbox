@@ -4,7 +4,6 @@ public class LevelUpUI : MonoBehaviour
 {
     [SerializeField] private Canvas levelUpCanvas;
     [SerializeField] private Canvas attributesUI;
-   
     private PlayerStateMachine _playerStateMachine;
     private bool _showUI = true;
     private InputReader _playerInputReader;
@@ -13,7 +12,6 @@ public class LevelUpUI : MonoBehaviour
     private void Awake()
     {
         var player = GameObject.FindGameObjectWithTag("Player");
-        
         _playerStateMachine = player.GetComponent<PlayerStateMachine>();
         _playerInputReader = _playerStateMachine.InputReader;
         _playerForceReceiver = _playerStateMachine.ForceReceiver;
@@ -21,9 +19,9 @@ public class LevelUpUI : MonoBehaviour
 
     private void Start() => levelUpCanvas.enabled = false;
 
-    private void OnEnable() => _playerInputReader.InteractEvent += ToggleUIVisibility;
+    private void OnEnable() => _playerStateMachine.InputReader.InteractEvent += ToggleUIVisibility;
 
-    private void OnDisable() => _playerInputReader.InteractEvent -= ToggleUIVisibility;
+    private void OnDisable() => _playerStateMachine.InputReader.InteractEvent -= ToggleUIVisibility;
 
     public void ToggleUIVisibility()
     {
