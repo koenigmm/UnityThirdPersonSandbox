@@ -3419,6 +3419,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 450667927170974115, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7783558
+      objectReference: {fileID: 0}
     - target: {fileID: 1823493292525199915, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_ChildCameras.Array.size
       value: 0
@@ -3467,9 +3471,65 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3520468305379590863, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7783558
+      objectReference: {fileID: 0}
+    - target: {fileID: 3520468306374459977, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7783558
+      objectReference: {fileID: 0}
+    - target: {fileID: 3520468306715417691, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7783558
+      objectReference: {fileID: 0}
     - target: {fileID: 3570975129229870688, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Name
       value: PlayerWithCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4161083400777762577, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7783558
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513686308123428601, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7783558
+      objectReference: {fileID: 0}
+    - target: {fileID: 6698680675256654985, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7783558
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98395354
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.1784249
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00000026822087
+      objectReference: {fileID: 0}
+    - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00000004097819
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698947644593990887, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7783558
+      objectReference: {fileID: 0}
+    - target: {fileID: 7940719388761592259, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7783558
+      objectReference: {fileID: 0}
+    - target: {fileID: 8220335779157961760, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000017156003
+      objectReference: {fileID: 0}
+    - target: {fileID: 8220335779157961760, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000071525574
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -6549,7 +6609,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29944
+  m_Name: pb_Mesh31168
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -7963,7 +8023,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30298
+  m_Name: pb_Mesh31310
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -11904,7 +11964,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30250
+  m_Name: pb_Mesh31270
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -15521,7 +15581,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30026
+  m_Name: pb_Mesh31192
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
