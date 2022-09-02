@@ -8,6 +8,7 @@ public class LevelUpUI : MonoBehaviour
     private bool _showUI = true;
     private InputReader _playerInputReader;
     private ForceReceiver _playerForceReceiver;
+    private ThirdPersonCameraController _thirdPersonCameraController;
 
     private void Awake()
     {
@@ -15,6 +16,7 @@ public class LevelUpUI : MonoBehaviour
         _playerStateMachine = player.GetComponent<PlayerStateMachine>();
         _playerInputReader = _playerStateMachine.InputReader;
         _playerForceReceiver = _playerStateMachine.ForceReceiver;
+        _thirdPersonCameraController = _playerStateMachine.PlayerThirdPersonCameraController;
     }
 
     private void Start() => levelUpCanvas.enabled = false;
@@ -34,6 +36,7 @@ public class LevelUpUI : MonoBehaviour
             _playerStateMachine.enabled = false;
             _playerForceReceiver.enabled = false;
             _playerStateMachine.Animator.enabled = false;
+            _thirdPersonCameraController.enabled = false;
         }
         else
         {
@@ -42,6 +45,7 @@ public class LevelUpUI : MonoBehaviour
             _playerStateMachine.enabled = true;
             _playerStateMachine.Animator.enabled = true;
             attributesUI.enabled = false;
+            _thirdPersonCameraController.enabled = true;
         }
 
         _showUI = !_showUI;
