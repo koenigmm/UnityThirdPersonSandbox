@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthBarSlider : MonoBehaviour
 {
     [SerializeField] private Health health;
-    [SerializeField] private Slider slider;
+    [SerializeField] private Image fillImage;
 
     private void Awake()
     {
@@ -27,5 +27,5 @@ public class HealthBarSlider : MonoBehaviour
         health.OnHeal -= UpdateHealthBar;
     }
 
-    private void UpdateHealthBar() => slider.value = health.GetFraction();
+    private void UpdateHealthBar() => fillImage.fillAmount = health.GetFraction();
 }
