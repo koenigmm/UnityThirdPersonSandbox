@@ -7,8 +7,6 @@ public class HealthBarSlider : MonoBehaviour
 {
     [SerializeField] private Health health;
     [SerializeField] private Slider slider;
-    [Header("Optional")]
-    [SerializeField] private TextMeshProUGUI _healthValueElement;
 
     private void Awake()
     {
@@ -29,13 +27,5 @@ public class HealthBarSlider : MonoBehaviour
         health.OnHeal -= UpdateHealthBar;
     }
 
-    private void UpdateHealthBar()
-    {
-        slider.value = health.GetFraction();
-
-        if (_healthValueElement == null) return;
-        var currentHealth = MathF.Floor(health.CurrentHealth);
-        var healthValue = $"{currentHealth} / {health.MaxHealth}";
-        _healthValueElement.text = healthValue;
-    }
+    private void UpdateHealthBar() => slider.value = health.GetFraction();
 }
