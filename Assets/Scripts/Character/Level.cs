@@ -1,7 +1,8 @@
 using System;
+using SavingSystem;
 using UnityEngine;
 
-public class Level : MonoBehaviour
+public class Level : SaveableEntity
 {
     public event Action OnHealthLevelUp;
     public event Action OnStaminaLevelUp;
@@ -79,5 +80,24 @@ public class Level : MonoBehaviour
     {
         public PlayerAttributes playerAttribute;
         public float[] levels;
+    }
+
+    public override void PopulateSaveData(SaveData saveData)
+    {
+        var levelData = new LevelWithID
+        {
+            healthLevel = _healthLevel,
+            staminaLevel = _staminaLevel
+        };
+
+        saveData.playerLevel = levelData;
+    }
+
+    public override void LoadFromSaveData(SaveData saveData)
+    {
+        _healthLevel = saveData.playerLevel.healthLevel;
+        _staminaLevel = saveData.playerLevel.staminaLevel;
+        OnHealthLevelUp?.Invoke();
+        OnStaminaLevelUp?.Invoke();
     }
 }

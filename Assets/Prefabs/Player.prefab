@@ -1155,7 +1155,7 @@ Transform:
   - {fileID: 7794493304992215049}
   - {fileID: 8677610330369840339}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-8272569400086665777
 MonoBehaviour:
@@ -1367,6 +1367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf5584aab5cbaf459da3c7770c5b3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uuid: playerLevel
+  isSaveable: 1
   progressions:
   - playerAttribute: 0
     levels:

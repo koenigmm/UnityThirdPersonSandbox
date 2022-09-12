@@ -43,4 +43,11 @@ namespace SavingSystem
         public string uuid;
         public bool savedBool;
     }
+    
+    [System.Serializable]
+    public struct LevelWithID
+    {
+        public int healthLevel;
+        public int staminaLevel;
+    }
 }

@@ -9,6 +9,7 @@ namespace SavingSystem
         public List<IntWithID> tokenComponents = new();
         public List<Vector3WithID> positionComponents = new();
         public List<QuaternionWithID> rotationComponents = new();
+        public LevelWithID playerLevel;
     }
     
     
