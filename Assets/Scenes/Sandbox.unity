@@ -209,7 +209,15 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1249865696333192866, guid: f27f7e9ff234fa648a70eada77890f6a, type: 3}
+    - target: {fileID: -409557758458060969, guid: f27f7e9ff234fa648a70eada77890f6a, type: 3}
+      propertyPath: uuid
+      value: f560132906f2eab45a71fd88e66da4bf
+      objectReference: {fileID: 0}
+    - target: {fileID: -409557758458060969, guid: f27f7e9ff234fa648a70eada77890f6a, type: 3}
+      propertyPath: amountOfItemsInPickup
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: amountOfAmmo
       value: 300
       objectReference: {fileID: 0}
@@ -3709,6 +3717,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3634902693513372562, guid: 4f65a9eadfefb644bacf4966a85d4b96, type: 3}
+      propertyPath: uuid
+      value: 23dde3244260cf143941dff583f5dc37
+      objectReference: {fileID: 0}
     - target: {fileID: 4930625726843062584, guid: 4f65a9eadfefb644bacf4966a85d4b96, type: 3}
       propertyPath: m_Name
       value: Pickup_LevelUpToken (3)
@@ -4014,19 +4026,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9839536
+      value: 0.98395354
       objectReference: {fileID: 0}
     - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.17842492
+      value: 0.1784249
       objectReference: {fileID: 0}
     - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000032782555
+      value: -0.00000026822087
       objectReference: {fileID: 0}
     - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000052154064
+      value: 0.00000004097819
       objectReference: {fileID: 0}
     - target: {fileID: 7698947644593990887, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
@@ -4038,11 +4050,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8220335779157961760, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0000021996536
+      value: 0.0000017156003
       objectReference: {fileID: 0}
     - target: {fileID: 8220335779157961760, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000011920929
+      value: 0.00000071525574
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -4132,6 +4144,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1783805427}
     m_Modifications:
+    - target: {fileID: 1436872551315676042, guid: 09f3d1b18a1ffb443a799dd50f3dee2a, type: 3}
+      propertyPath: uuid
+      value: d1816c1abb4486140b44d07750cb1a4f
+      objectReference: {fileID: 0}
     - target: {fileID: 3815358338765802678, guid: 09f3d1b18a1ffb443a799dd50f3dee2a, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -4191,6 +4207,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3634902693513372562, guid: 4f65a9eadfefb644bacf4966a85d4b96, type: 3}
+      propertyPath: uuid
+      value: b521c4e03eaae5642943bdd75b644519
+      objectReference: {fileID: 0}
     - target: {fileID: 4930625726843062584, guid: 4f65a9eadfefb644bacf4966a85d4b96, type: 3}
       propertyPath: m_Name
       value: Pickup_LevelUpToken (4)
@@ -7348,6 +7368,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3634902693513372562, guid: 4f65a9eadfefb644bacf4966a85d4b96, type: 3}
+      propertyPath: uuid
+      value: 252f1ba037fddbc45bc09c7609cc1c56
+      objectReference: {fileID: 0}
     - target: {fileID: 4930625726843062584, guid: 4f65a9eadfefb644bacf4966a85d4b96, type: 3}
       propertyPath: m_Name
       value: Pickup_LevelUpToken (5)
@@ -7547,6 +7571,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1783805427}
     m_Modifications:
+    - target: {fileID: 3634902693513372562, guid: 4f65a9eadfefb644bacf4966a85d4b96, type: 3}
+      propertyPath: uuid
+      value: 7f42800ffca712e43acc4136a0844f04
+      objectReference: {fileID: 0}
     - target: {fileID: 4930625726843062584, guid: 4f65a9eadfefb644bacf4966a85d4b96, type: 3}
       propertyPath: m_Name
       value: Pickup_LevelUpToken (1)
@@ -8169,6 +8197,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3634902693513372562, guid: 4f65a9eadfefb644bacf4966a85d4b96, type: 3}
+      propertyPath: uuid
+      value: 6d343103090b52740bfa93a3adff2c23
+      objectReference: {fileID: 0}
     - target: {fileID: 4930625726843062584, guid: 4f65a9eadfefb644bacf4966a85d4b96, type: 3}
       propertyPath: m_Name
       value: Pickup_LevelUpToken (1)
@@ -8228,6 +8260,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3634902693513372562, guid: 4f65a9eadfefb644bacf4966a85d4b96, type: 3}
+      propertyPath: uuid
+      value: 37a8a18d9e788ac429d213976dadbef7
+      objectReference: {fileID: 0}
     - target: {fileID: 4930625726843062584, guid: 4f65a9eadfefb644bacf4966a85d4b96, type: 3}
       propertyPath: m_Name
       value: Pickup_LevelUpToken (2)
@@ -8287,6 +8323,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3634902693513372562, guid: 4f65a9eadfefb644bacf4966a85d4b96, type: 3}
+      propertyPath: uuid
+      value: 1d28434db6e966546adc5f0baf472876
+      objectReference: {fileID: 0}
     - target: {fileID: 4930625726843062584, guid: 4f65a9eadfefb644bacf4966a85d4b96, type: 3}
       propertyPath: m_Name
       value: Pickup_LevelUpToken
@@ -9109,6 +9149,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1783805427}
     m_Modifications:
+    - target: {fileID: 1436872551315676042, guid: 09f3d1b18a1ffb443a799dd50f3dee2a, type: 3}
+      propertyPath: uuid
+      value: 3947d539d6b6e7948913fc69326ecd6a
+      objectReference: {fileID: 0}
     - target: {fileID: 3815358338765802678, guid: 09f3d1b18a1ffb443a799dd50f3dee2a, type: 3}
       propertyPath: m_RootOrder
       value: -1

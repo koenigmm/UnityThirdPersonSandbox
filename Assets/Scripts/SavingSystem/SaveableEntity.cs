@@ -16,9 +16,9 @@ namespace SavingSystem
         public abstract void LoadFromSaveData(SaveData saveData);
 
 #if UNITY_EDITOR
-        protected void SetGuid(bool checkIfIsInPlayOrPrefabMode = true)
+        protected void SetGuid(bool shouldCheckIfIsInPlayOrPrefabMode = true)
         {
-            if (checkIfIsInPlayOrPrefabMode && IsInPlayOrPrefabMode()) return;
+            if (shouldCheckIfIsInPlayOrPrefabMode && IsInPlayOrPrefabMode()) return;
 
             var serializedObject = new SerializedObject(this);
             var serializedProperty = serializedObject.FindProperty("uuid");

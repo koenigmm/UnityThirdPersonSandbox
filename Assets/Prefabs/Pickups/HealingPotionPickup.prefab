@@ -93,8 +93,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3815358338765802678}
   - component: {fileID: 8475521521192143244}
-  - component: {fileID: 8026981466187415828}
   - component: {fileID: 4106057703865567352}
+  - component: {fileID: 1436872551315676042}
   m_Layer: 0
   m_Name: HealingPotionPickup
   m_TagString: Untagged
@@ -131,18 +131,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.28
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8026981466187415828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4696140895581983688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 198232c85b9369c45a98613d921b8f53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4106057703865567352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,3 +148,20 @@ MonoBehaviour:
   anglePerSecond: {x: 0, y: 45, z: 0}
   offset: {x: 0, y: 0, z: 0}
   moveInterpolationSpeed: 0.5
+--- !u!114 &1436872551315676042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4696140895581983688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48594c9f5362bee4ab5fe6e743b8e02e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uuid: 
+  isSaveable: 1
+  pickUpType: 1
+  amountOfItemsInPickup: 1
+  ammoType: 0
