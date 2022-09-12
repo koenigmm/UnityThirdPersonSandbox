@@ -1155,7 +1155,7 @@ Transform:
   - {fileID: 7794493304992215049}
   - {fileID: 8677610330369840339}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-8272569400086665777
 MonoBehaviour:
@@ -1369,6 +1369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uuid: playerLevel
   isSaveable: 1
+  isPlayer: 1
   progressions:
   - playerAttribute: 0
     levels:
@@ -1406,6 +1407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8efa8173d82afac41a4738691583a9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uuid: 
+  isSaveable: 1
 --- !u!114 &2148397857325257544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1418,6 +1421,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbcf200557c9154e83a1fc98d788767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uuid: 
+  isSaveable: 1
   restoringPercentage: 100
 --- !u!114 &7014277120043651154
 MonoBehaviour:
@@ -1431,6 +1436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ce3a8100664c1193a031b7f56cb9be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uuid: 
+  isSaveable: 1
   ammoInventoryStartValues:
   - type: 0
     amount: 0
@@ -3541,6 +3548,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7118862042316035745, guid: 68e106c30ff31e14c9485152aca28536, type: 3}
       propertyPath: ammoInventory
+      value: 
+      objectReference: {fileID: 7014277120043651154}
+    - target: {fileID: 7118862042316035745, guid: 68e106c30ff31e14c9485152aca28536, type: 3}
+      propertyPath: ammunitionInventory
       value: 
       objectReference: {fileID: 7014277120043651154}
     - target: {fileID: 8231188049552942514, guid: 68e106c30ff31e14c9485152aca28536, type: 3}

@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class AmmoPickup : MonoBehaviour
 {
-    [SerializeField] private AmmoType ammoType;
+    [SerializeField] private AmmunitionType ammunitionType;
     [SerializeField] private int amountOfAmmo;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out AmmoInventory ammoInventory))
+        if (other.TryGetComponent(out AmmunitionInventory ammoInventory))
         {
-            ammoInventory.IncreaseAmmo(ammoType, amountOfAmmo);
+            ammoInventory.IncreaseAmmo(ammunitionType, amountOfAmmo);
             gameObject.SetActive(false);
         }
     }

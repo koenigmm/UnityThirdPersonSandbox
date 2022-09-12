@@ -6,6 +6,7 @@ public class Level : SaveableEntity
 {
     public event Action OnHealthLevelUp;
     public event Action OnStaminaLevelUp;
+    [SerializeField] private bool isPlayer;
     [SerializeField] private Progression[] progressions;
     private int _healthLevel;
     private int _staminaLevel;
@@ -84,7 +85,8 @@ public class Level : SaveableEntity
 
     public override void PopulateSaveData(SaveData saveData)
     {
-        var levelData = new LevelWithID
+        if (!isPlayer) return;
+        var levelData = new SavingSystem.Level
         {
             healthLevel = _healthLevel,
             staminaLevel = _staminaLevel
@@ -95,6 +97,7 @@ public class Level : SaveableEntity
 
     public override void LoadFromSaveData(SaveData saveData)
     {
+        if (!isPlayer) return;
         _healthLevel = saveData.playerLevel.healthLevel;
         _staminaLevel = saveData.playerLevel.staminaLevel;
         OnHealthLevelUp?.Invoke();

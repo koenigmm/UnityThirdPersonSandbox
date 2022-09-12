@@ -12,7 +12,7 @@ public class Pickup : SaveableEntity
     private Collider _collider;
     [SerializeField] private PickUpType pickUpType;
     [SerializeField] private int amountOfItemsInPickup = 1;
-    [SerializeField] private AmmoType ammoType;
+    [SerializeField] private AmmunitionType ammunitionType;
 
     private void Awake()
     {
@@ -44,8 +44,8 @@ public class Pickup : SaveableEntity
                 DisablePickup();
                 break;
             case PickUpType.Ammunition:
-                if (!other.TryGetComponent<AmmoInventory>(out var ammoInventory)) return;
-                ammoInventory.IncreaseAmmo(ammoType, amountOfItemsInPickup);
+                if (!other.TryGetComponent<AmmunitionInventory>(out var ammoInventory)) return;
+                ammoInventory.IncreaseAmmo(ammunitionType, amountOfItemsInPickup);
                 DisablePickup();
                 break;
             default:

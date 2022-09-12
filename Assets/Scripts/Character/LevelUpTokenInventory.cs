@@ -1,7 +1,8 @@
 using System;
+using SavingSystem;
 using UnityEngine;
 
-public class LevelUpTokenInventory : MonoBehaviour
+public class LevelUpTokenInventory : SaveableEntity
 {
     public event Action OnTokenValueChange;
     public int AmountOfLevelUpTokens { get; private set; }
@@ -41,4 +42,8 @@ public class LevelUpTokenInventory : MonoBehaviour
         AmountOfLevelUpTokens--;
         OnTokenValueChange?.Invoke();
     }
+
+    public override void PopulateSaveData(SaveData saveData) => saveData.levelUpTokensInInventory = AmountOfLevelUpTokens;
+
+    public override void LoadFromSaveData(SaveData saveData) => AmountOfLevelUpTokens = saveData.levelUpTokensInInventory;
 }

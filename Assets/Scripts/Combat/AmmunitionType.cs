@@ -1,4 +1,4 @@
-public enum AmmoType
+public enum AmmunitionType
 {
     Bullet,
     HeavyBullet

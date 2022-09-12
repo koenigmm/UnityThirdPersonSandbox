@@ -1,8 +1,8 @@
 using System;
+using SavingSystem;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class HealingPotionsInventory : MonoBehaviour
+public class HealingPotionsInventory : SaveableEntity
 {
     [Tooltip("Default is MaxHealth"), Range(1, 100)]
     [SerializeField] private int restoringPercentage = 100;
@@ -48,6 +48,9 @@ public class HealingPotionsInventory : MonoBehaviour
         if (DecreaseAmountOfHealthPotions()) 
             _playerHealth.Heal( _playerHealth.MaxHealth * _restoringFraction);
     }
-    
-    
+
+
+    public override void PopulateSaveData(SaveData saveData) => saveData.healingPotionsInInventory = AmountOfPotions;
+
+    public override void LoadFromSaveData(SaveData saveData) => AmountOfPotions = saveData.healingPotionsInInventory;
 }

@@ -13,18 +13,18 @@ public class RangedWeapon : MonoBehaviour
     [Header("Ammo")]
     [SerializeField] private int maxAmmoInWeapon = 10;
     [SerializeField] private int currentAmmo = 0;
-    [SerializeField] private AmmoInventory ammoInventory;
-    [SerializeField] private AmmoType ammoType;
+    [SerializeField] private AmmunitionInventory ammunitionInventory;
+    [SerializeField] private AmmunitionType ammunitionType;
     [SerializeField] private VisualEffect muzzleVFX;
 
     public int CurrentAmmo => currentAmmo;
-    public AmmoType AmmoType => ammoType;
+    public AmmunitionType AmmunitionType => ammunitionType;
     public float ReloadingTime => reloadingTime;
 
     private void Awake()
     {
-        if (ammoInventory != null) return;
-        ammoInventory = GetComponentInParent<AmmoInventory>();
+        if (ammunitionInventory != null) return;
+        ammunitionInventory = GetComponentInParent<AmmunitionInventory>();
     }
 
     private void Start()
@@ -57,7 +57,7 @@ public class RangedWeapon : MonoBehaviour
         var currentAmmoBeforeReload = currentAmmo; 
         if (currentAmmo == maxAmmoInWeapon) return false;
         var ammoNeededToFillWeapon = maxAmmoInWeapon - currentAmmo;
-        currentAmmo += ammoInventory.GetAmmo(ammoType, ammoNeededToFillWeapon);
+        currentAmmo += ammunitionInventory.GetAmmo(ammunitionType, ammoNeededToFillWeapon);
         OnAmmoChange?.Invoke();
         return currentAmmo != currentAmmoBeforeReload;
     }

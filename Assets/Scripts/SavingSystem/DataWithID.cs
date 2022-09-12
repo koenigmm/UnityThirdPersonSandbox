@@ -45,9 +45,16 @@ namespace SavingSystem
     }
     
     [System.Serializable]
-    public struct LevelWithID
+    public struct Level
     {
         public int healthLevel;
         public int staminaLevel;
+    }
+    
+    [System.Serializable]
+    public struct AmmunitionInventoryData
+    {
+        public int bullets;
+        public int heavyBullets;
     }
 }

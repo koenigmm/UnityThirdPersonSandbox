@@ -5,7 +5,7 @@ public class AmmoDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI ammoDisplayTextField;
     private RangedWeapon _currentRangedWeapon;
-    private AmmoInventory _ammoInventory;
+    private AmmunitionInventory _ammunitionInventory;
     private PlayerStateMachine _playerStateMachine;
 
     private void Awake()
@@ -13,25 +13,25 @@ public class AmmoDisplay : MonoBehaviour
         var player = GameObject.FindWithTag("Player");
         _playerStateMachine = player.GetComponent<PlayerStateMachine>();
         _currentRangedWeapon = _playerStateMachine.CurrentRangedWeapon;
-        _ammoInventory = player.GetComponent<AmmoInventory>();
+        _ammunitionInventory = player.GetComponent<AmmunitionInventory>();
     }
     
 
     private void OnEnable()
     {
         _currentRangedWeapon.OnAmmoChange += UpdateTextField;
-        _ammoInventory.OnAmmoChange += UpdateTextField;
+        _ammunitionInventory.OnAmmoChange += UpdateTextField;
     }
 
     private void OnDisable()
     {
         _currentRangedWeapon.OnAmmoChange -= UpdateTextField;
-        _ammoInventory.OnAmmoChange -= UpdateTextField;
+        _ammunitionInventory.OnAmmoChange -= UpdateTextField;
     }
 
     private void UpdateTextField()
     {
-        var ammoDisplayText = $"{_currentRangedWeapon.CurrentAmmo} / {_ammoInventory.GetAmountOfAmmo(_currentRangedWeapon.AmmoType)}";
+        var ammoDisplayText = $"{_currentRangedWeapon.CurrentAmmo} / {_ammunitionInventory.GetAmountOfAmmo(_currentRangedWeapon.AmmunitionType)}";
         ammoDisplayTextField.text = ammoDisplayText;
     }
 }
