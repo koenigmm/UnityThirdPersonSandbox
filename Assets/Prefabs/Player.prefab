@@ -1350,8 +1350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f978a8af7ae514fad4dd51de532fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restoringInterval: 0.5
-  restoringAmountPerInterval: 3.5
+  restoringInterval: 1
+  restoringAmountPerInterval: 10
 --- !u!114 &7769072485675963761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,13 +1372,23 @@ MonoBehaviour:
     - 250
     - 300
     - 350
+    - 400
+    - 425
+    - 450
+    - 475
+    - 500
   - playerAttribute: 1
     levels:
     - 100
     - 150
-    - 200
     - 250
     - 300
+    - 350
+    - 400
+    - 425
+    - 450
+    - 475
+    - 500
 --- !u!114 &3323229260028380312
 MonoBehaviour:
   m_ObjectHideFlags: 0
