@@ -11,6 +11,7 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter()
     {
+        Debug.Log("Die");
         StateMachine.Sword.enabled = false;
         DeactivateAI();
         StateMachine.Animator.CrossFadeInFixedTime(_animationHash, DeathAnimationBlendTime);

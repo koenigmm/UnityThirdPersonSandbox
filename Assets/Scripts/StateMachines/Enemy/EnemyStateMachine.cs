@@ -1,8 +1,11 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(Collider), typeof(NavMeshAgent), typeof(Animator))]
 [RequireComponent(typeof(Health))]
+
+// Script execution order changed
 public class EnemyStateMachine : StateMachine
 {
     [field: SerializeField] public float AttackRange { get; private set; }
@@ -18,7 +21,7 @@ public class EnemyStateMachine : StateMachine
     public NavMeshAgent Agent { get; private set; }
     public Target Target { get; private set; }
     public Collider Collider { get; private set; }
-    public Health Health { get; private set; }
+    private Health _health;
 
     private void Awake()
     {
@@ -27,25 +30,26 @@ public class EnemyStateMachine : StateMachine
         Collider = GetComponent<Collider>();
         HealthBarCanvas = GetComponentInChildren<Canvas>();
         Animator = GetComponent<Animator>();
-        Health = GetComponent<Health>();
+        _health = GetComponent<Health>();
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
-        SwitchState(new EnemyIdleState(this));
+        if (_health.IsAlive()) SwitchState(new EnemyIdleState(this));
+        else SwitchState(new EnemyDeadState(this));
     }
 
     private void OnEnable()
     {
-        Health.OnDamage += HandleDamage;
-        Health.OnDie += HandleDeath;
+        _health.OnDamage += HandleDamage;
+        _health.OnDie += HandleDeath;
     }
 
     private void OnDisable()
     {
-        Health.OnDamage -= HandleDamage;
-        Health.OnDie -= HandleDeath;
+        _health.OnDamage -= HandleDamage;
+        _health.OnDie -= HandleDeath;
     }
 
     private void HandleDamage() => SwitchState(new EnemyImpactState(this));

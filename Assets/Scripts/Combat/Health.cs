@@ -1,7 +1,8 @@
 using System;
+using SavingSystem;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health : SaveableEntity
 {
     public event Action OnDamage;
     public event Action OnHeal;
@@ -13,6 +14,7 @@ public class Health : MonoBehaviour
     public float CurrentHealth { get; private set; }
     private ForceReceiver _forceReceiver;
     private Level _level;
+    private bool _isRestoredFromSavegame;
 
     private void OnEnable()
     {
@@ -21,7 +23,6 @@ public class Health : MonoBehaviour
         _level.OnHealthLevelUp += HandleLevelUp;
     }
 
-    
 
     private void OnDisable()
     {
@@ -39,9 +40,17 @@ public class Health : MonoBehaviour
     private void Start()
     {
         MaxHealth = _level.GetMaxHealth();
-        CurrentHealth = _level.GetMaxHealth();
+        if (!_isRestoredFromSavegame)CurrentHealth = _level.GetMaxHealth();
         OnHeal?.Invoke();
     }
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        SetGuid();
+    }
+#endif
+
 
     public void DealDamage(float damage)
     {
@@ -55,6 +64,7 @@ public class Health : MonoBehaviour
             OnDie?.Invoke();
             return;
         }
+
         print(CurrentHealth);
     }
 
@@ -69,12 +79,35 @@ public class Health : MonoBehaviour
     public bool IsAlive() => CurrentHealth > 0f;
 
     public float GetFraction() => CurrentHealth / MaxHealth;
-    
+
     private void HandleDeadlyVelocity() => DealDamage(MaxHealth);
+
     private void HandleLevelUp()
     {
         MaxHealth = _level.GetMaxHealth();
         CurrentHealth = MathF.Max(MaxHealth * (levelUpRestorePercentage / 100f), CurrentHealth);
         OnHeal?.Invoke();
+    }
+
+    public override void PopulateSaveData(SaveData saveData)
+    {
+        var healthData = new FloatWithID
+        {
+            uuid = uuid,
+            savedFloat = CurrentHealth
+        };
+
+        saveData.healthComponents.Add(healthData);
+    }
+
+    public override void LoadFromSaveData(SaveData saveData)
+    {
+        foreach (var healthComponent in saveData.healthComponents)
+        {
+            if (healthComponent.uuid != uuid) continue;
+            CurrentHealth = healthComponent.savedFloat;
+            _isRestoredFromSavegame = true;
+        }
+        
     }
 }

@@ -8,7 +8,7 @@ namespace SavingSystem
     {
         private string _persistentPath;
 
-        private void Start()
+        private void Awake()
         {
             _persistentPath = Application.persistentDataPath + "/save.json";
             Load();
