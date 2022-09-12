@@ -217,10 +217,6 @@ PrefabInstance:
       propertyPath: amountOfItemsInPickup
       value: 50
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: amountOfAmmo
-      value: 300
-      objectReference: {fileID: 0}
     - target: {fileID: 2802613277861440962, guid: f27f7e9ff234fa648a70eada77890f6a, type: 3}
       propertyPath: m_Name
       value: BulletPickup
@@ -3892,6 +3888,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 77037647191030616, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 77037647191030617, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 450667927170974115, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
       value: 1.7785642
@@ -4016,6 +4020,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4897845265171765130, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
+      propertyPath: uuid
+      value: f7706872ad1c9ae45b4886a7f84e30d4
+      objectReference: {fileID: 0}
     - target: {fileID: 6490437772973035150, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: uuid
       value: player
@@ -4050,11 +4058,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8220335779157961760, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0000017156003
+      value: 0.0000021996536
       objectReference: {fileID: 0}
     - target: {fileID: 8220335779157961760, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000071525574
+      value: 0.0000011920929
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

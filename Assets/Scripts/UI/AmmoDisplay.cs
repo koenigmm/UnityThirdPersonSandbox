@@ -31,7 +31,7 @@ public class AmmoDisplay : MonoBehaviour
 
     private void UpdateTextField()
     {
-        var ammoDisplayText = $"{_currentRangedWeapon.CurrentAmmo} / {_ammunitionInventory.GetAmountOfAmmo(_currentRangedWeapon.AmmunitionType)}";
+        var ammoDisplayText = $"{_currentRangedWeapon.CurrentAmmunition} / {_ammunitionInventory.GetAmountOfAmmo(_currentRangedWeapon.AmmunitionType)}";
         ammoDisplayTextField.text = ammoDisplayText;
     }
 }

@@ -21,7 +21,6 @@ public class AmmunitionInventory : SaveableEntity
 
     private void Start()
     {
-        OnAmmoChange?.Invoke();
         if (isRestored) return;
         
         // Get first values for ammo dictionary from SerializeField
@@ -30,7 +29,7 @@ public class AmmunitionInventory : SaveableEntity
             _ammunition[ammo.type] = ammo.amount;
         }
         
-        
+        OnAmmoChange?.Invoke();
     }
 
     public void IncreaseAmmo(AmmunitionType ammunitionType, int amount = 1)
@@ -65,5 +64,6 @@ public class AmmunitionInventory : SaveableEntity
         isRestored = true;
         _ammunition[AmmunitionType.HeavyBullet] = saveData.ammunitionInventoryData.heavyBullets;
         _ammunition[AmmunitionType.Bullet] = saveData.ammunitionInventoryData.bullets;
+        OnAmmoChange?.Invoke();
     }
 }
