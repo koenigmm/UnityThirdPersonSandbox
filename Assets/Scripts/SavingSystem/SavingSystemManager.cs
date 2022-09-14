@@ -24,6 +24,7 @@ namespace SavingSystem
             var saveableEntities = FindObjectsOfType<SaveableEntity>();
             foreach (var component in saveableEntities) component.PopulateSaveData(saveData);
             File.WriteAllText(_persistentPath, JsonUtility.ToJson(saveData, true));
+            print($"Saved at {_persistentPath}");
         }
 
         private void Load()
@@ -37,6 +38,7 @@ namespace SavingSystem
             var saveableEntities = FindObjectsOfType<SaveableEntity>();
             
             foreach (var entity in saveableEntities) entity.LoadFromSaveData(saveData);
+            print("savegame loaded");
         }
 
         // public void ClearSavedData()
