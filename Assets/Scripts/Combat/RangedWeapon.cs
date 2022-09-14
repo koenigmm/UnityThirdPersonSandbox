@@ -6,7 +6,7 @@ using UnityEngine.VFX;
 
 public class RangedWeapon : SaveableEntity
 {
-    public event Action OnAmmunitionChange;
+    // public event Action OnAmmunitionChange;
 
     [Header("Weapon Attributes")] [SerializeField]
     private float damage = 10f;
@@ -33,16 +33,8 @@ public class RangedWeapon : SaveableEntity
     {
         muzzleVFX.enabled = true;
         muzzleVFX.Stop();
-        StartCoroutine(DelayedOnAmmunitionChangeInvoke());
     }
-
-    private IEnumerator DelayedOnAmmunitionChangeInvoke()
-    {
-        yield return new WaitForEndOfFrame();
-        OnAmmunitionChange?.Invoke();
-
-    }
-
+    
 #if UNITY_EDITOR
     private void Update()
     {
@@ -62,7 +54,6 @@ public class RangedWeapon : SaveableEntity
         if (!hasHit) return;
 
         currentAmmunition = Math.Max(0, currentAmmunition - 1);
-        OnAmmunitionChange?.Invoke();
         muzzleVFX.Play();
 
         if (raycastHit.transform.TryGetComponent(out Health enemyHealth))
@@ -75,7 +66,6 @@ public class RangedWeapon : SaveableEntity
         if (currentAmmunition == maxAmmoInWeapon) return false;
         var ammoNeededToFillWeapon = maxAmmoInWeapon - currentAmmunition;
         currentAmmunition += ammunitionInventory.GetAmmo(ammunitionType, ammoNeededToFillWeapon);
-        OnAmmunitionChange?.Invoke();
         return currentAmmunition != currentAmmoBeforeReload;
     }
 
@@ -97,7 +87,5 @@ public class RangedWeapon : SaveableEntity
             if (weapon.uuid != uuid) continue;
             currentAmmunition = weapon.savedInt;
         }
-
-        OnAmmunitionChange?.Invoke();
     }
 }
