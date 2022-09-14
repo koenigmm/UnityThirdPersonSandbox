@@ -1996,6 +1996,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf5584aab5cbaf459da3c7770c5b3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uuid: 
+  isSaveable: 1
+  isPlayer: 0
   progressions:
   - playerAttribute: 0
     levels:
@@ -2076,6 +2079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uuid: 
   isSaveable: 1
+  isAIControlled: 1
 --- !u!1 &5533334298152091290
 GameObject:
   m_ObjectHideFlags: 0
