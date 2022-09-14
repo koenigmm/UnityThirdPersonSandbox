@@ -12,6 +12,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action ShowAttributesEvent;
     public event Action ConsumePotionEvent;
     public event Action OnReloadWeapon;
+    public event Action OnMainMenuToggle;
 
     public bool IsAttacking { get; private set; }
     public bool IsBlocking { get; private set; }
@@ -112,5 +113,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         if (!context.performed) return;
         OnReloadWeapon?.Invoke();
+    }
+
+    public void OnShowMainMenu(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        OnMainMenuToggle?.Invoke();
     }
 }

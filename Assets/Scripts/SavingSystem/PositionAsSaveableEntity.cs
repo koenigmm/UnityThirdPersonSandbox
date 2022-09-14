@@ -27,6 +27,7 @@
             foreach (var position in saveData.positionComponents)
             {
                 if (position.uuid != uuid) continue;
+                print(transform.name);
                 transform.position = position.savedVector3;
             }
         }

@@ -12,7 +12,7 @@ public class RangedWeapon : SaveableEntity
     [SerializeField] private float reloadingTime = 1.5f;
     [Header("Ammo")]
     [SerializeField] private int maxAmmoInWeapon = 10;
-    [SerializeField] private int currentAmmunition = 0;
+    [SerializeField] private int currentAmmunition;
     [SerializeField] private AmmunitionInventory ammunitionInventory;
     [SerializeField] private AmmunitionType ammunitionType;
     [SerializeField] private VisualEffect muzzleVFX;
@@ -29,7 +29,7 @@ public class RangedWeapon : SaveableEntity
 
     private void Start()
     {
-        OnAmmoChange?.Invoke();
+        // OnAmmoChange?.Invoke();
         muzzleVFX.enabled = true;
         muzzleVFX.Stop();
     }

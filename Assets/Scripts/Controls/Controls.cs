@@ -143,6 +143,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShowMainMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""0b97def3-7754-4b63-a455-6be55acc5b32"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -475,6 +484,28 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7bbb9033-38be-4017-9529-6c5da43b8f36"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""ShowMainMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bc2d5de4-46ea-48d6-a08f-302d5d95fc63"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ShowMainMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -524,6 +555,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_ConsumePotion = m_Player.FindAction("ConsumePotion", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
+        m_Player_ShowMainMenu = m_Player.FindAction("ShowMainMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -596,6 +628,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ConsumePotion;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Reload;
+    private readonly InputAction m_Player_ShowMainMenu;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -613,6 +646,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @ConsumePotion => m_Wrapper.m_Player_ConsumePotion;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
+        public InputAction @ShowMainMenu => m_Wrapper.m_Player_ShowMainMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -661,6 +695,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Reload.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 @Reload.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 @Reload.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
+                @ShowMainMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowMainMenu;
+                @ShowMainMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowMainMenu;
+                @ShowMainMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowMainMenu;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -704,6 +741,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
+                @ShowMainMenu.started += instance.OnShowMainMenu;
+                @ShowMainMenu.performed += instance.OnShowMainMenu;
+                @ShowMainMenu.canceled += instance.OnShowMainMenu;
             }
         }
     }
@@ -741,5 +781,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnConsumePotion(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnShowMainMenu(InputAction.CallbackContext context);
     }
 }

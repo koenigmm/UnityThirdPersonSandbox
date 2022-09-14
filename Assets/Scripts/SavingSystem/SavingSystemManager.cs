@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.IO;
 
 namespace SavingSystem
@@ -27,7 +26,7 @@ namespace SavingSystem
             File.WriteAllText(_persistentPath, JsonUtility.ToJson(saveData, true));
         }
 
-        public void Load()
+        private void Load()
         {
             if (!File.Exists(_persistentPath)) return;
 
@@ -40,10 +39,10 @@ namespace SavingSystem
             foreach (var entity in saveableEntities) entity.LoadFromSaveData(saveData);
         }
 
-        public void ClearSavedData()
-        {
-            if (File.Exists(_persistentPath)) File.Delete(_persistentPath);
-        }
+        // public void ClearSavedData()
+        // {
+        //     if (File.Exists(_persistentPath)) File.Delete(_persistentPath);
+        // }
         
     }
 }

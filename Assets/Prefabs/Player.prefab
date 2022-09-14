@@ -1124,7 +1124,6 @@ GameObject:
   - component: {fileID: 3323229260028380312}
   - component: {fileID: 2148397857325257544}
   - component: {fileID: 7014277120043651154}
-  - component: {fileID: -5502184741929023616}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1443,20 +1442,6 @@ MonoBehaviour:
     amount: 0
   - type: 1
     amount: 0
---- !u!114 &-5502184741929023616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2834197436992109030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28213d84b999468c963f463172025684, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uuid: playerPosition
-  isSaveable: 1
 --- !u!1 &2993587700892223217
 GameObject:
   m_ObjectHideFlags: 0
@@ -3478,6 +3463,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 3179197335369212764}
     m_Modifications:
+    - target: {fileID: 2315503636286880370, guid: 68e106c30ff31e14c9485152aca28536, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2315503638088019224, guid: 68e106c30ff31e14c9485152aca28536, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
