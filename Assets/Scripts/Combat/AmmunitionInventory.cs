@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class AmmunitionInventory : SaveableEntity
 {
-    public event Action OnAmmoChange;
+    public event Action OnAmmunitionChange;
     
     [SerializeField] private AmmoInventoryStartValue[] ammoInventoryStartValues;
     private Dictionary<AmmunitionType, int> _ammunition = new();
-    private bool isRestored;
+    private bool _isRestored;
 
     [Serializable]
     private class AmmoInventoryStartValue
@@ -21,7 +21,7 @@ public class AmmunitionInventory : SaveableEntity
 
     private void Start()
     {
-        if (isRestored) return;
+        if (_isRestored) return;
         
         // Get first values for ammo dictionary from SerializeField
         foreach (var ammo in ammoInventoryStartValues)
@@ -29,18 +29,17 @@ public class AmmunitionInventory : SaveableEntity
             _ammunition[ammo.type] = ammo.amount;
         }
         
-        OnAmmoChange?.Invoke();
     }
 
     public void IncreaseAmmo(AmmunitionType ammunitionType, int amount = 1)
     {
         _ammunition[ammunitionType] += Math.Abs(amount);
-        OnAmmoChange?.Invoke();
+        OnAmmunitionChange?.Invoke();
     }
 
     public int GetAmmo(AmmunitionType ammunitionType, int amount)
     {
-        OnAmmoChange?.Invoke();
+        OnAmmunitionChange?.Invoke();
         var ammoToReturn =  Math.Min(_ammunition[ammunitionType], amount);
         _ammunition[ammunitionType] -= ammoToReturn;
         return ammoToReturn;
@@ -61,9 +60,9 @@ public class AmmunitionInventory : SaveableEntity
 
     public override void LoadFromSaveData(SaveData saveData)
     {
-        isRestored = true;
+        _isRestored = true;
         _ammunition[AmmunitionType.HeavyBullet] = saveData.ammunitionInventoryData.heavyBullets;
         _ammunition[AmmunitionType.Bullet] = saveData.ammunitionInventoryData.bullets;
-        OnAmmoChange?.Invoke();
+        OnAmmunitionChange?.Invoke();
     }
 }

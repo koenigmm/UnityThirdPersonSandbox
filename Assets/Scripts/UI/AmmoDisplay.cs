@@ -19,16 +19,16 @@ public class AmmoDisplay : MonoBehaviour
 
     private void OnEnable()
     {
-        // TODO ranged weapon change
-        _currentRangedWeapon.OnAmmoChange += UpdateTextField;
-        _ammunitionInventory.OnAmmoChange += UpdateTextField;
+        // TODO ranged weapon change / weapon switcher
+        _currentRangedWeapon.OnAmmunitionChange += UpdateTextField;
+        _ammunitionInventory.OnAmmunitionChange += UpdateTextField;
     }
 
     private void OnDisable()
     {
-        // TODO ranged weapon change
-        _currentRangedWeapon.OnAmmoChange -= UpdateTextField;
-        _ammunitionInventory.OnAmmoChange -= UpdateTextField;
+        // TODO ranged weapon change / weapon switcher
+        _currentRangedWeapon.OnAmmunitionChange -= UpdateTextField;
+        _ammunitionInventory.OnAmmunitionChange -= UpdateTextField;
     }
 
     private void UpdateTextField()

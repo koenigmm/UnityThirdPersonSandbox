@@ -1,17 +1,19 @@
 ﻿using System;
+using System.Collections;
 using SavingSystem;
 using UnityEngine;
 using UnityEngine.VFX;
 
 public class RangedWeapon : SaveableEntity
 {
-    public event Action OnAmmoChange;
-    [Header("Weapon Attributes")]
-    [SerializeField] private float damage = 10f;
+    public event Action OnAmmunitionChange;
+
+    [Header("Weapon Attributes")] [SerializeField]
+    private float damage = 10f;
+
     [SerializeField] private float range = 100f;
     [SerializeField] private float reloadingTime = 1.5f;
-    [Header("Ammo")]
-    [SerializeField] private int maxAmmoInWeapon = 10;
+    [Header("Ammo")] [SerializeField] private int maxAmmoInWeapon = 10;
     [SerializeField] private int currentAmmunition;
     [SerializeField] private AmmunitionInventory ammunitionInventory;
     [SerializeField] private AmmunitionType ammunitionType;
@@ -27,11 +29,18 @@ public class RangedWeapon : SaveableEntity
         ammunitionInventory = GetComponentInParent<AmmunitionInventory>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        // OnAmmoChange?.Invoke();
         muzzleVFX.enabled = true;
         muzzleVFX.Stop();
+        StartCoroutine(DelayedOnAmmunitionChangeInvoke());
+    }
+
+    private IEnumerator DelayedOnAmmunitionChangeInvoke()
+    {
+        yield return new WaitForEndOfFrame();
+        OnAmmunitionChange?.Invoke();
+
     }
 
 #if UNITY_EDITOR
@@ -53,7 +62,7 @@ public class RangedWeapon : SaveableEntity
         if (!hasHit) return;
 
         currentAmmunition = Math.Max(0, currentAmmunition - 1);
-        OnAmmoChange?.Invoke();
+        OnAmmunitionChange?.Invoke();
         muzzleVFX.Play();
 
         if (raycastHit.transform.TryGetComponent(out Health enemyHealth))
@@ -62,11 +71,11 @@ public class RangedWeapon : SaveableEntity
 
     public bool TryReload()
     {
-        var currentAmmoBeforeReload = currentAmmunition; 
+        var currentAmmoBeforeReload = currentAmmunition;
         if (currentAmmunition == maxAmmoInWeapon) return false;
         var ammoNeededToFillWeapon = maxAmmoInWeapon - currentAmmunition;
         currentAmmunition += ammunitionInventory.GetAmmo(ammunitionType, ammoNeededToFillWeapon);
-        OnAmmoChange?.Invoke();
+        OnAmmunitionChange?.Invoke();
         return currentAmmunition != currentAmmoBeforeReload;
     }
 
@@ -87,7 +96,8 @@ public class RangedWeapon : SaveableEntity
         {
             if (weapon.uuid != uuid) continue;
             currentAmmunition = weapon.savedInt;
-            OnAmmoChange?.Invoke();
         }
+
+        OnAmmunitionChange?.Invoke();
     }
 }

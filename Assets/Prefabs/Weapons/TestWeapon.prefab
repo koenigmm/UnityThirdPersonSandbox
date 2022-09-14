@@ -47,13 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc12744707049f6a4d9de1a5dd84263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uuid: test_weapon
+  isSaveable: 1
   damage: 40
   range: 500
   reloadingTime: 1.5
   maxAmmoInWeapon: 5
-  currentAmmo: 0
-  ammoInventory: {fileID: 0}
-  ammoType: 0
+  currentAmmunition: 0
+  ammunitionInventory: {fileID: 0}
+  ammunitionType: 0
   muzzleVFX: {fileID: 2315503636286880370}
 --- !u!23 &3030095604590432568
 MeshRenderer:
