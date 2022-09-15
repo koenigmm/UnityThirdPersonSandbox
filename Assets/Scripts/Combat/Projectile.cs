@@ -20,7 +20,6 @@ public class Projectile : MonoBehaviour
         const float destroyTime = 2f;
 
         if (other.CompareTag("IgnoreRaycast")) return;
-        print(other.name);
         ShowImpactEffect(other, destroyTime);
 
         if (!other.TryGetComponent(out Health enemyHealth)) return;

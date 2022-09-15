@@ -31,7 +31,7 @@ public class EnemyChasingState : EnemyBaseState
         
         if (!IsInChaseRange() && !_isProvoked)
         {
-            StateMachine.SwitchState(new EnemyIdleState(StateMachine));
+            StateMachine.SwitchState(new EnemyIdleState(StateMachine, true));
             return;
         }
 

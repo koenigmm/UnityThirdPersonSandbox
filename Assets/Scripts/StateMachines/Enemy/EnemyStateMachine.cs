@@ -8,13 +8,19 @@ using UnityEngine.AI;
 // Script execution order changed
 public class EnemyStateMachine : StateMachine
 {
+    // Combat
     [field: SerializeField] public float AttackRange { get; private set; }
     [field: SerializeField] public SwordDamage Sword { get; private set; }
     [field: SerializeField] public float AttackDamage { get; private set; }
-    [field: SerializeField] public float ChaseRange { get; private set; } = 10f;
     [field: SerializeField] public float ImpactOffset { get; private set; } = -2.5f;
-    [field: SerializeField] public float StunningDelay { get; private set; } = 1f;
     [field: SerializeField] public float AttackDelay { get; private set; } = 0.9f;
+    
+    // AI Behaviour
+    [field: SerializeField] public float ChaseRange { get; private set; } = 10f;
+    [field: SerializeField] public float SuspiciousTime { get; private set; } = 5f;
+    [field: SerializeField] public float StunningDelay { get; private set; } = 1f;
+    
+    // Ranged Attacks
     [field: SerializeField] public bool IsMelee { get; private set; } = true;
     [field: SerializeField] public GameObject Projectile { get; private set; }
     [field: SerializeField] public Transform ProjectileLaunchPoint { get; private set; }
