@@ -2,8 +2,7 @@
 
 public class EnemyPatrollingState : EnemyBaseState
 {
-    // private const float WaitTime = 3f;
-    private const float WaypointDetectionTolerance = 2f;
+    private const float WaypointDetectionTolerance = 2.5f;
     private const int StartIndex = 0;
     private float _timer;
     private int _currentWaypointIndex;
@@ -44,9 +43,7 @@ public class EnemyPatrollingState : EnemyBaseState
     }
 
 
-    public override void Exit()
-    {
-    }
+    public override void Exit() { }
 
     private bool HasReachedTargetPosition() =>
         Vector3.Distance(StateMachine.transform.position, _waypoints.GetWaypoint(_currentWaypointIndex)) <
