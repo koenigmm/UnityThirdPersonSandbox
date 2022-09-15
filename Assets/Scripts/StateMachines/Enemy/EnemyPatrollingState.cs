@@ -33,6 +33,12 @@ public class EnemyPatrollingState : EnemyBaseState
         {
             StateMachine.Agent.SetDestination(_waypoints.GetWaypoint(_currentWaypointIndex));
         }
+        
+        if (IsInChaseRange())
+        {
+            StateMachine.SwitchState(new EnemyChasingState(StateMachine));
+            return;
+        }
 
         _timer += deltaTime;
     }
