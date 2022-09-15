@@ -23,13 +23,11 @@ public class Projectile : MonoBehaviour
         print(other.name);
         ShowImpactEffect(other, destroyTime);
 
-        if (other.TryGetComponent(out Health enemyHealth))
-        {
-            enemyHealth.DealDamage(damage);
-            Destroy(gameObject);
-        }
-        
-        
+        if (!other.TryGetComponent(out Health enemyHealth)) return;
+        enemyHealth.DealDamage(damage);
+        Destroy(gameObject);
+
+
 
     }
 
