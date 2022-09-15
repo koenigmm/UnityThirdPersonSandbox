@@ -13,11 +13,6 @@ namespace SavingSystem
             Load();
         }
 
-        private void OnApplicationQuit()
-        {
-            Save();
-        }
-
         public void Save()
         {
             var saveData = new SaveData();

@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerrDeadState : PlayerBaseState
+public class PlayerDeadState : PlayerBaseState
 {
     private const string DeadAnimationName = "PlayerDeathAnimation";
     private const float WAIT_TIME = 2f;
     private float _timer;
 
-    public PlayerrDeadState(PlayerStateMachine stateMachine) : base(stateMachine)
+    public PlayerDeadState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
 

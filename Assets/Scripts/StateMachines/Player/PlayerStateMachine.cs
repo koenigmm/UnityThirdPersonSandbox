@@ -18,12 +18,12 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public float DodgeStaminaCost { get; private set; } = 25f;
     [field: SerializeField] public float BlockingStaminaCost { get; set; } = 10f;
     [field: SerializeField] public RangedWeapon CurrentRangedWeapon { get; private set; }
-    
+
     public bool isInInteractionArea;
 
     [SerializeField] private List<GameObject> meleeGameObjects;
 
-    
+
     public InputReader InputReader { get; private set; }
     public Health Health { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
@@ -32,8 +32,7 @@ public class PlayerStateMachine : StateMachine
     public Transform MainCameraTransform { get; private set; }
     public ThirdPersonCameraController PlayerThirdPersonCameraController { get; private set; }
     public CharacterController CharacterController { get; private set; }
-    
-  
+
 
     private void Awake()
     {
@@ -69,7 +68,7 @@ public class PlayerStateMachine : StateMachine
 
     private void HandleDamage() => SwitchState(new PlayerImpactState(this));
 
-    private void HandleDeath() => SwitchState(new PlayerrDeadState(this));
+    private void HandleDeath() => SwitchState(new PlayerDeadState(this));
 
     public void SetMeleeGameObjectsActive(bool isActive)
     {
@@ -81,4 +80,14 @@ public class PlayerStateMachine : StateMachine
 
     public void SetCurrentRangedWeaponActive(bool isActive) =>
         CurrentRangedWeapon.GetComponent<MeshRenderer>().enabled = isActive;
+
+    public void SetStateMachineAndPlayerControlsActive(bool isActive)
+    {
+        Cursor.lockState = isActive ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = !isActive;
+        enabled = isActive;
+        ForceReceiver.enabled = isActive;
+        Animator.enabled = isActive;
+        PlayerThirdPersonCameraController.enabled = isActive;
+    }
 }

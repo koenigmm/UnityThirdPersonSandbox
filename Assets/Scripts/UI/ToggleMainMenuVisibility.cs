@@ -5,11 +5,12 @@ public class ToggleMainMenuVisibility : MonoBehaviour
     [SerializeField] private Canvas mainMenuCanvas;
     private bool _isActive;
     private InputReader _inputReader;
+    private PlayerStateMachine _playerStateMachine;
 
     private void Awake()
     {
-        var playerStateMachine = FindObjectOfType<PlayerStateMachine>();
-        _inputReader = playerStateMachine.GetComponent<InputReader>();
+        _playerStateMachine = FindObjectOfType<PlayerStateMachine>();
+        _inputReader = _playerStateMachine.GetComponent<InputReader>();
     }
 
     private void Start() => mainMenuCanvas.enabled = _isActive;
@@ -22,7 +23,7 @@ public class ToggleMainMenuVisibility : MonoBehaviour
     {
         _isActive = !_isActive;
         mainMenuCanvas.enabled = _isActive;
-        Cursor.visible = _isActive;
-        Cursor.lockState = _isActive ? CursorLockMode.None : CursorLockMode.Locked;
+        
+        _playerStateMachine.SetStateMachineAndPlayerControlsActive(!_isActive);
     }
 }
