@@ -14,6 +14,8 @@ public class EnemyIdleState : EnemyBaseState
     {
         StateMachine.Animator.CrossFadeInFixedTime(_locomotionHash, DEFAULT_BLEND_TIME);
         SetHealthBarCanvasActive(false);
+        
+        if (StateMachine.Waypoints != null) StateMachine.SwitchState(new EnemyPatrollingState(StateMachine));
     }
 
     public override void Tick(float deltaTime)
