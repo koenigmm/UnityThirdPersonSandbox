@@ -15,6 +15,10 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public float ImpactOffset { get; private set; } = -2.5f;
     [field: SerializeField] public float StunningDelay { get; private set; } = 1f;
     [field: SerializeField] public float AttackDelay { get; private set; } = 0.9f;
+    [field: SerializeField] public bool IsMelee { get; private set; } = true;
+    [field: SerializeField] public GameObject Projectile { get; private set; }
+    [field: SerializeField] public Transform ProjectileLaunchPoint { get; private set; }
+    [field: SerializeField] public float TimeBetweenRangedAttacks { get; private set; } = 1.2f;
     public Animator Animator { get; private set; }
     public GameObject Player { get; private set; }
     public Canvas HealthBarCanvas { get; private set; }

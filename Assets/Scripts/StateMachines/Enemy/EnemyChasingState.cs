@@ -5,7 +5,7 @@ public class EnemyChasingState : EnemyBaseState
     private readonly int _locomotionHash = Animator.StringToHash("Locomotion");
     private readonly int _speedHash = Animator.StringToHash("Speed");
     private const float AnimatorDampTime = 0.1f;
-    private bool _isProvoked;
+    private readonly bool _isProvoked;
 
     public EnemyChasingState(EnemyStateMachine stateMachine, bool isProvoked = false) : base(stateMachine)
     {
@@ -32,10 +32,16 @@ public class EnemyChasingState : EnemyBaseState
             return;
         }
 
-        if (IsInAttackRange())
+        if (IsInAttackRange() && StateMachine.IsMelee)
         {
-            // StateMachine.Agent.SetDestination(StateMachine.transform.position);
             StateMachine.SwitchState(new EnemyAttackingState(StateMachine));
+            return;
+        }
+        
+        if (IsInAttackRange() && !StateMachine.IsMelee)
+        {
+            StateMachine.transform.LookAt(StateMachine.Player.transform);
+            StateMachine.SwitchState(new EnemyRangedAttack(StateMachine));
             return;
         }
 
