@@ -19,6 +19,8 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
+        if (StateMachine.isAlarmed) StateMachine.SwitchState(new EnemyChasingState(StateMachine, true));
+        
         _timer += deltaTime;
         if (_isSuspicious && _timer <= StateMachine.SuspiciousTime) return;
 
@@ -46,5 +48,6 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Exit()
     {
+        StateMachine.isAlarmed = false;
     }
 }

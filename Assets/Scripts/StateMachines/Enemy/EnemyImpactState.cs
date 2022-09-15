@@ -3,7 +3,7 @@
 public class EnemyImpactState : EnemyBaseState
 {
     private float _timer;
-    
+
     public EnemyImpactState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -31,7 +31,7 @@ public class EnemyImpactState : EnemyBaseState
         StateMachine.enabled = false;
         StateMachine.transform.Translate(0, 0, StateMachine.ImpactOffset, Space.Self);
         StateMachine.enabled = true;
+        AlarmNearbyEnemies();
+        
     }
-
-    
 }

@@ -23,6 +23,8 @@ public class EnemyPatrollingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
+        if (StateMachine.isAlarmed) StateMachine.SwitchState(new EnemyChasingState(StateMachine, true));
+        
         if (HasReachedTargetPosition())
         {
             _currentWaypointIndex = _waypoints.GetNextIndex(_currentWaypointIndex);
@@ -44,7 +46,10 @@ public class EnemyPatrollingState : EnemyBaseState
     }
 
 
-    public override void Exit() { }
+    public override void Exit()
+    {
+        StateMachine.isAlarmed = false;
+    }
 
     private bool HasReachedTargetPosition() =>
         Vector3.Distance(StateMachine.transform.position, _waypoints.GetWaypoint(_currentWaypointIndex)) <

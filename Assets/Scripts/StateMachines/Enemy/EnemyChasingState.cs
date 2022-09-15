@@ -19,6 +19,7 @@ public class EnemyChasingState : EnemyBaseState
         StateMachine.Animator.CrossFadeInFixedTime(_locomotionHash, DEFAULT_BLEND_TIME);
         StateMachine.Agent.isStopped = false;
         StateMachine.Agent.speed = StateMachine.ChasingSpeed;
+        AlarmNearbyEnemies();
     }
 
     public override void Tick(float deltaTime)
@@ -60,7 +61,11 @@ public class EnemyChasingState : EnemyBaseState
        if (_isProvoked) _timer += deltaTime;
     }
 
-    public override void Exit() => StateMachine.Agent.isStopped = true;
+    public override void Exit()
+    {
+        StateMachine.Agent.isStopped = true;
+        StateMachine.isAlarmed = false;
+    }
 
     private void HandlePlayerDeath()
     {

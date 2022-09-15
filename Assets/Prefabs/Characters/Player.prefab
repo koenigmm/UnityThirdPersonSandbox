@@ -1233,7 +1233,7 @@ MonoBehaviour:
     <Knockback>k__BackingField: 20
     <StaminaCost>k__BackingField: 40
   <ImpactDistance>k__BackingField: -2.5
-  <DodgeDuration>k__BackingField: 0.6
+  <DodgeDuration>k__BackingField: 0.3
   <DodgeLength>k__BackingField: 3.5
   <JumpForce>k__BackingField: 5
   <JumpStaminaCost>k__BackingField: 33

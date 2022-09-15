@@ -8,8 +8,10 @@ using UnityEngine.AI;
 // Script execution order changed
 public class EnemyStateMachine : StateMachine
 {
+    public bool isAlarmed; 
     // Combat
     [field: SerializeField] public float AttackRange { get; private set; }
+    [field: SerializeField] public float AlarmRange { get; private set; } = 10f;
     [field: SerializeField] public SwordDamage Sword { get; private set; }
     [field: SerializeField] public float AttackDamage { get; private set; }
     [field: SerializeField] public float ImpactOffset { get; private set; } = -2.5f;
@@ -32,7 +34,7 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public float WalkingSpeed { get; private set; }
     [field: SerializeField] public float WaypointDwellingTime{ get; private set; } = 2.5f;
     
-    
+
     public Animator Animator { get; private set; }
     public GameObject Player { get; private set; }
     public Canvas HealthBarCanvas { get; private set; }

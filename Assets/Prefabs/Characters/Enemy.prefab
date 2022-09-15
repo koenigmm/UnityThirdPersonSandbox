@@ -2031,13 +2031,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8443abcf42bff38428e478cf969cb11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAlarmed: 0
   <AttackRange>k__BackingField: 2
+  <AlarmRange>k__BackingField: 7.5
   <Sword>k__BackingField: {fileID: 8284266104611893277}
   <AttackDamage>k__BackingField: 20
-  <ChaseRange>k__BackingField: 10
   <ImpactOffset>k__BackingField: -1.5
-  <StunningDelay>k__BackingField: 0.75
   <AttackDelay>k__BackingField: 0.9
+  <ChaseRange>k__BackingField: 10
+  <SuspiciousTime>k__BackingField: 5
+  <StunningDelay>k__BackingField: 0.75
   <IsMelee>k__BackingField: 1
   <Projectile>k__BackingField: {fileID: 0}
   <ProjectileLaunchPoint>k__BackingField: {fileID: 0}
@@ -2045,6 +2048,7 @@ MonoBehaviour:
   <Waypoints>k__BackingField: {fileID: 0}
   <ChasingSpeed>k__BackingField: 8
   <WalkingSpeed>k__BackingField: 2
+  <WaypointDwellingTime>k__BackingField: 2.5
 --- !u!114 &8351061339426697638
 MonoBehaviour:
   m_ObjectHideFlags: 0

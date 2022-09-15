@@ -21,6 +21,17 @@ public abstract class EnemyBaseState : State
         if (StateMachine.HealthBarCanvas == null) return false;
         StateMachine.HealthBarCanvas.enabled = isActive;
         return true;
+    }
 
+    protected void AlarmNearbyEnemies()
+    {
+        var rayCastHits =
+            Physics.SphereCastAll(StateMachine.transform.position, StateMachine.AlarmRange, Vector3.up, 0f);
+
+        foreach (var hit in rayCastHits)
+        {
+            if (!hit.collider.TryGetComponent(out EnemyStateMachine enemyStateMachine)) continue;
+            enemyStateMachine.isAlarmed = true;
+        }
     }
 }
