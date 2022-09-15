@@ -16,6 +16,7 @@ public class EnemyChasingState : EnemyBaseState
     {
         StateMachine.Animator.CrossFadeInFixedTime(_locomotionHash, DEFAULT_BLEND_TIME);
         StateMachine.Agent.isStopped = false;
+        StateMachine.Agent.speed = StateMachine.ChasingSpeed;
     }
 
     public override void Tick(float deltaTime)

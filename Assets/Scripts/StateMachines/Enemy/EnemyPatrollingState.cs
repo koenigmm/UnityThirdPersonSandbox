@@ -2,13 +2,12 @@
 
 public class EnemyPatrollingState : EnemyBaseState
 {
-    private const float WaitTime = 3f;
+    // private const float WaitTime = 3f;
     private const float WaypointDetectionTolerance = 2f;
     private const int StartIndex = 0;
     private float _timer;
     private int _currentWaypointIndex;
     private readonly Waypoint _waypoints;
-    private float _speedFraction = 0.5f;
 
     public EnemyPatrollingState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
@@ -18,7 +17,7 @@ public class EnemyPatrollingState : EnemyBaseState
     public override void Enter()
     {
         _currentWaypointIndex = StartIndex;
-        StateMachine.Agent.speed *= _speedFraction;
+        StateMachine.Agent.speed = StateMachine.WalkingSpeed;
         StateMachine.Agent.SetDestination(_waypoints.GetWaypoint(_currentWaypointIndex));
     }
 
@@ -30,7 +29,7 @@ public class EnemyPatrollingState : EnemyBaseState
             _timer = 0f;
         }
 
-        if (_timer >= WaitTime)
+        if (_timer >= StateMachine.WaypointDwellingTime)
         {
             StateMachine.Agent.SetDestination(_waypoints.GetWaypoint(_currentWaypointIndex));
         }

@@ -19,7 +19,14 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public GameObject Projectile { get; private set; }
     [field: SerializeField] public Transform ProjectileLaunchPoint { get; private set; }
     [field: SerializeField] public float TimeBetweenRangedAttacks { get; private set; } = 1.2f;
+    
+    // Waypoints
     [field: SerializeField] public Waypoint Waypoints { get; private set; }
+    [field: SerializeField] public float ChasingSpeed { get; private set; }
+    [field: SerializeField] public float WalkingSpeed { get; private set; }
+    [field: SerializeField] public float WaypointDwellingTime{ get; private set; } = 2.5f;
+    
+    
     public Animator Animator { get; private set; }
     public GameObject Player { get; private set; }
     public Canvas HealthBarCanvas { get; private set; }

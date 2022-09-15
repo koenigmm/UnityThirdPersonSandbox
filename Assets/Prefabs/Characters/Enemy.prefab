@@ -2038,6 +2038,13 @@ MonoBehaviour:
   <ImpactOffset>k__BackingField: -1.5
   <StunningDelay>k__BackingField: 0.75
   <AttackDelay>k__BackingField: 0.9
+  <IsMelee>k__BackingField: 1
+  <Projectile>k__BackingField: {fileID: 0}
+  <ProjectileLaunchPoint>k__BackingField: {fileID: 0}
+  <TimeBetweenRangedAttacks>k__BackingField: 1.2
+  <Waypoints>k__BackingField: {fileID: 0}
+  <ChasingSpeed>k__BackingField: 8
+  <WalkingSpeed>k__BackingField: 2
 --- !u!114 &8351061339426697638
 MonoBehaviour:
   m_ObjectHideFlags: 0
