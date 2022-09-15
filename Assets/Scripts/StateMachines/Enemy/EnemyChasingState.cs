@@ -5,7 +5,9 @@ public class EnemyChasingState : EnemyBaseState
     private readonly int _locomotionHash = Animator.StringToHash("Locomotion");
     private readonly int _speedHash = Animator.StringToHash("Speed");
     private const float AnimatorDampTime = 0.1f;
-    private readonly bool _isProvoked;
+    private bool _isProvoked;
+    private const float ProvocationDuration = 10f;
+    private float _timer;
 
     public EnemyChasingState(EnemyStateMachine stateMachine, bool isProvoked = false) : base(stateMachine)
     {
@@ -21,6 +23,12 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
+        if (_timer > ProvocationDuration)
+        {
+            _isProvoked = false;
+            _timer = 0;
+        }
+        
         if (!IsInChaseRange() && !_isProvoked)
         {
             StateMachine.SwitchState(new EnemyIdleState(StateMachine));
@@ -48,6 +56,8 @@ public class EnemyChasingState : EnemyBaseState
 
         StateMachine.Animator.SetFloat(_speedHash, 1f, AnimatorDampTime, deltaTime);
         StateMachine.Agent.SetDestination(StateMachine.Player.transform.position);
+
+       if (_isProvoked) _timer += deltaTime;
     }
 
     public override void Exit() => StateMachine.Agent.isStopped = true;
