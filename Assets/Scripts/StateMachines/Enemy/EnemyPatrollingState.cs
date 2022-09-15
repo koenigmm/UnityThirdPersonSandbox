@@ -15,6 +15,7 @@ public class EnemyPatrollingState : EnemyBaseState
 
     public override void Enter()
     {
+        StateMachine.Agent.isStopped = false;
         _currentWaypointIndex = StartIndex;
         StateMachine.Agent.speed = StateMachine.WalkingSpeed;
         StateMachine.Agent.SetDestination(_waypoints.GetWaypoint(_currentWaypointIndex));

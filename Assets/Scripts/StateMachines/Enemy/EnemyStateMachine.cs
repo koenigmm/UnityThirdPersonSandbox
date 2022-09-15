@@ -33,6 +33,7 @@ public class EnemyStateMachine : StateMachine
     public NavMeshAgent Agent { get; private set; }
     public Target Target { get; private set; }
     public Collider Collider { get; private set; }
+    public Vector3 DefaultPosition { get; private set; }
     private Health _health;
 
     private void Awake()
@@ -48,6 +49,7 @@ public class EnemyStateMachine : StateMachine
 
     private void Start()
     {
+        DefaultPosition = transform.position;
         if (_health.IsAlive()) SwitchState(new EnemyIdleState(this));
         else SwitchState(new EnemyDeadState(this));
     }

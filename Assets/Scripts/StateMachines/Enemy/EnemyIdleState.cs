@@ -12,9 +12,16 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Enter()
     {
+        if (StateMachine.Waypoints == null)
+        {
+            StateMachine.Agent.destination = StateMachine.DefaultPosition;
+            StateMachine.Agent.isStopped = false;
+        }
+        
+        // TODO Blend tree with walking animation
         StateMachine.Animator.CrossFadeInFixedTime(_locomotionHash, DEFAULT_BLEND_TIME);
         SetHealthBarCanvasActive(false);
-        
+
         if (StateMachine.Waypoints != null) StateMachine.SwitchState(new EnemyPatrollingState(StateMachine));
     }
 

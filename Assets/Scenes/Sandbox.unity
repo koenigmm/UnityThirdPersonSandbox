@@ -4198,19 +4198,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9839536
+      value: 0.98395354
       objectReference: {fileID: 0}
     - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.17842492
+      value: 0.1784249
       objectReference: {fileID: 0}
     - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000032782555
+      value: -0.00000026822087
       objectReference: {fileID: 0}
     - target: {fileID: 7537441623630501981, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000052154064
+      value: 0.00000004097819
       objectReference: {fileID: 0}
     - target: {fileID: 7698947644593990887, guid: 8017147573a909648b7524aa0cdeac19, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
@@ -8567,7 +8567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4883376295223557220, guid: 4230739d5cd8ae44fb126349355a7d6c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.42
+      value: 2.59
       objectReference: {fileID: 0}
     - target: {fileID: 4883376295223557220, guid: 4230739d5cd8ae44fb126349355a7d6c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16074,6 +16074,10 @@ PrefabInstance:
       propertyPath: <Waypoints>k__BackingField
       value: 
       objectReference: {fileID: 1556182435}
+    - target: {fileID: 6077854898923851308, guid: cb99efead18ef43449710b5d02fa3cd7, type: 3}
+      propertyPath: <ChasingSpeed>k__BackingField
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6077854898923851308, guid: cb99efead18ef43449710b5d02fa3cd7, type: 3}
       propertyPath: <WalkingSpeed>k__BackingField
       value: 3
