@@ -18,16 +18,16 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         const float destroyTime = 2f;
-
-        if (other.CompareTag("IgnoreRaycast")) return;
         ShowImpactEffect(other, destroyTime);
 
-        if (!other.TryGetComponent(out Health enemyHealth)) return;
-        enemyHealth.DealDamage(damage);
-        Destroy(gameObject);
 
+        if (other.TryGetComponent(out Health enemyHealth) && !other.CompareTag("Enemy"))
+        {
+            enemyHealth.DealDamage(damage);
+            Destroy(gameObject);
+        }
 
-
+        Destroy(gameObject, destroyTime);
     }
 
     private void ShowImpactEffect(Collider other, float destroyTime)
