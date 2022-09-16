@@ -16,14 +16,14 @@ public class ToggleMainMenuVisibility : MonoBehaviour
     private void Start() => mainMenuCanvas.enabled = _isActive;
 
     private void OnEnable() => _inputReader.OnMainMenuToggle += ToggleVisibility;
-
-    private void OnDisable() => _inputReader.OnMainMenuToggle += ToggleVisibility;
+    
+    private void OnDisable() => _inputReader.OnMainMenuToggle -= ToggleVisibility;
 
     private void ToggleVisibility()
     {
         _isActive = !_isActive;
         mainMenuCanvas.enabled = _isActive;
         
-        _playerStateMachine.SetStateMachineAndPlayerControlsActive(!_isActive);
+        _playerStateMachine.SetPlayerControlsActive(!_isActive);
     }
 }

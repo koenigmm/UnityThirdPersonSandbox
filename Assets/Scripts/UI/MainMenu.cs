@@ -6,20 +6,11 @@ public class MainMenu : MonoBehaviour
 {
     private string _persistentPath;
 
-    private void Start()
-    {
-        _persistentPath = Application.persistentDataPath + "/save.json";
-    }
+    private void Start() => _persistentPath = Application.persistentDataPath + "/save.json";
 
-    public void LoadLevel(int sceneIndex)
-    {
-        SceneManager.LoadScene(sceneIndex);
-    }
+    public void LoadLevel(int sceneIndex) => SceneManager.LoadScene(sceneIndex);
 
-    public void ExitGame()
-    {
-        Application.Quit();
-    }
+    public void ExitGame() => Application.Quit();
 
     public void LoadLevelWithNewSaveGame(int sceneIndex)
     {

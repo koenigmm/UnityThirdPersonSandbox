@@ -20,6 +20,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public RangedWeapon CurrentRangedWeapon { get; private set; }
 
     public bool isInInteractionArea;
+   
 
     [SerializeField] private List<GameObject> meleeGameObjects;
 
@@ -32,6 +33,7 @@ public class PlayerStateMachine : StateMachine
     public Transform MainCameraTransform { get; private set; }
     public ThirdPersonCameraController PlayerThirdPersonCameraController { get; private set; }
     public CharacterController CharacterController { get; private set; }
+    public bool IsControllable { get; private set; } = true;
 
 
     private void Awake()
@@ -81,11 +83,11 @@ public class PlayerStateMachine : StateMachine
     public void SetCurrentRangedWeaponActive(bool isActive) =>
         CurrentRangedWeapon.GetComponent<MeshRenderer>().enabled = isActive;
 
-    public void SetStateMachineAndPlayerControlsActive(bool isActive)
+    public void SetPlayerControlsActive(bool isActive)
     {
+        IsControllable = isActive;
         Cursor.lockState = isActive ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !isActive;
-        enabled = isActive;
         ForceReceiver.enabled = isActive;
         Animator.enabled = isActive;
         PlayerThirdPersonCameraController.enabled = isActive;

@@ -6,15 +6,18 @@ namespace SavingSystem
     public class SavingSystemManager : MonoBehaviour
     {
         private string _persistentPath;
+        private Health _playerHealth;
 
         private void Awake()
         {
             _persistentPath = Application.persistentDataPath + "/save.json";
             Load();
+            _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
         }
 
         public void Save()
         {
+            if (!_playerHealth.IsAlive()) return;
             var saveData = new SaveData();
             var saveableEntities = FindObjectsOfType<SaveableEntity>();
             foreach (var component in saveableEntities) component.PopulateSaveData(saveData);

@@ -28,6 +28,8 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        if (!StateMachine.IsControllable) return;
+        
         var hasEnoughStaminaToAttack = StateMachine.PlayerStamina.CurrentStamina > StateMachine.Attacks[0].StaminaCost;
         if (StateMachine.InputReader.IsAttacking && hasEnoughStaminaToAttack)
         {

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class PlayerDeadState : PlayerBaseState
 {
     private const string DeadAnimationName = "PlayerDeathAnimation";
-    private const float WAIT_TIME = 2f;
+    private const float WAIT_TIME = 1f;
     private float _timer;
 
     public PlayerDeadState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -23,8 +23,10 @@ public class PlayerDeadState : PlayerBaseState
         Move(deltaTime);
 
         if (_timer >= WAIT_TIME)
-            // TODO Show UI and load a savegame
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        {
+            SceneManager.LoadScene(0);
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     public override void Exit()

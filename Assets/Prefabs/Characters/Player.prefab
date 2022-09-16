@@ -1155,7 +1155,7 @@ Transform:
   - {fileID: 7794493304992215049}
   - {fileID: 8677610330369840339}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-8272569400086665777
 MonoBehaviour:
@@ -1185,7 +1185,8 @@ MonoBehaviour:
   cameraTarget: {fileID: 25629955952243822}
   minPitchAngle: -40
   maxPitchAngle: 60
-  cameraSpeed: 7
+  freeLookCameraSpeed: 7
+  aimCameraSpeed: 4.5
   invertInputPitchValue: 1
 --- !u!114 &3410796591002239157
 MonoBehaviour:
@@ -1327,7 +1328,7 @@ MonoBehaviour:
   uuid: 
   isSaveable: 1
   isInvulnerable: 0
-  levelUpRestorePercentage: 80
+  levelUpRestorePercentage: 100
 --- !u!114 &6669640495687572731
 MonoBehaviour:
   m_ObjectHideFlags: 0

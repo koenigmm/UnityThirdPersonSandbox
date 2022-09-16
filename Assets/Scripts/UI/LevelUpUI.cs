@@ -25,7 +25,7 @@ public class LevelUpUI : MonoBehaviour
         _showUI = !_showUI;
         attributesUI.enabled = _showUI;
         levelUpCanvas.enabled = _showUI;
-        _playerStateMachine.SetStateMachineAndPlayerControlsActive(!_showUI);
+        _playerStateMachine.SetPlayerControlsActive(!_showUI);
 
     }
 }

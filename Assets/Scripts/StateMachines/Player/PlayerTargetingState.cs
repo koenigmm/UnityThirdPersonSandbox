@@ -21,6 +21,8 @@ public class PlayerTargetingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
+        if (!StateMachine.IsControllable) return;
+        
         if (StateMachine.InputReader.IsAiming)
         {
             StateMachine.SwitchState(new PlayerShootingState(StateMachine));
