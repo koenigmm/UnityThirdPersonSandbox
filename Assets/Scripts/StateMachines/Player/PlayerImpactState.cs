@@ -2,9 +2,9 @@
 
 public class PlayerImpactState : PlayerBaseState
 {
-    private float _animationClipLength;
     private float _timer;
     private const string ImpactClipName = "PlayerImpact";
+    private float _length = 0.3f;
 
     public PlayerImpactState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -16,15 +16,13 @@ public class PlayerImpactState : PlayerBaseState
         StateMachine.Sword.enabled = false;
         HandleImpact();
         StateMachine.Animator.CrossFadeInFixedTime(ImpactClipName, 0.1f);
-        _animationClipLength = FindAnimationClipLength();
-        _animationClipLength *= StateMachine.Animator.GetCurrentAnimatorStateInfo(0).speedMultiplier;
     }
 
     public override void Tick(float deltaTime)
     {
         Move(deltaTime);
         _timer += deltaTime;
-        if (_timer < _animationClipLength) return;
+        if (_timer < StateMachine.ImpactDuration) return;
 
         if (StateMachine.Targeter.CurrentTarget == null)
         {

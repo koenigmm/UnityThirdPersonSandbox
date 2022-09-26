@@ -6,7 +6,7 @@ public class PlayerFallingState : PlayerBaseState
 {
     private readonly int _animationClipHash = Animator.StringToHash("Fall");
     private Vector3 momentum;
-    private float _blendTime;
+    private float _blendTime = 0.35f;
 
     public PlayerFallingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {

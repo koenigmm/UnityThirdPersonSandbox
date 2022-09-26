@@ -10,6 +10,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public Targeter Targeter { get; private set; }
     [field: SerializeField] public Attack[] Attacks { get; private set; }
     [field: SerializeField] public float ImpactDistance { get; private set; } = -50f;
+    [field: SerializeField] public float ImpactDuration { get; private set; } = 0.34f;
     [field: SerializeField] public float DodgeDuration { get; private set; } = 0.5f;
     [field: SerializeField] public float DodgeLength { get; private set; } = 2f;
     [field: SerializeField] public float JumpForce { get; private set; } = 2f;
@@ -80,8 +81,10 @@ public class PlayerStateMachine : StateMachine
         }
     }
 
-    public void SetCurrentRangedWeaponActive(bool isActive) =>
-        CurrentRangedWeapon.GetComponent<MeshRenderer>().enabled = isActive;
+    public void SetCurrentRangedWeaponActive(bool isActive)
+    {
+        CurrentRangedWeapon.gameObject.SetActive(isActive);
+    }
 
     public void SetPlayerControlsActive(bool isActive)
     {

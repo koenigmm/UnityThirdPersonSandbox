@@ -8,8 +8,7 @@ public class SwordDamage : MonoBehaviour
     private Collider _playerCollider;
     private List<Collider> _alreadyCollidedWith = new List<Collider>();
     private float _damage;
-    private Collider _collider
-        ;
+    private Collider _collider;
 
     private void Awake() => _collider = GetComponent<Collider>();
 
@@ -17,6 +16,7 @@ public class SwordDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print(other.name);
         if (isAIControlled && !other.CompareTag("Player")) return;
         if (!isAIControlled && !other.CompareTag("Enemy")) return; 
         
