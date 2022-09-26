@@ -3,13 +3,18 @@
 public class EnemyRangedAttack : EnemyBaseState
 {
     private float _timer;
+    private readonly int _animationNameHash = Animator.StringToHash("Shooting");
 
     public EnemyRangedAttack(EnemyStateMachine stateMachine) : base(stateMachine)
     {
     }
 
-    public override void Enter() => GameObject.Instantiate(StateMachine.Projectile,
-        StateMachine.ProjectileLaunchPoint.position, StateMachine.ProjectileLaunchPoint.rotation);
+    public override void Enter()
+    {
+        StateMachine.Animator.CrossFadeInFixedTime(_animationNameHash, DEFAULT_BLEND_TIME);
+        GameObject.Instantiate(StateMachine.Projectile,
+            StateMachine.ProjectileLaunchPoint.position, StateMachine.ProjectileLaunchPoint.rotation);
+    }
 
     public override void Tick(float deltaTime)
     {
