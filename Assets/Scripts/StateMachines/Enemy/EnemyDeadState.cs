@@ -12,7 +12,7 @@ public class EnemyDeadState : EnemyBaseState
     public override void Enter()
     {
         Debug.Log("Die");
-        StateMachine.Sword.enabled = false;
+        if (StateMachine.Sword != null) StateMachine.Sword.enabled = false;
         DeactivateAI();
         StateMachine.Animator.CrossFadeInFixedTime(_animationHash, DeathAnimationBlendTime);
         SetHealthBarCanvasActive(false);
@@ -37,11 +37,9 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-        
     }
 
     public override void Exit()
     {
-        
     }
 }
