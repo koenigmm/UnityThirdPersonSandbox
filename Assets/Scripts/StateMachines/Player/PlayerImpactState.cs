@@ -4,7 +4,6 @@ public class PlayerImpactState : PlayerBaseState
 {
     private float _timer;
     private const string ImpactClipName = "PlayerImpact";
-    private float _length = 0.3f;
 
     public PlayerImpactState(PlayerStateMachine stateMachine) : base(stateMachine)
     {

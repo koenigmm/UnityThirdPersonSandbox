@@ -2422,7 +2422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019dfcd7df6face409a7e59faede5b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponLogic: {fileID: 7510311364281881381}
+  weaponCollider: {fileID: 8014886236253595233}
 --- !u!136 &8097210631072902333
 CapsuleCollider:
   m_ObjectHideFlags: 0

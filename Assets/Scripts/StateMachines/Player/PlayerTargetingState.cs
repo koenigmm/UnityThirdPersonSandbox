@@ -17,6 +17,8 @@ public class PlayerTargetingState : PlayerBaseState
         StateMachine.InputReader.TargetEvent += OnTarget;
         StateMachine.InputReader.JumpEvent += OnJump;
         StateMachine.PlayerThirdPersonCameraController.canAim = false;
+        
+        StateMachine.SetMeleeGameObjectsActive(true);
     }
 
     public override void Tick(float deltaTime)
@@ -86,6 +88,8 @@ public class PlayerTargetingState : PlayerBaseState
         StateMachine.InputReader.TargetEvent -= OnTarget;
         StateMachine.InputReader.DodgeEvent -= OnDodge;
         StateMachine.InputReader.JumpEvent -= OnJump;
+        
+        if (StateMachine.ShouldHideSwordInFreeLookState) StateMachine.SetMeleeGameObjectsActive(false);
     }
 
     private void OnJump()

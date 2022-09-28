@@ -1,17 +1,17 @@
+using System;
 using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
-    [SerializeField] private GameObject weaponLogic;
-
-
+    [SerializeField] private Collider weaponCollider;
+    
     public void EnableWeapon()
     {
-        weaponLogic.SetActive(true);
+        weaponCollider.enabled = true;
     }
 
     public void DisableWeapon ()
     {
-        weaponLogic.SetActive(false);
+        weaponCollider.enabled = false;
     }
 }

@@ -15,6 +15,8 @@ public class PlayerAttackingState : PlayerBaseState
         StateMachine.Animator.CrossFadeInFixedTime(_attack.AnimationName, _attack.TransitionDuration);
         StateMachine.Sword.SetAttack(_attack.Damage);
         StateMachine.PlayerStamina.ReduceStamina(_attack.StaminaCost);
+        
+        StateMachine.SetMeleeGameObjectsActive(true);
     }
 
     public override void Tick(float deltaTime)
@@ -68,6 +70,7 @@ public class PlayerAttackingState : PlayerBaseState
     public override void Exit()
     {
         StateMachine.Sword.enabled = false;
+        if (StateMachine.ShouldHideSwordInFreeLookState) StateMachine.SetMeleeGameObjectsActive(false);
     }
 
     private void TryApplyForce()

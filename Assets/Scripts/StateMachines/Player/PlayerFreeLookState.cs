@@ -19,17 +19,17 @@ public class PlayerFreeLookState : PlayerBaseState
         // TODO rename (event naming convention)
         StateMachine.InputReader.TargetEvent += OnTarget;
         StateMachine.InputReader.JumpEvent += OnJump;
-
         StateMachine.InputReader.OnReloadWeapon += HandleReload;
         StartAnimation();
+
+        if (StateMachine.ShouldHideSwordInFreeLookState) StateMachine.SetMeleeGameObjectsActive(false);
     }
 
-   
 
     public override void Tick(float deltaTime)
     {
         if (!StateMachine.IsControllable) return;
-        
+
         var hasEnoughStaminaToAttack = StateMachine.PlayerStamina.CurrentStamina > StateMachine.Attacks[0].StaminaCost;
         if (StateMachine.InputReader.IsAttacking && hasEnoughStaminaToAttack)
         {
@@ -41,7 +41,7 @@ public class PlayerFreeLookState : PlayerBaseState
         {
             StateMachine.SwitchState(new PlayerShootingState(StateMachine));
         }
-        
+
 
         HandleMoveInput(deltaTime);
     }
@@ -92,7 +92,7 @@ public class PlayerFreeLookState : PlayerBaseState
         if (!StateMachine.Targeter.SelectTarget()) return;
         StateMachine.SwitchState(new PlayerTargetingState(StateMachine));
     }
-    
+
     private void HandleReload()
     {
         if (StateMachine.CurrentRangedWeapon.TryReload())
@@ -100,8 +100,8 @@ public class PlayerFreeLookState : PlayerBaseState
             StateMachine.SwitchState(new PlayerReloadingState(StateMachine));
         }
     }
-    
-     private void StartAnimation()
+
+    private void StartAnimation()
     {
         StateMachine.Animator.SetFloat(_freeLookSpeedHash, 0f);
 
@@ -111,5 +111,4 @@ public class PlayerFreeLookState : PlayerBaseState
         else
             StateMachine.Animator.Play(_freeLookBlendTreeHash);
     }
-    
 }

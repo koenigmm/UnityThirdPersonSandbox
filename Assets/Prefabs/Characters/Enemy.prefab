@@ -1754,7 +1754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019dfcd7df6face409a7e59faede5b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponLogic: {fileID: 6668306061887742316}
+  weaponCollider: {fileID: 3561605914997862778}
 --- !u!136 &6473639470320871963
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -58,7 +58,7 @@ Transform:
   - {fileID: 7005504165016271434}
   - {fileID: 7000769666873079056}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-8272569400086665777
 MonoBehaviour:
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019dfcd7df6face409a7e59faede5b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponLogic: {fileID: 5566216105996587178}
+  weaponCollider: {fileID: 8858384593582038953}
 --- !u!114 &5898911176019190844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3329,6 +3329,11 @@ Transform:
 --- !u!1 &5566216105996587178 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8914631670780342217, guid: a14e2b6e0150f3f4a97e74a4a34c6dd0, type: 3}
+  m_PrefabInstance: {fileID: 3929406392123998051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &8858384593582038953 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 5505443363239960778, guid: a14e2b6e0150f3f4a97e74a4a34c6dd0, type: 3}
   m_PrefabInstance: {fileID: 3929406392123998051}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4154199268473135699

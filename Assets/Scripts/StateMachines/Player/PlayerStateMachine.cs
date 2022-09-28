@@ -19,6 +19,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public float DodgeStaminaCost { get; private set; } = 25f;
     [field: SerializeField] public float BlockingStaminaCost { get; set; } = 10f;
     [field: SerializeField] public RangedWeapon CurrentRangedWeapon { get; private set; }
+    [field: SerializeField] public bool ShouldHideSwordInFreeLookState { get; private set; } = true;
 
     public bool isInInteractionArea;
    
