@@ -14,6 +14,9 @@ public class EnemyRangedAttack : EnemyBaseState
         StateMachine.Animator.CrossFadeInFixedTime(_animationNameHash, DEFAULT_BLEND_TIME);
         GameObject.Instantiate(StateMachine.Projectile,
             StateMachine.ProjectileLaunchPoint.position, StateMachine.ProjectileLaunchPoint.rotation);
+
+        StateMachine.MuzzleFlashVFX.enabled = true;
+        StateMachine.MuzzleFlashVFX.Play();
     }
 
     public override void Tick(float deltaTime)
@@ -26,5 +29,6 @@ public class EnemyRangedAttack : EnemyBaseState
     public override void Exit()
     {
         Debug.Log("Ranged Attack");
+        StateMachine.MuzzleFlashVFX.enabled = false;
     }
 }

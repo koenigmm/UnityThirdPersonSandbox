@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.VFX;
 
 [RequireComponent(typeof(Collider), typeof(NavMeshAgent), typeof(Animator))]
 [RequireComponent(typeof(Health))]
@@ -27,13 +28,13 @@ public class EnemyStateMachine : StateMachine
     [field: SerializeField] public GameObject Projectile { get; private set; }
     [field: SerializeField] public Transform ProjectileLaunchPoint { get; private set; }
     [field: SerializeField] public float TimeBetweenRangedAttacks { get; private set; } = 1.2f;
+    [field: SerializeField] public VisualEffect MuzzleFlashVFX{ get; private set; }
     
     // Waypoints
     [field: SerializeField] public Waypoint Waypoints { get; private set; }
     [field: SerializeField] public float ChasingSpeed { get; private set; }
     [field: SerializeField] public float WalkingSpeed { get; private set; }
     [field: SerializeField] public float WaypointDwellingTime{ get; private set; } = 2.5f;
-    
 
     public Animator Animator { get; private set; }
     public GameObject Player { get; private set; }
@@ -60,6 +61,8 @@ public class EnemyStateMachine : StateMachine
         DefaultPosition = transform.position;
         if (_health.IsAlive()) SwitchState(new EnemyIdleState(this));
         else SwitchState(new EnemyDeadState(this));
+
+        if (MuzzleFlashVFX != null) MuzzleFlashVFX.enabled = false;
     }
 
     private void OnEnable()
