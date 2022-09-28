@@ -5,6 +5,7 @@ public class PlayerBlockingState : PlayerBaseState
     private readonly int _blockAnimationHash = Animator.StringToHash("Block");
     private float _timer;
     private const float STAMINA_REDUCING_INTERVAL = 1f;
+    private Collider _swordCollider;
 
     public PlayerBlockingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
@@ -12,6 +13,9 @@ public class PlayerBlockingState : PlayerBaseState
 
     public override void Enter()
     {
+        _swordCollider = StateMachine.Sword.GetComponent<Collider>();
+        _swordCollider.enabled = false;
+        
         StateMachine.Health.isInvulnerable = true;
         StateMachine.PlayerStamina.CanRestore = false;
         StateMachine.Animator.CrossFadeInFixedTime(_blockAnimationHash, DEFAULT_CROSS_FADE_DURATION);
