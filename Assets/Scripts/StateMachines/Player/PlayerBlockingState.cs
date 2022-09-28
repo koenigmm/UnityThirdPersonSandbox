@@ -16,6 +16,7 @@ public class PlayerBlockingState : PlayerBaseState
         StateMachine.PlayerStamina.CanRestore = false;
         StateMachine.Animator.CrossFadeInFixedTime(_blockAnimationHash, DEFAULT_CROSS_FADE_DURATION);
         StateMachine.PlayerThirdPersonCameraController.canAim = false;
+        StateMachine.SetMeleeGameObjectsActive(true);
     }
 
     public override void Tick(float deltaTime)
@@ -49,5 +50,6 @@ public class PlayerBlockingState : PlayerBaseState
     {
         StateMachine.Health.isInvulnerable = false;
         StateMachine.PlayerStamina.CanRestore = true;
+        if (StateMachine.ShouldHideSwordInFreeLookState) StateMachine.SetMeleeGameObjectsActive(false);
     }
 }
