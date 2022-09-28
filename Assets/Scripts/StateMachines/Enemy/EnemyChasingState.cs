@@ -24,24 +24,29 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
-        if (_timer > ProvocationDuration)
-        {
-            _isProvoked = false;
-            _timer = 0;
-        }
-        
-        if (!IsInChaseRange() && !_isProvoked)
-        {
-            StateMachine.SwitchState(new EnemyIdleState(StateMachine, true));
-            return;
-        }
-
         if (!StateMachine.Player.GetComponent<Health>().IsAlive())
         {
             HandlePlayerDeath();
             return;
         }
+        
+        if (_timer > ProvocationDuration)
+        {
+            _isProvoked = false;
+            _timer = 0;
+        }
 
+        if (!IsInChaseRange() && !_isProvoked)
+        {
+            StateMachine.SwitchState(new EnemyIdleState(StateMachine, true));
+            return;
+        }
+        if (!IsInChaseRange() && _isProvoked)
+        {
+            StateMachine.Animator.SetFloat(_speedHash, 0f, AnimatorDampTime, deltaTime);
+            return;
+        }
+        
         if (IsInAttackRange() && StateMachine.IsMelee)
         {
             StateMachine.SwitchState(new EnemyAttackingState(StateMachine));
@@ -54,6 +59,8 @@ public class EnemyChasingState : EnemyBaseState
             StateMachine.SwitchState(new EnemyRangedAttack(StateMachine));
             return;
         }
+        
+     
 
         StateMachine.Animator.SetFloat(_speedHash, 1f, AnimatorDampTime, deltaTime);
         StateMachine.Agent.SetDestination(StateMachine.Player.transform.position);

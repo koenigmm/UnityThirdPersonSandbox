@@ -10,11 +10,17 @@ public class EnemyImpactState : EnemyBaseState
 
     public override void Enter()
     {
-        if (StateMachine.Sword != null) StateMachine.Sword.enabled = false;
         SetHealthBarCanvasActive(true);
         StateMachine.Agent.isStopped = true;
         StateMachine.Animator.CrossFadeInFixedTime("EnemyImpact", DEFAULT_BLEND_TIME);
         HandleImpact();
+        if (StateMachine.Sword != null) DeactivateSword();
+    }
+
+    private void DeactivateSword()
+    {
+        StateMachine.Sword.GetComponent<Collider>().enabled = false;
+        StateMachine.Sword.enabled = false;
     }
 
     public override void Tick(float deltaTime)

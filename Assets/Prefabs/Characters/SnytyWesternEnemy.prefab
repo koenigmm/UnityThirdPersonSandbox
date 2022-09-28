@@ -2501,9 +2501,10 @@ MonoBehaviour:
   <Projectile>k__BackingField: {fileID: 0}
   <ProjectileLaunchPoint>k__BackingField: {fileID: 0}
   <TimeBetweenRangedAttacks>k__BackingField: 1.2
+  <MuzzleFlashVFX>k__BackingField: {fileID: 0}
   <Waypoints>k__BackingField: {fileID: 0}
-  <ChasingSpeed>k__BackingField: 6
-  <WalkingSpeed>k__BackingField: 3
+  <ChasingSpeed>k__BackingField: 4.5
+  <WalkingSpeed>k__BackingField: 1.5
   <WaypointDwellingTime>k__BackingField: 2.5
 --- !u!114 &6614753871954786807
 MonoBehaviour:

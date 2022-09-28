@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyIdleState : EnemyBaseState
 {
-    private readonly int _locomotionHash = Animator.StringToHash("Locomotion");
+    private readonly int _locomotionHash = Animator.StringToHash("WalkingBlendTree");
     private readonly int _speedHash = Animator.StringToHash("Speed");
     private const float DampTime = 0.1f;
     private readonly bool _isSuspicious;
@@ -15,27 +15,32 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Enter()
     {
+        StateMachine.Animator.CrossFadeInFixedTime(_locomotionHash, DEFAULT_BLEND_TIME);
     }
 
     public override void Tick(float deltaTime)
     {
         if (StateMachine.isAlarmed) StateMachine.SwitchState(new EnemyChasingState(StateMachine, true));
-        
+
         _timer += deltaTime;
-        if (_isSuspicious && _timer <= StateMachine.SuspiciousTime) return;
+        
+        if (_isSuspicious && _timer <= StateMachine.SuspiciousTime)
+        {
+            StateMachine.Animator.SetFloat(_speedHash, 0f);
+            return;
+        }
 
         if (StateMachine.Waypoints == null)
         {
             StateMachine.Agent.destination = StateMachine.DefaultPosition;
             StateMachine.Agent.isStopped = false;
         }
-        else StateMachine.SwitchState(new EnemyPatrollingState(StateMachine));
-        
+        else
+        {
+            StateMachine.SwitchState(new EnemyPatrollingState(StateMachine));
+        }
 
-        // TODO Blend tree with walking animation
-        StateMachine.Animator.CrossFadeInFixedTime(_locomotionHash, DEFAULT_BLEND_TIME);
         SetHealthBarCanvasActive(false);
-
 
         if (IsInChaseRange())
         {
@@ -43,7 +48,9 @@ public class EnemyIdleState : EnemyBaseState
             return;
         }
 
-        StateMachine.Animator.SetFloat(_speedHash, 0f, DampTime, deltaTime);
+        const float defaultPositionTolerance = 0.3f;
+        var isAtDefaultPosition = Vector3.Distance(StateMachine.transform.position, StateMachine.DefaultPosition);
+        StateMachine.Animator.SetFloat(_speedHash, isAtDefaultPosition > defaultPositionTolerance ? 1f : 0f);
     }
 
     public override void Exit()

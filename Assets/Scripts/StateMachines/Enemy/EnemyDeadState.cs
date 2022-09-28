@@ -11,12 +11,17 @@ public class EnemyDeadState : EnemyBaseState
 
     public override void Enter()
     {
-        Debug.Log("Die");
-        if (StateMachine.Sword != null) StateMachine.Sword.enabled = false;
         DeactivateAI();
         StateMachine.Animator.CrossFadeInFixedTime(_animationHash, DeathAnimationBlendTime);
         SetHealthBarCanvasActive(false);
         DeactivateCollider();
+        if (StateMachine.Sword != null) DeactivateSword();
+    }
+
+    private void DeactivateSword()
+    {
+        StateMachine.Sword.GetComponent<Collider>().enabled = false;
+        StateMachine.Sword.enabled = false;
     }
 
     private void DeactivateAI()
