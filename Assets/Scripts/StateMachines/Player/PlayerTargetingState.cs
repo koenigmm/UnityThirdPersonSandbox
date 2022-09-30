@@ -27,6 +27,7 @@ public class PlayerTargetingState : PlayerBaseState
         
         if (StateMachine.InputReader.IsAiming)
         {
+            StateMachine.Targeter.Cancel();
             StateMachine.SwitchState(new PlayerShootingState(StateMachine));
             return;
         }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -54,6 +55,12 @@ public class EnemyStateMachine : StateMachine
         Animator = GetComponent<Animator>();
         _health = GetComponent<Health>();
         Player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, ChaseRange);
     }
 
     private void Start()

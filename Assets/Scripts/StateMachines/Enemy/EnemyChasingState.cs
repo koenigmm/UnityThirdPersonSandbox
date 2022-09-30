@@ -24,6 +24,8 @@ public class EnemyChasingState : EnemyBaseState
 
     public override void Tick(float deltaTime)
     {
+        if (_isProvoked) _timer += deltaTime;
+        
         if (!StateMachine.Player.GetComponent<Health>().IsAlive())
         {
             HandlePlayerDeath();
@@ -43,7 +45,7 @@ public class EnemyChasingState : EnemyBaseState
         }
         if (!IsInChaseRange() && _isProvoked)
         {
-            StateMachine.Animator.SetFloat(_speedHash, 0f, AnimatorDampTime, deltaTime);
+            Chase(deltaTime);
             return;
         }
         
@@ -60,13 +62,11 @@ public class EnemyChasingState : EnemyBaseState
             return;
         }
         
-     
+        Chase(deltaTime);
 
-        StateMachine.Animator.SetFloat(_speedHash, 1f, AnimatorDampTime, deltaTime);
-        StateMachine.Agent.SetDestination(StateMachine.Player.transform.position);
-
-       if (_isProvoked) _timer += deltaTime;
+        
     }
+
 
     public override void Exit()
     {
@@ -85,4 +85,11 @@ public class EnemyChasingState : EnemyBaseState
     private bool IsInAttackRange() =>
         Vector3.Distance(StateMachine.Player.transform.position, StateMachine.transform.position) <=
         StateMachine.AttackRange;
+    
+    private void Chase(float deltaTime)
+    {
+        StateMachine.Animator.SetFloat(_speedHash, 1f, AnimatorDampTime, deltaTime);
+        StateMachine.Agent.SetDestination(StateMachine.Player.transform.position);
+    }
+
 }
