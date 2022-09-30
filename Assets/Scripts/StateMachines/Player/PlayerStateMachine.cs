@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlayerStateMachine : StateMachine
 {
@@ -25,6 +26,7 @@ public class PlayerStateMachine : StateMachine
    
 
     [SerializeField] private List<GameObject> meleeGameObjects;
+    [SerializeField] private List<MeshRenderer> rangedWeaponMeshRenderers; 
 
 
     public InputReader InputReader { get; private set; }
@@ -84,7 +86,10 @@ public class PlayerStateMachine : StateMachine
 
     public void SetCurrentRangedWeaponActive(bool isActive)
     {
-        CurrentRangedWeapon.gameObject.SetActive(isActive);
+        foreach (var meshRenderer in rangedWeaponMeshRenderers)
+        {
+            meshRenderer.enabled = isActive;
+        }
     }
 
     public void SetPlayerControlsActive(bool isActive)

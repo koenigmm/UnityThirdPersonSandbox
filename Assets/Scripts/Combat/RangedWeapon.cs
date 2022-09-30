@@ -14,12 +14,12 @@ public class RangedWeapon : SaveableEntity
     [SerializeField] private float range = 100f;
     [SerializeField] private float reloadingTime = 1.5f;
     [Header("Ammo")] [SerializeField] private int maxAmmoInWeapon = 10;
-    [SerializeField] private int currentAmmunition;
     [SerializeField] private AmmunitionInventory ammunitionInventory;
     [SerializeField] private AmmunitionType ammunitionType;
     [SerializeField] private VisualEffect muzzleVFX;
 
-    public int CurrentAmmunition => currentAmmunition;
+    public int CurrentAmmunition { get; private set; }
+
     public AmmunitionType AmmunitionType => ammunitionType;
     public float ReloadingTime => reloadingTime;
 
@@ -45,7 +45,7 @@ public class RangedWeapon : SaveableEntity
 
     public void Shoot()
     {
-        if (currentAmmunition <= 0) return;
+        if (CurrentAmmunition <= 0) return;
 
         var screenCenter = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
         var rayToCenter = Camera.main.ScreenPointToRay(screenCenter);
@@ -53,7 +53,7 @@ public class RangedWeapon : SaveableEntity
         var hasHit = Physics.Raycast(rayToCenter, out var raycastHit, range);
         if (!hasHit) return;
 
-        currentAmmunition = Math.Max(0, currentAmmunition - 1);
+        CurrentAmmunition = Math.Max(0, CurrentAmmunition - 1);
         muzzleVFX.Play();
 
         if (raycastHit.transform.TryGetComponent(out Health enemyHealth))
@@ -62,11 +62,11 @@ public class RangedWeapon : SaveableEntity
 
     public bool TryReload()
     {
-        var currentAmmoBeforeReload = currentAmmunition;
-        if (currentAmmunition == maxAmmoInWeapon) return false;
-        var ammoNeededToFillWeapon = maxAmmoInWeapon - currentAmmunition;
-        currentAmmunition += ammunitionInventory.GetAmmo(ammunitionType, ammoNeededToFillWeapon);
-        return currentAmmunition != currentAmmoBeforeReload;
+        var currentAmmoBeforeReload = CurrentAmmunition;
+        if (CurrentAmmunition == maxAmmoInWeapon) return false;
+        var ammoNeededToFillWeapon = maxAmmoInWeapon - CurrentAmmunition;
+        CurrentAmmunition += ammunitionInventory.GetAmmo(ammunitionType, ammoNeededToFillWeapon);
+        return CurrentAmmunition != currentAmmoBeforeReload;
     }
 
     public override void PopulateSaveData(SaveData saveData)
@@ -74,7 +74,7 @@ public class RangedWeapon : SaveableEntity
         var weaponData = new IntWithID
         {
             uuid = uuid,
-            savedInt = currentAmmunition
+            savedInt = CurrentAmmunition
         };
 
         saveData.ammunitionInWeapons.Add(weaponData);
@@ -85,7 +85,7 @@ public class RangedWeapon : SaveableEntity
         foreach (var weapon in saveData.ammunitionInWeapons)
         {
             if (weapon.uuid != uuid) continue;
-            currentAmmunition = weapon.savedInt;
+            CurrentAmmunition = weapon.savedInt;
         }
     }
 }
