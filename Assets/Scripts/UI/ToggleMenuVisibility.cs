@@ -58,16 +58,10 @@ public class ToggleMenuVisibility : MonoBehaviour
         if (!_interactionZoneHandler.isInInteractionZone && !canToggleOutsideZones) return;
 
         _showUI = !_showUI;
-        
-        if (!_showUI && !_interactionZoneHandler.isInInteractionZone)
-        {
-            _playerStateMachine.SetPlayerControlsActive(false);
-            return;
-        }
 
         if (attributesUI != null) attributesUI.enabled = _showUI;
         canvas.gameObject.SetActive(_showUI);
-        // _playerStateMachine.SetPlayerControlsActive(!_showUI);
+        _interactionZoneHandler.HandleInterfaceChange();
 
         if (_showUI) buttonToSelect.Select();
         

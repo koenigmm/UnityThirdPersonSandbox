@@ -29,7 +29,7 @@ public class InteractionZoneHandler : MonoBehaviour
         _playerStateMachine.InputReader.InteractEvent -= HandleInterfaceChange;
     }
 
-    private void HandleInterfaceChange()
+    public void HandleInterfaceChange()
     {
         var activeElements = 0;
         foreach (var element in _interactableInterfaces)
