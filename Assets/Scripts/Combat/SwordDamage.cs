@@ -16,10 +16,13 @@ public class SwordDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.name);
-        if (isAIControlled && !other.CompareTag("Player")) return;
-        if (!isAIControlled && !other.CompareTag("Enemy")) return; 
-        
+        switch (isAIControlled)
+        {
+            case true when !other.CompareTag("Player"):
+            case false when !other.CompareTag("Enemy"):
+                return;
+        }
+
         if (_alreadyCollidedWith.Contains(other)) return;
         if (!other.TryGetComponent<Health>(out var health)) return;
         
