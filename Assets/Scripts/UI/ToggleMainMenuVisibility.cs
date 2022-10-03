@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ToggleMainMenuVisibility : MonoBehaviour
 {
     [SerializeField] private Canvas mainMenuCanvas;
+    [SerializeField] private Button buttonToSelect;
     private bool _isActive;
     private InputReader _inputReader;
     private PlayerStateMachine _playerStateMachine;
@@ -13,7 +15,7 @@ public class ToggleMainMenuVisibility : MonoBehaviour
         _inputReader = _playerStateMachine.GetComponent<InputReader>();
     }
 
-    private void Start() => mainMenuCanvas.enabled = _isActive;
+    private void Start() => mainMenuCanvas.gameObject.SetActive(false);
 
     private void OnEnable() => _inputReader.OnMainMenuToggle += ToggleVisibility;
     
@@ -22,8 +24,11 @@ public class ToggleMainMenuVisibility : MonoBehaviour
     private void ToggleVisibility()
     {
         _isActive = !_isActive;
-        mainMenuCanvas.enabled = _isActive;
+        // mainMenuCanvas.enabled = _isActive;
+        mainMenuCanvas.gameObject.SetActive(_isActive);
         
         _playerStateMachine.SetPlayerControlsActive(!_isActive);
+        
+        if (_isActive) buttonToSelect.Select();
     }
 }

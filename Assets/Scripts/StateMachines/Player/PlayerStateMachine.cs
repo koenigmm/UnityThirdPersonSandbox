@@ -22,8 +22,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public RangedWeapon CurrentRangedWeapon { get; private set; }
     [field: SerializeField] public bool ShouldHideSwordInFreeLookState { get; private set; } = true;
 
-    public bool isInInteractionArea;
-   
+    // public bool isInInteractionArea;
 
     [SerializeField] private List<GameObject> meleeGameObjects;
     [SerializeField] private List<MeshRenderer> rangedWeaponMeshRenderers; 

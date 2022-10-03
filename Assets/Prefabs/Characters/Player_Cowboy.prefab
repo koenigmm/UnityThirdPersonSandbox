@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 2148397857325257544}
   - component: {fileID: 7014277120043651154}
   - component: {fileID: -1819358073606175152}
+  - component: {fileID: 571466943835708768}
   m_Layer: 0
   m_Name: Player_Cowboy
   m_TagString: Player
@@ -145,7 +146,6 @@ MonoBehaviour:
   <BlockingStaminaCost>k__BackingField: 15
   <CurrentRangedWeapon>k__BackingField: {fileID: 6909619062140223530}
   <ShouldHideSwordInFreeLookState>k__BackingField: 1
-  isInInteractionArea: 0
   meleeGameObjects:
   - {fileID: 5566216105996587178}
   rangedWeaponMeshRenderers:
@@ -367,6 +367,20 @@ MonoBehaviour:
   uuid: playerPosition
   isSaveable: 1
   isAIControlled: 0
+--- !u!114 &571466943835708768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834197436992109030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a2586c233e1b7f41a9c7a5f2b439149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInInteractionZone: 0
+  isInteracting: 0
 --- !u!1 &3690742407739024355
 GameObject:
   m_ObjectHideFlags: 0

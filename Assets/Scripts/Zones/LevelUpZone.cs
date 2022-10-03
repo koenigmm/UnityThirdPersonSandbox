@@ -5,9 +5,10 @@ using UnityEngine;
 public class LevelUpZone : MonoBehaviour
 {
     
-    private PlayerStateMachine _stateMachine;
+    // private PlayerStateMachine _stateMachine;
     private Canvas _hintCanvas;
     private bool _isTouchingPlayer;
+    private InteractionZoneHandler _interactionZoneHandler;
 
     private void Awake()
     {
@@ -15,15 +16,12 @@ public class LevelUpZone : MonoBehaviour
         _hintCanvas = GetComponentInChildren<Canvas>();
     }
 
-    private void Start()
-    {
-        _hintCanvas.enabled = false;
-    }
+    private void Start() => _hintCanvas.enabled = false;
 
     private void Update()
     {
         if (!_isTouchingPlayer) return;
-        var lookPos = _stateMachine.transform.position - _hintCanvas.transform.position;
+        var lookPos = _interactionZoneHandler.transform.position - _hintCanvas.transform.position;
         lookPos.y = 0f;
         var lookForwardRotation = Quaternion.LookRotation(lookPos);
         const float interpolationFactor = 2.5f;
@@ -32,7 +30,7 @@ public class LevelUpZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _isTouchingPlayer = other.TryGetComponent(out _stateMachine);
+        _isTouchingPlayer = other.TryGetComponent(out _interactionZoneHandler);
         if (!_isTouchingPlayer) return;
         HandleCampfireZone(other);
     }
@@ -43,7 +41,7 @@ public class LevelUpZone : MonoBehaviour
         if (_isTouchingPlayer)
         {
             _hintCanvas.enabled = true;
-            _stateMachine.isInInteractionArea = true;
+            _interactionZoneHandler.isInInteractionZone = true;
         }
     }
 
@@ -52,8 +50,8 @@ public class LevelUpZone : MonoBehaviour
         if (_isTouchingPlayer)
         {
             _hintCanvas.enabled = false;
-            _stateMachine.isInInteractionArea = false;
-            _stateMachine = null;
+            _interactionZoneHandler.isInInteractionZone = false;
+            _interactionZoneHandler = null;
         }
 
         _isTouchingPlayer = false;
