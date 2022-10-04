@@ -7,11 +7,13 @@ namespace SavingSystem
     {
         private string _persistentPath;
         private Health _playerHealth;
+        [SerializeField] private bool isInStartMenu;
 
         private void Awake()
         {
             _persistentPath = Application.persistentDataPath + "/save.json";
             Load();
+            if (isInStartMenu) return;
             _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
         }
 

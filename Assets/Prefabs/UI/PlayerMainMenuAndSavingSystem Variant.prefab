@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6918217694620914154}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ToggleMenuVisibility, Assembly-CSharp
         m_MethodName: ToggleUIVisibility
         m_Mode: 1
@@ -547,6 +547,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1421762906119456241, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421762906119456241, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
       propertyPath: buttonToSelect
       value: 
       objectReference: {fileID: 1385180156}
@@ -652,11 +656,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2651225880887941670, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
       propertyPath: m_Name
-      value: PlayerMainMenuAndSavingSystem
+      value: PlayerMainMenuAndSavingSystem Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3324371137712797015, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3324371137712797015, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -698,6 +702,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3627174741401961592, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
+      propertyPath: isInStartMenu
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7660705210849123153, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -731,6 +739,28 @@ PrefabInstance:
       insertIndex: 4
       addedObject: {fileID: 84050075}
   m_SourcePrefab: {fileID: 100100000, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
+--- !u!1 &2221999549745809239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7885608690803086156, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
+  m_PrefabInstance: {fileID: 8338818790408082459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &396260874166942554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221999549745809239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c598da2c9111b2c4aa448dbe26cd6404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userInterfaceType: 0
+  canToggleOutsideZones: 1
+  canvas: {fileID: 7460900654808410821}
+  attributesUI: {fileID: 0}
+  buttonToSelect: {fileID: 1385180156}
 --- !u!114 &4751086190988939363 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3627174741401961592, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
@@ -742,17 +772,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1faaedf988647a6a27f0288852f647a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6918217694620914154 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1421762906119456241, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
+--- !u!223 &7460900654808410821 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1455540227274047198, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
   m_PrefabInstance: {fileID: 8338818790408082459}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c598da2c9111b2c4aa448dbe26cd6404, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &7460900655345049248 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1455540225663191739, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
