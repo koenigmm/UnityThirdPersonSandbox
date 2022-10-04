@@ -89,7 +89,7 @@ MonoBehaviour:
   maxPitchAngle: 60
   invertInputPitchValue: 1
   freeLookCameraSpeed: 7
-  aimCameraSpeed: 4.5
+  aimCameraSpeed: 3
 --- !u!114 &3410796591002239157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,7 +380,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInInteractionZone: 0
-  isInteracting: 0
 --- !u!1 &3690742407739024355
 GameObject:
   m_ObjectHideFlags: 0

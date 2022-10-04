@@ -147,7 +147,7 @@
                 {
                     "name": "",
                     "id": "de9a5bfb-21ae-4b55-87f6-7dbffda190b9",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -169,7 +169,7 @@
                 {
                     "name": "",
                     "id": "e8b4361b-34fa-4a4d-9474-e1cb7d299ba0",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/leftStickPress",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -279,7 +279,7 @@
                 {
                     "name": "",
                     "id": "dddfe2fc-7063-4696-bd08-d1e4dca1ad15",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -301,7 +301,7 @@
                 {
                     "name": "",
                     "id": "b18456a6-a8bd-4981-bf3f-e388d9fb6e0f",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -323,7 +323,7 @@
                 {
                     "name": "",
                     "id": "4c4e97e9-9a1e-414f-90b2-9da27a62044a",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -344,19 +344,8 @@
                 },
                 {
                     "name": "",
-                    "id": "2a4bd978-8692-4b12-8107-f246bfd577ab",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Exit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "7509f594-005c-4ea1-8a38-3844001e6126",
-                    "path": "<Keyboard>/e",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse and Keyboard",
@@ -367,7 +356,7 @@
                 {
                     "name": "",
                     "id": "f58d8f64-75ac-4746-b7bb-259a78e23447",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/rightStickPress",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -389,7 +378,7 @@
                 {
                     "name": "",
                     "id": "97ca6561-1adb-4399-9a7d-5d3f994e18d3",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -411,7 +400,7 @@
                 {
                     "name": "",
                     "id": "074b4c38-9538-4b45-a1c4-5096db8d5a84",
-                    "path": "<Gamepad>/dpad/up",
+                    "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -433,7 +422,7 @@
                 {
                     "name": "",
                     "id": "430e7f5a-0e9f-4c62-adb2-0e52af908078",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -455,10 +444,10 @@
                 {
                     "name": "",
                     "id": "c99d1a12-3799-4851-adbe-04c6b83e5b21",
-                    "path": "",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -477,7 +466,7 @@
                 {
                     "name": "",
                     "id": "bc2d5de4-46ea-48d6-a08f-302d5d95fc63",
-                    "path": "<Gamepad>/select",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
