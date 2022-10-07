@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 396260874166942554}
         m_TargetAssemblyTypeName: ToggleMenuVisibility, Assembly-CSharp
         m_MethodName: ToggleUIVisibility
         m_Mode: 1
@@ -705,6 +705,10 @@ PrefabInstance:
     - target: {fileID: 3627174741401961592, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
       propertyPath: isInStartMenu
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125106458656139352, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7660705210849123153, guid: d77d76c573554be498ecd7c1687774d9, type: 3}
       propertyPath: m_AnchorMax.y
