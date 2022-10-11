@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class DirectionalLightFader : MonoBehaviour
 {
-    [SerializeField] private Light directionalLight;
-    [SerializeField] private float targetValue;
-    [SerializeField] private float fadingDuration = 0.75f;
-    [SerializeField] private float lerpInterpolationValue = 1.5f;
+    [SerializeField] private float fadingDuration = 1f;
+    [SerializeField] LightWithData[] lightWithData;
     [SerializeField] private string playerTag = "Player";
     private bool _isFading;
     private float _timer;
@@ -17,7 +15,11 @@ public class DirectionalLightFader : MonoBehaviour
         if (!_isFading) return;
 
         _timer += Time.deltaTime;
-        directionalLight.intensity = Mathf.Lerp(directionalLight.intensity, targetValue, Time.deltaTime * lerpInterpolationValue);
+
+        foreach (var light in lightWithData)
+        {
+            light.DirectionalLight.intensity = Mathf.Lerp(light.DirectionalLight.intensity, light.TargatValue, Time.deltaTime * light.LerpInterpolationRatio);
+        }
 
         if (_timer >= fadingDuration)
         {
@@ -30,5 +32,20 @@ public class DirectionalLightFader : MonoBehaviour
     {
         if (!other.CompareTag(playerTag)) return;
         _isFading = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        const float radius = 1f;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position, radius);
+    }
+
+    [System.Serializable]
+    private struct LightWithData
+    {
+        public Light DirectionalLight;
+        public float TargatValue;
+        public float LerpInterpolationRatio;
     }
 }

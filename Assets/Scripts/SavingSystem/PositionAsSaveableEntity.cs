@@ -32,7 +32,6 @@ namespace SavingSystem
             foreach (var position in saveData.positionComponents)
             {
                 if (position.uuid != uuid) continue;
-                print(transform.name);
                 
                 if (isAIControlled)
                     HandleAIMovement(position.savedVector3);
