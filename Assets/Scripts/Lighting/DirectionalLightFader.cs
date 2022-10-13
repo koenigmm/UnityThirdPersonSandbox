@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class DirectionalLightFader : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class DirectionalLightFader : MonoBehaviour
     [SerializeField] private string playerTag = "Player";
     private bool _isFading;
     private float _timer;
+    private float[] fractionsPerSecond;
 
     private void Update()
     {
@@ -16,16 +18,16 @@ public class DirectionalLightFader : MonoBehaviour
 
         foreach (var light in lightWithData)
         {
-            light.DirectionalLight.intensity = Mathf.Lerp(light.DirectionalLight.intensity, light.TargatValue, Time.deltaTime * light.LerpInterpolationRatio);
+            light.DirectionalLight.intensity = Mathf.MoveTowards(light.DirectionalLight.intensity, light.TargatValue, Time.deltaTime * light.IntensityChangeRate);
         }
 
-        if (_timer >= fadingDuration)
-        {
-            _timer = 0f;
-            _isFading = false;
-        }
+        if (_timer < fadingDuration) return;
+
+        _timer = 0f;
+        _isFading = false;
+
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag(playerTag)) return;
@@ -44,6 +46,6 @@ public class DirectionalLightFader : MonoBehaviour
     {
         public Light DirectionalLight;
         public float TargatValue;
-        public float LerpInterpolationRatio;
+        public float IntensityChangeRate;
     }
 }
