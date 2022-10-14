@@ -23,7 +23,7 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public bool ShouldHideSwordInFreeLookState { get; private set; } = true;
 
     // public bool isInInteractionArea;
-    [SerializeField] private bool ShouldBeStunnedByRangedAttacks  = false;
+    [SerializeField] private bool ShouldBeStunnedByRangedAttacks;
     [SerializeField] private List<GameObject> meleeGameObjects;
     [SerializeField] private List<MeshRenderer> rangedWeaponMeshRenderers;
 
@@ -47,12 +47,14 @@ public class PlayerStateMachine : StateMachine
         ForceReceiver = GetComponent<ForceReceiver>();
         Animator = GetComponent<Animator>();
         CharacterController = GetComponent<CharacterController>();
+        SetPlayerControlsActive(false);
     }
 
     private void Start()
     {
         MainCameraTransform = Camera.main.transform;
         SwitchState(new PlayerFreeLookState(this));
+        SetPlayerControlsActive(true);
     }
 
     private void OnEnable()
@@ -80,18 +82,12 @@ public class PlayerStateMachine : StateMachine
 
     public void SetMeleeGameObjectsActive(bool isActive)
     {
-        foreach (var meleeGameObject in meleeGameObjects)
-        {
-            meleeGameObject.SetActive(isActive);
-        }
+        foreach (var meleeGameObject in meleeGameObjects) meleeGameObject.SetActive(isActive);
     }
 
     public void SetCurrentRangedWeaponActive(bool isActive)
     {
-        foreach (var meshRenderer in rangedWeaponMeshRenderers)
-        {
-            meshRenderer.enabled = isActive;
-        }
+        foreach (var meshRenderer in rangedWeaponMeshRenderers) meshRenderer.enabled = isActive;
     }
 
     public void SetPlayerControlsActive(bool isActive)
