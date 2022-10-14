@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class DirectionalLightFader : MonoBehaviour
 {
@@ -8,7 +7,6 @@ public class DirectionalLightFader : MonoBehaviour
     [SerializeField] private string playerTag = "Player";
     private bool _isFading;
     private float _timer;
-    private float[] fractionsPerSecond;
 
     private void Update()
     {
