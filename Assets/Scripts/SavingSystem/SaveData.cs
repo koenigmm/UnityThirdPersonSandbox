@@ -13,6 +13,7 @@ namespace SavingSystem
         public List<IntWithID> ammunitionInWeapons = new();
 
         public List<FloatWithID> healthComponents = new();
+        public List<FloatWithID> lightComponents = new();
         public List<Vector3WithID> positionComponents = new();
         public List<QuaternionWithID> rotationComponents = new();
         public List<BoolWithID> pickUpComponents = new();
