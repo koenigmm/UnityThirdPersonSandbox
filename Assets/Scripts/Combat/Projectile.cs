@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
 
         if (other.TryGetComponent(out Health enemyHealth) && !other.CompareTag("Enemy"))
         {
-            enemyHealth.DealDamage(damage);
+            enemyHealth.DealDamage(damage, true);
             Destroy(gameObject);
         }
 

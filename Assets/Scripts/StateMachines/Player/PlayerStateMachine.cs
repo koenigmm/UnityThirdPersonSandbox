@@ -23,10 +23,9 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public bool ShouldHideSwordInFreeLookState { get; private set; } = true;
 
     // public bool isInInteractionArea;
-
+    [SerializeField] private bool ShouldBeStunnedByRangedAttacks  = false;
     [SerializeField] private List<GameObject> meleeGameObjects;
-    [SerializeField] private List<MeshRenderer> rangedWeaponMeshRenderers; 
-
+    [SerializeField] private List<MeshRenderer> rangedWeaponMeshRenderers;
 
     public InputReader InputReader { get; private set; }
     public Health Health { get; private set; }
@@ -71,7 +70,11 @@ public class PlayerStateMachine : StateMachine
         Health.OnDie -= HandleDeath;
     }
 
-    private void HandleDamage() => SwitchState(new PlayerImpactState(this));
+    private void HandleDamage(bool rangedDamage)
+    {
+        if (rangedDamage && !ShouldBeStunnedByRangedAttacks) return;
+        SwitchState(new PlayerImpactState(this));
+    }
 
     private void HandleDeath() => SwitchState(new PlayerDeadState(this));
 

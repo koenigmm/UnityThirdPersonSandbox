@@ -27,5 +27,6 @@ public class HealthBarSlider : MonoBehaviour
         health.OnHeal -= UpdateHealthBar;
     }
 
+    private void UpdateHealthBar(bool rangedDamage) => UpdateHealthBar();
     private void UpdateHealthBar() => fillImage.fillAmount = health.GetFraction();
 }

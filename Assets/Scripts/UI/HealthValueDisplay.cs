@@ -34,4 +34,6 @@ public class HealthValueDisplay : MonoBehaviour
         var healthValue = $"{currentHealth} / {health.MaxHealth}";
         healthValueTextElement.text = healthValue;
     }
+
+    private void UpdateHealthValueDisplay(bool rangedDamage) => UpdateHealthValueDisplay();
 }

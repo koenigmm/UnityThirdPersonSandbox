@@ -57,7 +57,7 @@ public class RangedWeapon : SaveableEntity
         muzzleVFX.Play();
 
         if (raycastHit.transform.TryGetComponent(out Health enemyHealth))
-            enemyHealth.DealDamage(damage);
+            enemyHealth.DealDamage(damage, true);
     }
 
     public bool TryReload()

@@ -24,9 +24,7 @@ public class HealthOrbDisplay : MonoBehaviour
         playerHealth.OnDamage -= UpdateOrbImage;
         playerHealth.OnHeal -= UpdateOrbImage;
     }
-    
-    private void UpdateOrbImage()
-    {
-        foregroundImage.fillAmount = playerHealth.GetFraction();
-    }
+
+    private void UpdateOrbImage() => foregroundImage.fillAmount = playerHealth.GetFraction();
+    private void UpdateOrbImage(bool rangedDamage) => UpdateOrbImage();
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : SaveableEntity
 {
-    public event Action OnDamage;
+    public event Action<bool> OnDamage;
     public event Action OnHeal;
     public event Action OnDie;
     public bool isInvulnerable;
@@ -52,11 +52,11 @@ public class Health : SaveableEntity
 #endif
 
 
-    public void DealDamage(float damage)
+    public void DealDamage(float damage, bool rangedAttack = false)
     {
         if (isInvulnerable) return;
         CurrentHealth = Mathf.Max(CurrentHealth - damage, 0f);
-        OnDamage?.Invoke();
+        OnDamage?.Invoke(rangedAttack);
 
         if (CurrentHealth <= 0f)
         {
@@ -80,7 +80,7 @@ public class Health : SaveableEntity
 
     public float GetFraction() => CurrentHealth / MaxHealth;
 
-    private void HandleDeadlyVelocity() => DealDamage(MaxHealth);
+    private void HandleDeadlyVelocity() => DealDamage(MaxHealth, false);
 
     private void HandleLevelUp()
     {

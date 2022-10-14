@@ -108,9 +108,21 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1548017337725138, guid: 5691556a58a5501479c9f182f6f768bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762549892869696, guid: 5691556a58a5501479c9f182f6f768bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1964704263138806, guid: 5691556a58a5501479c9f182f6f768bb, type: 3}
       propertyPath: m_Name
       value: SnytyRangedWesternEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985981870115086, guid: 5691556a58a5501479c9f182f6f768bb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4201403797357164, guid: 5691556a58a5501479c9f182f6f768bb, type: 3}
       propertyPath: m_RootOrder
