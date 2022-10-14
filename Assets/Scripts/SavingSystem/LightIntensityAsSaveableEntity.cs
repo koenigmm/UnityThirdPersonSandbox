@@ -6,7 +6,6 @@ public class LightIntensityAsSaveableEntity : SaveableEntity
     // SerializeField prevents racing conditions with the saving system
     [SerializeField] private Light lightToSave;
 
-
 #if UNITY_EDITOR
     private void Update()
     {

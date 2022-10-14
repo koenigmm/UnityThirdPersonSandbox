@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class PlayerImpactState : PlayerBaseState
+﻿public class PlayerImpactState : PlayerBaseState
 {
     private float _timer;
     private const string ImpactClipName = "PlayerImpact";
