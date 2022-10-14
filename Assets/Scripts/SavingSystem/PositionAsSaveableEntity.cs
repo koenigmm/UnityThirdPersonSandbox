@@ -6,7 +6,8 @@ namespace SavingSystem
     public class PositionAsSaveableEntity : SaveableEntity
     {
         [SerializeField] private bool isAIControlled;
-        
+        private const string UUID_DEFAULT_POSITION_EXTENSTION = "defaultPosition";
+
 #if UNITY_EDITOR
         private void Update()
         {
@@ -22,21 +23,36 @@ namespace SavingSystem
                 uuid = uuid,
                 savedVector3 = transform.position
             };
+            saveData.currentPositionComponents.Add(positionWithID);
 
-            saveData.positionComponents.Add(positionWithID);
+            if (!TryGetComponent(out EnemyStateMachine enemyStateMachine)) return;
+
+             var defaultPositionWithID = new Vector3WithID
+            {
+                uuid = uuid + UUID_DEFAULT_POSITION_EXTENSTION,
+                savedVector3 = enemyStateMachine.DefaultPosition
+            };
+            saveData.defaultPositions.Add(defaultPositionWithID);
+
         }
 
         public override void LoadFromSaveData(SaveData saveData)
         {
-            foreach (var position in saveData.positionComponents)
+            foreach (var savedPosition in saveData.currentPositionComponents)
             {
-                if (position.uuid != uuid) continue;
-                
-                if (isAIControlled)
-                    HandleAIMovement(position.savedVector3);
-                else
-                    HandlePlayerMovement(position.savedVector3);
+                if (savedPosition.uuid != uuid) continue;
 
+                if (isAIControlled)
+                    HandleAIMovement(savedPosition.savedVector3);
+                else
+                    HandlePlayerMovement(savedPosition.savedVector3);
+            }
+
+             foreach (var savedDefaultPosition in saveData.defaultPositions)
+            {
+                if (savedDefaultPosition.uuid != uuid + UUID_DEFAULT_POSITION_EXTENSTION) continue;
+                if (!TryGetComponent(out EnemyStateMachine enemyStateMachine)) continue;
+                enemyStateMachine.DefaultPosition = savedDefaultPosition.savedVector3;
             }
         }
 
@@ -55,6 +71,6 @@ namespace SavingSystem
             transform.position = position;
             characterController.enabled = true;
         }
-        
+
     }
 }

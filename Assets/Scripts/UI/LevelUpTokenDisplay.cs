@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class LevelUpTokenDisplay : MonoBehaviour
 {
@@ -14,10 +14,20 @@ public class LevelUpTokenDisplay : MonoBehaviour
         _tokenCounterTextElement = GetComponent<TextMeshProUGUI>();
         SetUIText();
     }
-    
-    private void OnEnable() => _levelUpTokenInventory.OnTokenValueChange += SetUIText;
+
+    private void OnEnable()
+    {
+        _levelUpTokenInventory.OnTokenValueChange += SetUIText;
+        StartCoroutine(SetUIWithDeley());
+    }
 
     private void OnDisable() => _levelUpTokenInventory.OnTokenValueChange -= SetUIText;
 
     private void SetUIText() => _tokenCounterTextElement.text = _levelUpTokenInventory.AmountOfLevelUpTokens.ToString();
+
+    private IEnumerator SetUIWithDeley()
+    {
+        yield return new WaitForEndOfFrame();
+        SetUIText();
+    }
 }

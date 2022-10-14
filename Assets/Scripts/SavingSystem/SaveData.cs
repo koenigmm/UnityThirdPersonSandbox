@@ -14,7 +14,8 @@ namespace SavingSystem
 
         public List<FloatWithID> healthComponents = new();
         public List<FloatWithID> lightComponents = new();
-        public List<Vector3WithID> positionComponents = new();
+        public List<Vector3WithID> currentPositionComponents = new();
+        public List<Vector3WithID> defaultPositions = new();
         public List<QuaternionWithID> rotationComponents = new();
         public List<BoolWithID> pickUpComponents = new();
     }
