@@ -13,13 +13,13 @@ public class DeactivateHintImage : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        StartCoroutine(HandleTriggerEnter());
+        _collider.enabled = false;
+        StartCoroutine(DeactivateCanvas());
     }
 
-    private IEnumerator HandleTriggerEnter()
+    private IEnumerator DeactivateCanvas()
     {
         yield return new WaitForSeconds(delay);
         hintCanvas.enabled = false;
-        _collider.enabled = false;
     }
 }
