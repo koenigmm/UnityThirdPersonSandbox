@@ -8,12 +8,13 @@ public class RangedWeapon : SaveableEntity
 {
     // public event Action OnAmmunitionChange;
 
-    [Header("Weapon Attributes")] [SerializeField]
+    [Header("Weapon Attributes")]
+    [SerializeField]
     private float damage = 10f;
 
     [SerializeField] private float range = 100f;
     [SerializeField] private float reloadingTime = 1.5f;
-    [Header("Ammo")] [SerializeField] private int maxAmmoInWeapon = 10;
+    [Header("Ammo")][SerializeField] private int maxAmmoInWeapon = 10;
     [SerializeField] private AmmunitionInventory ammunitionInventory;
     [SerializeField] private AmmunitionType ammunitionType;
     [SerializeField] private VisualEffect muzzleVFX;
@@ -34,7 +35,7 @@ public class RangedWeapon : SaveableEntity
         muzzleVFX.enabled = true;
         muzzleVFX.Stop();
     }
-    
+
 #if UNITY_EDITOR
     private void Update()
     {
@@ -50,14 +51,18 @@ public class RangedWeapon : SaveableEntity
         var screenCenter = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
         var rayToCenter = Camera.main.ScreenPointToRay(screenCenter);
 
-        var hasHit = Physics.Raycast(rayToCenter, out var raycastHit, range);
-        if (!hasHit) return;
+        var raycastHits = Physics.RaycastAll(rayToCenter, range);
 
-        CurrentAmmunition = Math.Max(0, CurrentAmmunition - 1);
-        muzzleVFX.Play();
-
-        if (raycastHit.transform.TryGetComponent(out Health enemyHealth))
+        foreach (var hit in raycastHits)
+        {
+            if (!hit.transform.TryGetComponent(out Health enemyHealth)) continue;
+            
             enemyHealth.DealDamage(damage, true);
+            CurrentAmmunition = Math.Max(0, CurrentAmmunition - 1);
+            muzzleVFX.Play();
+        }
+
+
     }
 
     public bool TryReload()
