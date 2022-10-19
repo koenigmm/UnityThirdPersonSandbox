@@ -178,7 +178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055183487818275903, guid: 5691556a58a5501479c9f182f6f768bb, type: 3}
       propertyPath: <ChaseRange>k__BackingField
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 2055183487818275903, guid: 5691556a58a5501479c9f182f6f768bb, type: 3}
       propertyPath: <Projectile>k__BackingField
@@ -186,7 +186,7 @@ PrefabInstance:
       objectReference: {fileID: 7983585134507241592, guid: d11cbd24a6048ba4f846227cf312b581, type: 3}
     - target: {fileID: 2055183487818275903, guid: 5691556a58a5501479c9f182f6f768bb, type: 3}
       propertyPath: <AttackRange>k__BackingField
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2055183487818275903, guid: 5691556a58a5501479c9f182f6f768bb, type: 3}
       propertyPath: <MuzzleFlashVFX>k__BackingField

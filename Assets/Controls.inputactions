@@ -333,17 +333,6 @@
                 },
                 {
                     "name": "",
-                    "id": "3399aa34-b0be-4845-ba14-429b56bf4d76",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse and Keyboard",
-                    "action": "Exit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "7509f594-005c-4ea1-8a38-3844001e6126",
                     "path": "<Keyboard>/e",
                     "interactions": "",
