@@ -1,11 +1,14 @@
-using System;
 using UnityEngine;
 
 public class CursorHandler : MonoBehaviour
 {
+    [SerializeField] private bool shouldActivateCursorAtStart;
+    [SerializeField] private Texture2D cursorTexture;
+
     private void Start()
     {
-        SetCursorActive(true);
+        if (shouldActivateCursorAtStart) SetCursorActive(true);
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
     }
 
     private static void SetCursorActive(bool isActive)
