@@ -60,6 +60,7 @@ public class RangedWeapon : SaveableEntity
             enemyHealth.DealDamage(damage, true);
             CurrentAmmunition = Math.Max(0, CurrentAmmunition - 1);
             muzzleVFX.Play();
+            break;
         }
 
 
