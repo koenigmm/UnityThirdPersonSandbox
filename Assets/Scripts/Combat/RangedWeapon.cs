@@ -56,12 +56,12 @@ public class RangedWeapon : SaveableEntity
         foreach (var hit in raycastHits)
         {
             if (!hit.transform.TryGetComponent(out Health enemyHealth)) continue;
-            
+
             enemyHealth.DealDamage(damage, true);
-            CurrentAmmunition = Math.Max(0, CurrentAmmunition - 1);
-            muzzleVFX.Play();
             break;
         }
+        CurrentAmmunition = Math.Max(0, CurrentAmmunition - 1);
+        muzzleVFX.Play();
 
 
     }
