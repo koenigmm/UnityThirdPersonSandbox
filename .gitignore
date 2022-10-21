@@ -11,6 +11,10 @@
 /[Uu]ser[Ss]ettings/
 /[Aa]ssets/[Aa]ssetPacks/
 
+# Mac
+/.DS_Store
+/[Aa]ssets/.DS_Store
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
