@@ -1,6 +1,9 @@
 # UnityThirdPersonSandbox
 Payed assets from the Unity Asset Store are not included.
 
+## Video
+[YouTube](https://youtu.be/0dlH6EUKWg4)
+
 ### Builds (Windows, MacOS, Linux)
 https://www.koenigmarius.de
 
