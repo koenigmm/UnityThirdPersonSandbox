@@ -11,7 +11,7 @@ Payed assets from the Unity Asset Store are not included. This project is partly
 -	Simple leveling system
 -	Stamina
 -	Health
--	Healing potion
+-	Healing potions
 -	VFX and particle effects
 -	Glow and highlight shaders
 -	Outdoor level with a dungeon (assets from Synty Studios)
