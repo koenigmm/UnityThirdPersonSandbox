@@ -25,7 +25,7 @@ Enemies can walk along waypoints. They leave their patrolling route if the playe
 [YouTube](https://youtu.be/0dlH6EUKWg4)
 
 ### Builds (Windows, MacOS, Linux)
-https://www.koenigmarius.de
+https://www.koenigmarius.de/downloads/
 
 ## Assets
 - Synty - [Polygon Western Pack](https://assetstore.unity.com/packages/3d/environments/dungeons/polygon-dungeons-low-poly-3d-art-by-synty-102677) 
