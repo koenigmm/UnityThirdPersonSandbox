@@ -1,5 +1,5 @@
 # UnityThirdPersonSandbox
-Payed assets from the Unity Asset Store are not included. This project is partly based on the course [Unity 3rd Person Combat & Traversal from GameDev.TV](https://www.udemy.com/course/unity-3rd-person-combat-traversal/). The state machine and ante the approach for melee combat were adopted. The following is custom-made:
+Payed assets from the Unity Asset Store are not included. This project is partly based on the course [Unity 3rd Person Combat & Traversal from GameDev.TV](https://www.udemy.com/course/unity-3rd-person-combat-traversal/). The state machine and the approach for melee combat were adopted.. The following is custom-made:
 
 -	Saving System
 -	AI
